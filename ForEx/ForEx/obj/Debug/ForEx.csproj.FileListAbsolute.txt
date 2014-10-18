@@ -1,0 +1,26 @@
+c:\users\kai\documents\visual studio 2013\Projects\ForEx\ForEx\bin\Debug\ForEx.exe.config
+C:\Users\David\Dropbox\ForEx\ForEx\ForEx\bin\Debug\ForEx.exe.config
+C:\Users\David\Dropbox\ForEx\ForEx\ForEx\obj\Debug\ForEx.exe
+C:\Users\David\Dropbox\ForEx\ForEx\ForEx\obj\Debug\ForEx.pdb
+D:\David Code Backup\ForEx\ForEx\bin\Debug\ForEx.exe.config
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.exe
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.pdb
+D:\David Code Backup\ForEx\ForEx\bin\Debug\ForEx.exe
+D:\David Code Backup\ForEx\ForEx\bin\Debug\ForEx.pdb
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.csprojResolveAssemblyReference.cache
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.BulkCashIn.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.CashCount.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.CashIn.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.CashOut.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.Client.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.frmClientManagement.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.Closing.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.HomeScreen.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.Login.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.ManagerDashboard.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.Properties.Resources.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.frmSupervisorDashBoard.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.temp.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.Transaction.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.ViewClient.resources
+D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.csproj.GenerateResource.Cache

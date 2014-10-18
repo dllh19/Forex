@@ -1,0 +1,9 @@
+D:\David Code Backup\ForEx\TellerDashBoard\bin\Debug\TellerDashBoard.exe.config
+D:\David Code Backup\ForEx\TellerDashBoard\bin\Debug\TellerDashBoard.exe
+D:\David Code Backup\ForEx\TellerDashBoard\bin\Debug\TellerDashBoard.pdb
+D:\David Code Backup\ForEx\TellerDashBoard\obj\Debug\TellerDashBoard.csprojResolveAssemblyReference.cache
+D:\David Code Backup\ForEx\TellerDashBoard\obj\Debug\TellerDashBoard.frmTellerForm.resources
+D:\David Code Backup\ForEx\TellerDashBoard\obj\Debug\TellerDashBoard.Properties.Resources.resources
+D:\David Code Backup\ForEx\TellerDashBoard\obj\Debug\TellerDashBoard.csproj.GenerateResource.Cache
+D:\David Code Backup\ForEx\TellerDashBoard\obj\Debug\TellerDashBoard.exe
+D:\David Code Backup\ForEx\TellerDashBoard\obj\Debug\TellerDashBoard.pdb

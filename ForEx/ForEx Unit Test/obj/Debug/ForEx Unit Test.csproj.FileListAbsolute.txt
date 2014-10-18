@@ -1,0 +1,5 @@
+C:\Users\David\Dropbox\ForEx\ForEx\ForEx Unit Test\bin\Debug\ForEx Unit Test.dll
+C:\Users\David\Dropbox\ForEx\ForEx\ForEx Unit Test\bin\Debug\ForEx Unit Test.pdb
+C:\Users\David\Dropbox\ForEx\ForEx\ForEx Unit Test\obj\Debug\ForEx Unit Test.csprojResolveAssemblyReference.cache
+C:\Users\David\Dropbox\ForEx\ForEx\ForEx Unit Test\obj\Debug\ForEx Unit Test.dll
+C:\Users\David\Dropbox\ForEx\ForEx\ForEx Unit Test\obj\Debug\ForEx Unit Test.pdb

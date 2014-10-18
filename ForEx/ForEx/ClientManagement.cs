@@ -21,7 +21,7 @@ namespace ForEx
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //test
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace ForEx
 
         private void populate_Country()
         {
-            
+            //test2
         }
 
         private void ComboNationality_SelectedIndexChanged(object sender, System.EventArgs e)

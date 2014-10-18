@@ -24,3 +24,6 @@ D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.temp.resources
 D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.Transaction.resources
 D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.ViewClient.resources
 D:\David Code Backup\ForEx\ForEx\obj\Debug\ForEx.csproj.GenerateResource.Cache
+C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\bin\Debug\ForEx.exe.config
+C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.exe
+C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.pdb

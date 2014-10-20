@@ -76,6 +76,8 @@
       <DependentUpon>CashOut.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Clients.cs" />
+    <Compile Include="Classes\Countries.cs" />
+    <Compile Include="Classes\UserLoggedIn.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Client.cs">
       <SubType>Form</SubType>
@@ -212,6 +214,11 @@
       <DependentUpon>WeekRepDailyRet.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Resource\CountriesRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CountriesRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="SupervisorDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +236,12 @@
     </Compile>
     <Compile Include="Transaction.Designer.cs">
       <DependentUpon>Transaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewClient.cs">
       <SubType>Form</SubType>
@@ -339,6 +352,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>WeekRepDailyRet.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resource\CountriesRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CountriesRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SupervisorDashBoard.resx">
       <DependentUpon>SupervisorDashBoard.cs</DependentUpon>
     </EmbeddedResource>
@@ -347,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaction.resx">
       <DependentUpon>Transaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewClient.resx">
       <DependentUpon>ViewClient.cs</DependentUpon>
@@ -371,6 +391,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XML\Countries.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

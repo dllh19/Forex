@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,16 @@ namespace ForEx
 {
     public partial class frmClientManagement : Form
     {
+        private SqlConnection con;
+        private SqlDataAdapter da;
+        private SqlCommand cmd;
+
         public frmClientManagement()
         {
             InitializeComponent();
             populate_Type();
             populate_Nationality();
+            populate_Country();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -32,6 +38,10 @@ namespace ForEx
             {
                 MessageBox.Show("good");
             }            
+        }
+
+        private void populate_IDType()
+        {
         }
 
         private void populate_Type()
@@ -52,7 +62,12 @@ namespace ForEx
 
         private void populate_Country()
         {
-            //test2
+            var Countries = Common.GetCountries().country.ToDictionary(x => x.countryName, y => y.countryName).OrderBy(z => z.Key);
+            comboCountry.DataSource = new BindingSource(Countries, null);
+            comboCountry.ValueMember = "Key";
+            comboCountry.DisplayMember = "Value";
+
+            comboCountry.SelectedValue = "Mauritius";
         }
 
         private void ComboNationality_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -144,12 +159,12 @@ namespace ForEx
                 return false;
             }
 
-            //Enalbe after populating Country
-            //if (comboCountry.SelectedValue == null)
-            //{
-            //    MessageBox.Show("Please select a country!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //    return false;
-            //}
+            //Enable after populating Country
+            if (comboCountry.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a country!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
 
             if (textEmail.Text == "")
             {
@@ -157,7 +172,7 @@ namespace ForEx
                 return false;
             }
 
-            if (textEmail.Text == "")
+            if (textPhone.Text == "")
             {
                 MessageBox.Show("Email is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
@@ -180,9 +195,9 @@ namespace ForEx
                 return false;
             }
 
-            if (textIDType.Text == "")
+            if (comboIDType.SelectedValue == null)
             {
-                MessageBox.Show("ID Type is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Please Select an ID type!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 
@@ -200,6 +215,12 @@ namespace ForEx
 
             return true;
 
+        }
+
+        private void insertIndividualClient()
+        {
+            con = new SqlConnection(Common.GetConnectionString());
+            cmd = new SqlCommand("INSERT INTO client (Name, dob, passport_no,Address, Country, Phone,email,Date_created,Last_login_date,role,Username) VALUES (@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,'teller',@Username)");
         }
 
     }

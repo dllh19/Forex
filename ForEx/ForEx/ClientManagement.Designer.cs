@@ -55,12 +55,12 @@
             this.panelAddress = new System.Windows.Forms.Panel();
             this.textAddress = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.panelCountry = new System.Windows.Forms.Panel();
-            this.comboCountry = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panelNationality = new System.Windows.Forms.Panel();
             this.comboNationality = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.panelCountry = new System.Windows.Forms.Panel();
+            this.comboCountry = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.panelEmail = new System.Windows.Forms.Panel();
             this.textEmail = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -74,7 +74,6 @@
             this.textBRN = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.panelIDType = new System.Windows.Forms.Panel();
-            this.textIDType = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panelPassport = new System.Windows.Forms.Panel();
             this.textPassport = new System.Windows.Forms.TextBox();
@@ -98,6 +97,7 @@
             this.btnEditSearch = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.comboIDType = new System.Windows.Forms.ComboBox();
             this.tabControl.SuspendLayout();
             this.tabAddClient.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -109,8 +109,8 @@
             this.panelDOB.SuspendLayout();
             this.panelDOB2.SuspendLayout();
             this.panelAddress.SuspendLayout();
-            this.panelCountry.SuspendLayout();
             this.panelNationality.SuspendLayout();
+            this.panelCountry.SuspendLayout();
             this.panelEmail.SuspendLayout();
             this.panelPhone.SuspendLayout();
             this.panelVAT.SuspendLayout();
@@ -392,34 +392,6 @@
             this.label9.TabIndex = 70;
             this.label9.Text = "Address";
             // 
-            // panelCountry
-            // 
-            this.panelCountry.Controls.Add(this.comboCountry);
-            this.panelCountry.Controls.Add(this.label10);
-            this.panelCountry.Location = new System.Drawing.Point(3, 423);
-            this.panelCountry.Name = "panelCountry";
-            this.panelCountry.Size = new System.Drawing.Size(378, 38);
-            this.panelCountry.TabIndex = 6;
-            this.panelCountry.Visible = false;
-            // 
-            // comboCountry
-            // 
-            this.comboCountry.FormattingEnabled = true;
-            this.comboCountry.Location = new System.Drawing.Point(131, 9);
-            this.comboCountry.Name = "comboCountry";
-            this.comboCountry.Size = new System.Drawing.Size(200, 21);
-            this.comboCountry.TabIndex = 71;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(11, 10);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 20);
-            this.label10.TabIndex = 70;
-            this.label10.Text = "Country";
-            // 
             // panelNationality
             // 
             this.panelNationality.Controls.Add(this.comboNationality);
@@ -448,6 +420,35 @@
             this.label7.Size = new System.Drawing.Size(82, 20);
             this.label7.TabIndex = 70;
             this.label7.Text = "Nationality";
+            // 
+            // panelCountry
+            // 
+            this.panelCountry.Controls.Add(this.comboCountry);
+            this.panelCountry.Controls.Add(this.label10);
+            this.panelCountry.Location = new System.Drawing.Point(3, 423);
+            this.panelCountry.Name = "panelCountry";
+            this.panelCountry.Size = new System.Drawing.Size(378, 38);
+            this.panelCountry.TabIndex = 6;
+            this.panelCountry.Visible = false;
+            // 
+            // comboCountry
+            // 
+            this.comboCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCountry.FormattingEnabled = true;
+            this.comboCountry.Location = new System.Drawing.Point(131, 9);
+            this.comboCountry.Name = "comboCountry";
+            this.comboCountry.Size = new System.Drawing.Size(200, 21);
+            this.comboCountry.TabIndex = 71;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(11, 10);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 20);
+            this.label10.TabIndex = 70;
+            this.label10.Text = "Country";
             // 
             // panelEmail
             // 
@@ -559,20 +560,13 @@
             // 
             // panelIDType
             // 
-            this.panelIDType.Controls.Add(this.textIDType);
+            this.panelIDType.Controls.Add(this.comboIDType);
             this.panelIDType.Controls.Add(this.label13);
             this.panelIDType.Location = new System.Drawing.Point(387, 91);
             this.panelIDType.Name = "panelIDType";
             this.panelIDType.Size = new System.Drawing.Size(378, 38);
             this.panelIDType.TabIndex = 9;
             this.panelIDType.Visible = false;
-            // 
-            // textIDType
-            // 
-            this.textIDType.Location = new System.Drawing.Point(131, 10);
-            this.textIDType.Name = "textIDType";
-            this.textIDType.Size = new System.Drawing.Size(200, 20);
-            this.textIDType.TabIndex = 71;
             // 
             // label13
             // 
@@ -797,6 +791,15 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Enter Client Name";
             // 
+            // comboIDType
+            // 
+            this.comboIDType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboIDType.FormattingEnabled = true;
+            this.comboIDType.Location = new System.Drawing.Point(131, 9);
+            this.comboIDType.Name = "comboIDType";
+            this.comboIDType.Size = new System.Drawing.Size(200, 21);
+            this.comboIDType.TabIndex = 72;
+            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -824,10 +827,10 @@
             this.panelDOB2.PerformLayout();
             this.panelAddress.ResumeLayout(false);
             this.panelAddress.PerformLayout();
-            this.panelCountry.ResumeLayout(false);
-            this.panelCountry.PerformLayout();
             this.panelNationality.ResumeLayout(false);
             this.panelNationality.PerformLayout();
+            this.panelCountry.ResumeLayout(false);
+            this.panelCountry.PerformLayout();
             this.panelEmail.ResumeLayout(false);
             this.panelEmail.PerformLayout();
             this.panelPhone.ResumeLayout(false);
@@ -900,7 +903,6 @@
         private System.Windows.Forms.TextBox textEmail;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panelIDType;
-        private System.Windows.Forms.TextBox textIDType;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panelPassport;
         private System.Windows.Forms.TextBox textPassport;
@@ -926,5 +928,6 @@
         private System.Windows.Forms.Panel panelUpload;
         private System.Windows.Forms.TextBox textupload;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox comboIDType;
     }
 }

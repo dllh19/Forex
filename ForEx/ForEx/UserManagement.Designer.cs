@@ -233,6 +233,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(218, 20);
             this.txtPassword.TabIndex = 71;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label17
             // 
@@ -259,6 +260,7 @@
             this.txtConfirmpass.Name = "txtConfirmpass";
             this.txtConfirmpass.Size = new System.Drawing.Size(218, 20);
             this.txtConfirmpass.TabIndex = 71;
+            this.txtConfirmpass.UseSystemPasswordChar = true;
             // 
             // label6
             // 

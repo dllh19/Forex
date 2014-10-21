@@ -23,8 +23,10 @@ namespace ForEx
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-
-            if (CheckName() && CheckPassword(txtPassword.Text, txtConfirmpass.Text) && CheckUsername(txtUsername.Text) && CheckPhoneNumber())
+            /*LOG
+             *Validation of phone number not good - remove for now until reviewed -David             
+             */
+            if (CheckName() && CheckPassword(txtPassword.Text, txtConfirmpass.Text) && CheckUsername(txtUsername.Text))
             {
                 cmd = new SqlCommand("INSERT INTO tbl_users (Name, Surname, Password,Address, Country, Phone,email,Date_created,Last_login_date,role,Username) VALUES (@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,'teller',@Username)");
                 cmd.CommandType = CommandType.Text;
@@ -147,6 +149,5 @@ namespace ForEx
             comboCountry.ValueMember = "Key";
             comboCountry.DisplayMember = "Value";
         }
-
     }
 }

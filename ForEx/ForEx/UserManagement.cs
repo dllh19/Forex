@@ -143,11 +143,12 @@ namespace ForEx
             da = new SqlDataAdapter();
             cmd = new SqlCommand();
 
-            var Countries = Common.GetCountries().country.ToDictionary(x => x.countryName, y => y.countryName);
-
+            var Countries = Common.GetCountries().country.ToDictionary(x => x.countryName, y => y.countryName).OrderBy(z => z.Key);            
             comboCountry.DataSource = new BindingSource(Countries, null);
             comboCountry.ValueMember = "Key";
             comboCountry.DisplayMember = "Value";
+
+            comboCountry.SelectedValue = "Mauritius";
         }
     }
 }

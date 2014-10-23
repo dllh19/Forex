@@ -23,6 +23,7 @@ namespace ForEx
             populate_Type();
             populate_Nationality();
             populate_Country();
+            populate_IDType();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -36,12 +37,15 @@ namespace ForEx
 
             if (typeValue == "Individual" && validateIndividualField() && validateCommonFields())
             {
-                MessageBox.Show("good");
+                //MessageBox.Show("good");
+                insertIndividualClient();
             }            
         }
 
         private void populate_IDType()
         {
+            comboIDType.Items.Add("Passport");
+            comboIDType.Items.Add("ID card");
         }
 
         private void populate_Type()
@@ -195,7 +199,7 @@ namespace ForEx
                 return false;
             }
 
-            if (comboIDType.SelectedValue == null)
+            if (comboIDType.SelectedItem == null)
             {
                 MessageBox.Show("Please Select an ID type!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
@@ -219,8 +223,40 @@ namespace ForEx
 
         private void insertIndividualClient()
         {
-            con = new SqlConnection(Common.GetConnectionString());
-            cmd = new SqlCommand("INSERT INTO tbl_client (name, surname, dob, passport_no, address, Phone,email,Date_created,Last_login_date,role,Username) VALUES (@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,'teller',@Username)");
+            try
+            {
+                con = new SqlConnection(Common.GetConnectionString());
+                cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, country, address, phone, email, id_type,passport_no, occupation, username, isblacklisted) VALUES (@type, @name, @surname,@dob, @nationality, @country, @address, @phone, @email , @id_type, @passport_no, @occupation, @username , 'true')");
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@type", comboType.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@name", txtName.Text);
+                cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
+                cmd.Parameters.AddWithValue("@dob", dateTimeDOB.Value);
+                cmd.Parameters.AddWithValue("@nationality", comboNationality.SelectedItem);
+                cmd.Parameters.AddWithValue("@country", comboCountry.SelectedValue);
+                cmd.Parameters.AddWithValue("@address", textAddress.Text);
+                cmd.Parameters.AddWithValue("@phone", textPhone.Text);
+                cmd.Parameters.AddWithValue("@email", textEmail.Text);
+                cmd.Parameters.AddWithValue("@id_type", comboIDType.SelectedItem);
+                cmd.Parameters.AddWithValue("@passport_no", textPassport.Text);
+                cmd.Parameters.AddWithValue("@occupation", textOccupation.Text);
+                //cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //To change when Login implemented
+                cmd.Parameters.AddWithValue("@username", "TEST"); //To delete when Login implemented
+                con.Open();
+                int row = cmd.ExecuteNonQuery();
+                con.Close();
+
+                if (row > 0)
+                {
+                    MessageBox.Show("Client has been added successfully");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
         }
 
     }

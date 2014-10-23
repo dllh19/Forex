@@ -16,7 +16,7 @@ namespace ForEx
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CashIn());
+            Application.Run(new frmClientManagement());
         }
     }
 }

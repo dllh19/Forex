@@ -28,11 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnCashIn = new System.Windows.Forms.Button();
+            this.gridCashIn = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCashIn)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btnCashIn
+            // 
+            this.btnCashIn.Location = new System.Drawing.Point(547, 292);
+            this.btnCashIn.Name = "btnCashIn";
+            this.btnCashIn.Size = new System.Drawing.Size(131, 47);
+            this.btnCashIn.TabIndex = 9;
+            this.btnCashIn.Text = "Cash In";
+            this.btnCashIn.UseVisualStyleBackColor = true;
+            this.btnCashIn.Click += new System.EventHandler(this.btnCashIn_Click);
+            // 
+            // gridCashIn
+            // 
+            this.gridCashIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridCashIn.Location = new System.Drawing.Point(12, 12);
+            this.gridCashIn.Name = "gridCashIn";
+            this.gridCashIn.Size = new System.Drawing.Size(517, 603);
+            this.gridCashIn.TabIndex = 8;
+            // 
+            // CashIn
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(690, 632);
+            this.Controls.Add(this.btnCashIn);
+            this.Controls.Add(this.gridCashIn);
+            this.Name = "CashIn";
             this.Text = "CashIn";
+            this.Load += new System.EventHandler(this.CashIn_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridCashIn)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnCashIn;
+        private System.Windows.Forms.DataGridView gridCashIn;
     }
 }

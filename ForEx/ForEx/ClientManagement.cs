@@ -36,10 +36,14 @@ namespace ForEx
             string typeValue = comboType.SelectedItem.ToString();
 
             if (typeValue == "Individual" && validateIndividualField() && validateCommonFields())
-            {
-                //MessageBox.Show("good");
+            {                
                 insertIndividualClient();
-            }            
+            }
+
+            if (typeValue != "Individual" && validateOther() && validateCommonFields())
+            {
+                insertOtherType();
+            }         
         }
 
         private void populate_IDType()
@@ -245,12 +249,41 @@ namespace ForEx
 
         }
 
+        private bool validateOther()
+        {
+            if (textCompanyName.Text == "")
+            {
+                MessageBox.Show("Company Name is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            if (textContact.Text == "")
+            {
+                MessageBox.Show("Contact is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            if (textVAT.Text == "")
+            {
+                MessageBox.Show("VAT is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            if (textBRN.Text == "")
+            {
+                MessageBox.Show("BRN is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            return true;
+        }
+
         private void insertIndividualClient()
         {
             try
             {
                 con = new SqlConnection(Common.GetConnectionString());
-                cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, country, address, phone, email, id_type,passport_no, occupation, username, isblacklisted) VALUES (@type, @name, @surname,@dob, @nationality, @country, @address, @phone, @email , @id_type, @passport_no, @occupation, @username , 'true')");
+                cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, country, address, phone, email, id_type,passport_no, occupation, username, isblacklisted) VALUES (@type, @name, @surname,@dob, @nationality, @country, @address, @phone, @email , @id_type, @passport_no, @occupation, @username , 'false')");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@type", comboType.SelectedItem.ToString());
@@ -281,6 +314,42 @@ namespace ForEx
                 MessageBox.Show(ex.ToString());
             }
             
+        }
+
+        private void insertOtherType()
+        {
+            try
+            {
+                con = new SqlConnection(Common.GetConnectionString());
+                cmd = new SqlCommand("INSERT INTO tbl_client (type, company_name, contact_person, date_incorporated, vat, nationality, country, address, phone, email, brn, username, isblacklisted) VALUES (@type, @company_name, @contact_name, @date_incorporated, @vat, @nationality, @country, @address, @phone, @email , @brn, @username , 'false')");
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@type", comboType.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@company_name", textCompanyName.Text);
+                cmd.Parameters.AddWithValue("@contact_name", textContact.Text);
+                cmd.Parameters.AddWithValue("@date_incorporated", dateTimeDOB2.Value);
+                cmd.Parameters.AddWithValue("@vat", textVAT.Text);
+                cmd.Parameters.AddWithValue("@nationality", comboNationality.SelectedItem);
+                cmd.Parameters.AddWithValue("@country", comboCountry.SelectedValue);
+                cmd.Parameters.AddWithValue("@address", textAddress.Text);
+                cmd.Parameters.AddWithValue("@phone", textPhone.Text);
+                cmd.Parameters.AddWithValue("@email", textEmail.Text);
+                cmd.Parameters.AddWithValue("@brn", textBRN.Text);
+                //cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //To change when Login implemented
+                cmd.Parameters.AddWithValue("@username", "TEST"); //To delete when Login implemented
+                con.Open();
+                int row = cmd.ExecuteNonQuery();
+                con.Close();
+
+                if (row > 0)
+                {
+                    MessageBox.Show("Bank/Corporate has been added successfully");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
     }

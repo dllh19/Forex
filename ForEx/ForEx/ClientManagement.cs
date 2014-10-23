@@ -143,6 +143,19 @@ namespace ForEx
             btnAdd.Visible = true;
         }
 
+        private bool CheckPhoneNumber()
+        {
+            if (Common.IsPhone(textPhone.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Invalid phone number entered");
+                return false;
+            }
+        }
+
         private bool validateCommonFields()
         {
             if (textAddress.Text == "")
@@ -179,6 +192,17 @@ namespace ForEx
             if (textPhone.Text == "")
             {
                 MessageBox.Show("Email is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+
+            if (!CheckPhoneNumber())
+            {
+                return false;
+            }
+
+            if (!Common.IsValidEmail(textEmail.Text))
+            {
+                MessageBox.Show("Email is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 

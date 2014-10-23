@@ -220,7 +220,7 @@ namespace ForEx
         private void insertIndividualClient()
         {
             con = new SqlConnection(Common.GetConnectionString());
-            cmd = new SqlCommand("INSERT INTO client (Name, dob, passport_no,Address, Country, Phone,email,Date_created,Last_login_date,role,Username) VALUES (@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,'teller',@Username)");
+            cmd = new SqlCommand("INSERT INTO tbl_client (name, surname, dob, passport_no, address, Phone,email,Date_created,Last_login_date,role,Username) VALUES (@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,'teller',@Username)");
         }
 
     }

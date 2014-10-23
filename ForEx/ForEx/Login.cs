@@ -13,9 +13,9 @@ namespace ForEx
 {
     public partial class Login : Form
     {
-        private SqlConnection con;
-        private SqlDataAdapter da;
-        private SqlCommand cmd;
+        private SqlConnection con = new SqlConnection(Common.GetConnectionString());
+        private SqlDataAdapter da = new SqlDataAdapter();
+        private SqlCommand cmd = new SqlCommand();
 
         public Login()
         {
@@ -47,6 +47,10 @@ namespace ForEx
                     Common.SetUser(UserId, Name, Surname, Role, Username);
 
                     con.Close();
+
+                    //Audit
+                    Common.Audit(Common.Operation.LoggedIn,Name + " " + Surname + " has logged into the system");
+
                     if (Role == "teller")
                     {
                         this.Hide();
@@ -92,9 +96,7 @@ namespace ForEx
 
         private void Login_Load(object sender, EventArgs e)
         {
-            con = new SqlConnection(Common.GetConnectionString());
-            da = new SqlDataAdapter();
-            cmd = new SqlCommand();
+
         }
     }
 }

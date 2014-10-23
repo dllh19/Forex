@@ -523,6 +523,7 @@
             this.btnUpdatePass.TabIndex = 6;
             this.btnUpdatePass.Text = "Save";
             this.btnUpdatePass.UseVisualStyleBackColor = true;
+            this.btnUpdatePass.Click += new System.EventHandler(this.btnUpdatePass_Click);
             // 
             // txtTellername
             // 

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -11,12 +13,22 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Xml.Linq;
 
+
 namespace ForEx
 {
     public class Common
     {
         private static bool invalid;
         public static UserLoggedIn user = null;
+
+        public enum Operation
+        {
+            LoggedIn,
+            LoggedOut,
+            CashIn,
+            CashOut,
+            Transaction
+        }
 
         public static void SetUser(int UserId, String Name, String Surname, String Role, String Username)
         {
@@ -106,8 +118,41 @@ namespace ForEx
 
         public static bool IsPhone(String strPhone)
         {
-            Regex objPhonePattern = new Regex(@"^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$");
-            return objPhonePattern.IsMatch(strPhone);
+            int num;
+            return int.TryParse(strPhone, out num);
+        }
+
+        public static void Audit(Enum operation, string description)
+        {
+            SqlConnection con = new SqlConnection(Common.GetConnectionString());
+            SqlDataAdapter da = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand();
+
+            cmd = new SqlCommand("INSERT INTO tbl_audit (operation, description, date_created,user_id) VALUES (@operation, @description, @date_created,@user_id)");
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = con;
+            try
+            {
+
+            
+            cmd.Parameters.Add("@operation", SqlDbType.VarChar).Value = operation.ToString();
+            cmd.Parameters.Add("@description", SqlDbType.NChar).Value = description;
+            cmd.Parameters.Add("@date_created", SqlDbType.DateTime).Value = DateTime.Now;
+            cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = GetUser().UserId;
+
+            con.Open();
+            int row = cmd.ExecuteNonQuery();
+            con.Close();
+
+            if (!(row > 0))
+            {
+                throw new Exception("An error has occured while trying to audit");
+            }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception while auditing: " + ex.InnerException);
+            }
         }
 
 

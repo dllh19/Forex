@@ -23,15 +23,12 @@ namespace ForEx
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            /*LOG
-             *Validation of phone number not good - remove for now until reviewed -David             
-             */
+
             if (CheckName() && CheckPassword(txtPassword.Text, txtConfirmpass.Text) && CheckUsername(txtUsername.Text))
             {
                 cmd = new SqlCommand("INSERT INTO tbl_users (Name, Surname, Password,Address, Country, Phone,email,Date_created,Last_login_date,role,Username) VALUES (@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,'teller',@Username)");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
-                //(@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,teller)");
                 cmd.Parameters.AddWithValue("@Name", txtName.Text);
                 cmd.Parameters.AddWithValue("@Surname", txtSurname.Text);
                 cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
@@ -149,6 +146,51 @@ namespace ForEx
             comboCountry.DisplayMember = "Value";
 
             comboCountry.SelectedValue = "Mauritius";
+        }
+
+        private void btnUpdatePass_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTellername.Text))
+            {
+                MessageBox.Show("Teller username field is empty");
+            }
+            else if (CheckPassword(txtNewPass.Text, txtConfirmnewpass.Text))
+            {
+                MessageBox.Show("Password fields don\'t match");
+            }
+            else
+            {
+                if (!CheckUsername())
+                {
+                    cmd = new SqlCommand("UPDATE tbl_users SET Password = @Password WHERE Username = @Username");
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = con;
+                    try
+                    {
+
+                        cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = txtNewPass.Text;
+                        cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = txtTellername.Text;
+                        con.Open();
+                        int row = cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        if (row > 0)
+                        {
+                            MessageBox.Show(txtTellername.Text + " password has been updated");
+                            txtNewPass.Text = string.Empty;
+                            txtConfirmnewpass.Text = string.Empty;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Exception while auditing: " + ex.InnerException);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Could not find teller with username: " + txtTellername.Text);
+                }
+            }
         }
     }
 }

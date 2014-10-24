@@ -160,7 +160,7 @@ namespace ForEx
             }
             else
             {
-                if (!CheckUsername())
+                if (!CheckUsername(txtTellername.Text))
                 {
                     cmd = new SqlCommand("UPDATE tbl_users SET Password = @Password WHERE Username = @Username");
                     cmd.CommandType = CommandType.Text;

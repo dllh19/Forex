@@ -155,6 +155,49 @@ namespace ForEx
             }
         }
 
+        public static List<Currency> getAllCurrency()
+        {
+            string connection = Common.GetConnectionString();
+
+            List<Currency> currencyList = new List<Currency>();
+
+            SqlConnection conn = new SqlConnection(connection);
+
+            try
+            {
+                const string sql = "SELECT * FROM [dbo].[tbl_currency]";
+
+                conn.Open();
+                var cmd = new SqlCommand(sql, conn);
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var bo = new Currency
+                        {
+                            symbol = Convert.ToString(dr["symbol"]),
+                            name = Convert.ToString(dr["name"]),
+                            id = Convert.ToInt32(dr["currency_id"])
+
+                        };
+                        currencyList.Add(bo);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(ex.Message);
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                    conn.Close();
+            }
+            return currencyList;
+        }
+
 
     }
 

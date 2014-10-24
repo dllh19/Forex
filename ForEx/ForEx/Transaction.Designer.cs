@@ -41,40 +41,33 @@
             this.btnCheck = new System.Windows.Forms.Button();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
-            this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.txtRs = new System.Windows.Forms.TextBox();
             this.lblRs = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
-            this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblVoucherNum = new System.Windows.Forms.Label();
-            this.lblVoucherL = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.lblDateL = new System.Windows.Forms.Label();
             this.Panel2 = new System.Windows.Forms.Panel();
-            this.cmbClient = new System.Windows.Forms.ComboBox();
+            this.comboClient = new System.Windows.Forms.ComboBox();
             this.lblClient = new System.Windows.Forms.Label();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.txtDiscountRate = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
             this.cmbRate = new System.Windows.Forms.ComboBox();
             this.lblRate = new System.Windows.Forms.Label();
-            this.cmbCurrency = new System.Windows.Forms.ComboBox();
+            this.comboCurrency = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
-            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.comboType = new System.Windows.Forms.ComboBox();
             this.lblType = new System.Windows.Forms.Label();
             this.grpMovement = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.GroupBox5.SuspendLayout();
             this.GroupBox4.SuspendLayout();
-            this.GroupBox1.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.grpMovement.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDiscard
             // 
-            this.btnDiscard.Location = new System.Drawing.Point(467, 603);
+            this.btnDiscard.Location = new System.Drawing.Point(467, 552);
             this.btnDiscard.Name = "btnDiscard";
             this.btnDiscard.Size = new System.Drawing.Size(89, 48);
             this.btnDiscard.TabIndex = 29;
@@ -84,7 +77,7 @@
             // dgvTransaction
             // 
             this.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTransaction.Location = new System.Drawing.Point(31, 397);
+            this.dgvTransaction.Location = new System.Drawing.Point(31, 346);
             this.dgvTransaction.Name = "dgvTransaction";
             this.dgvTransaction.Size = new System.Drawing.Size(863, 184);
             this.dgvTransaction.TabIndex = 27;
@@ -143,7 +136,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(304, 603);
+            this.btnPrint.Location = new System.Drawing.Point(304, 552);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(89, 48);
             this.btnPrint.TabIndex = 28;
@@ -158,7 +151,7 @@
             this.GroupBox5.Controls.Add(this.lblAmount2);
             this.GroupBox5.Controls.Add(this.TextBox5);
             this.GroupBox5.Controls.Add(this.lblTotal);
-            this.GroupBox5.Location = new System.Drawing.Point(31, 306);
+            this.GroupBox5.Location = new System.Drawing.Point(31, 255);
             this.GroupBox5.Name = "GroupBox5";
             this.GroupBox5.Size = new System.Drawing.Size(863, 53);
             this.GroupBox5.TabIndex = 26;
@@ -176,7 +169,7 @@
             // GroupBox4
             // 
             this.GroupBox4.Controls.Add(this.txtRemarks);
-            this.GroupBox4.Location = new System.Drawing.Point(486, 86);
+            this.GroupBox4.Location = new System.Drawing.Point(492, 28);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(406, 62);
             this.GroupBox4.TabIndex = 18;
@@ -190,15 +183,6 @@
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(394, 37);
             this.txtRemarks.TabIndex = 19;
-            // 
-            // GroupBox3
-            // 
-            this.GroupBox3.Location = new System.Drawing.Point(486, 19);
-            this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(406, 48);
-            this.GroupBox3.TabIndex = 17;
-            this.GroupBox3.TabStop = false;
-            this.GroupBox3.Text = "Commision";
             // 
             // txtRs
             // 
@@ -234,73 +218,23 @@
             this.lblAmount.TabIndex = 13;
             this.lblAmount.Text = "Amount";
             // 
-            // GroupBox1
-            // 
-            this.GroupBox1.Controls.Add(this.lblVoucherNum);
-            this.GroupBox1.Controls.Add(this.lblVoucherL);
-            this.GroupBox1.Controls.Add(this.lblDate);
-            this.GroupBox1.Controls.Add(this.lblDateL);
-            this.GroupBox1.Location = new System.Drawing.Point(31, 4);
-            this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(898, 54);
-            this.GroupBox1.TabIndex = 22;
-            this.GroupBox1.TabStop = false;
-            this.GroupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
-            // 
-            // lblVoucherNum
-            // 
-            this.lblVoucherNum.AutoSize = true;
-            this.lblVoucherNum.Location = new System.Drawing.Point(757, 25);
-            this.lblVoucherNum.Name = "lblVoucherNum";
-            this.lblVoucherNum.Size = new System.Drawing.Size(35, 13);
-            this.lblVoucherNum.TabIndex = 3;
-            this.lblVoucherNum.Text = "empty";
-            // 
-            // lblVoucherL
-            // 
-            this.lblVoucherL.AutoSize = true;
-            this.lblVoucherL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVoucherL.Location = new System.Drawing.Point(661, 25);
-            this.lblVoucherL.Name = "lblVoucherL";
-            this.lblVoucherL.Size = new System.Drawing.Size(105, 13);
-            this.lblVoucherL.TabIndex = 2;
-            this.lblVoucherL.Text = "Voucher Number:";
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(495, 25);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(67, 13);
-            this.lblDate.TabIndex = 1;
-            this.lblDate.Text = "Current Date";
-            // 
-            // lblDateL
-            // 
-            this.lblDateL.AutoSize = true;
-            this.lblDateL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateL.Location = new System.Drawing.Point(433, 25);
-            this.lblDateL.Name = "lblDateL";
-            this.lblDateL.Size = new System.Drawing.Size(38, 13);
-            this.lblDateL.TabIndex = 0;
-            this.lblDateL.Text = "Date:";
-            // 
             // Panel2
             // 
-            this.Panel2.Controls.Add(this.cmbClient);
+            this.Panel2.Controls.Add(this.comboClient);
             this.Panel2.Controls.Add(this.lblClient);
-            this.Panel2.Location = new System.Drawing.Point(452, 64);
+            this.Panel2.Location = new System.Drawing.Point(452, 21);
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(477, 46);
             this.Panel2.TabIndex = 24;
             // 
-            // cmbClient
+            // comboClient
             // 
-            this.cmbClient.FormattingEnabled = true;
-            this.cmbClient.Location = new System.Drawing.Point(109, 17);
-            this.cmbClient.Name = "cmbClient";
-            this.cmbClient.Size = new System.Drawing.Size(312, 21);
-            this.cmbClient.TabIndex = 5;
+            this.comboClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboClient.FormattingEnabled = true;
+            this.comboClient.Location = new System.Drawing.Point(83, 14);
+            this.comboClient.Name = "comboClient";
+            this.comboClient.Size = new System.Drawing.Size(359, 21);
+            this.comboClient.TabIndex = 5;
             // 
             // lblClient
             // 
@@ -314,7 +248,7 @@
             // 
             // Panel1
             // 
-            this.Panel1.Location = new System.Drawing.Point(31, 64);
+            this.Panel1.Location = new System.Drawing.Point(31, 21);
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(424, 46);
             this.Panel1.TabIndex = 23;
@@ -354,13 +288,14 @@
             this.lblRate.TabIndex = 10;
             this.lblRate.Text = "Rate";
             // 
-            // cmbCurrency
+            // comboCurrency
             // 
-            this.cmbCurrency.FormattingEnabled = true;
-            this.cmbCurrency.Location = new System.Drawing.Point(319, 28);
-            this.cmbCurrency.Name = "cmbCurrency";
-            this.cmbCurrency.Size = new System.Drawing.Size(152, 21);
-            this.cmbCurrency.TabIndex = 7;
+            this.comboCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCurrency.FormattingEnabled = true;
+            this.comboCurrency.Location = new System.Drawing.Point(319, 28);
+            this.comboCurrency.Name = "comboCurrency";
+            this.comboCurrency.Size = new System.Drawing.Size(152, 21);
+            this.comboCurrency.TabIndex = 7;
             // 
             // lblCurrency
             // 
@@ -372,13 +307,14 @@
             this.lblCurrency.TabIndex = 8;
             this.lblCurrency.Text = "Currency";
             // 
-            // cmbType
+            // comboType
             // 
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(73, 28);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(122, 21);
-            this.cmbType.TabIndex = 6;
+            this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboType.FormattingEnabled = true;
+            this.comboType.Location = new System.Drawing.Point(73, 28);
+            this.comboType.Name = "comboType";
+            this.comboType.Size = new System.Drawing.Size(122, 21);
+            this.comboType.TabIndex = 6;
             // 
             // lblType
             // 
@@ -394,7 +330,6 @@
             // 
             this.grpMovement.Controls.Add(this.btnCheck);
             this.grpMovement.Controls.Add(this.GroupBox4);
-            this.grpMovement.Controls.Add(this.GroupBox3);
             this.grpMovement.Controls.Add(this.txtRs);
             this.grpMovement.Controls.Add(this.lblRs);
             this.grpMovement.Controls.Add(this.txtAmount);
@@ -403,11 +338,11 @@
             this.grpMovement.Controls.Add(this.Label9);
             this.grpMovement.Controls.Add(this.cmbRate);
             this.grpMovement.Controls.Add(this.lblRate);
-            this.grpMovement.Controls.Add(this.cmbCurrency);
+            this.grpMovement.Controls.Add(this.comboCurrency);
             this.grpMovement.Controls.Add(this.lblCurrency);
-            this.grpMovement.Controls.Add(this.cmbType);
+            this.grpMovement.Controls.Add(this.comboType);
             this.grpMovement.Controls.Add(this.lblType);
-            this.grpMovement.Location = new System.Drawing.Point(31, 126);
+            this.grpMovement.Location = new System.Drawing.Point(31, 75);
             this.grpMovement.Name = "grpMovement";
             this.grpMovement.Size = new System.Drawing.Size(898, 173);
             this.grpMovement.TabIndex = 25;
@@ -417,12 +352,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 668);
+            this.ClientSize = new System.Drawing.Size(968, 633);
             this.Controls.Add(this.btnDiscard);
             this.Controls.Add(this.dgvTransaction);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.GroupBox5);
-            this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.grpMovement);
@@ -434,8 +368,6 @@
             this.GroupBox5.PerformLayout();
             this.GroupBox4.ResumeLayout(false);
             this.GroupBox4.PerformLayout();
-            this.GroupBox1.ResumeLayout(false);
-            this.GroupBox1.PerformLayout();
             this.Panel2.ResumeLayout(false);
             this.Panel2.PerformLayout();
             this.grpMovement.ResumeLayout(false);
@@ -459,28 +391,22 @@
         internal System.Windows.Forms.Button btnCheck;
         internal System.Windows.Forms.GroupBox GroupBox4;
         internal System.Windows.Forms.TextBox txtRemarks;
-        internal System.Windows.Forms.GroupBox GroupBox3;
         internal System.Windows.Forms.TextBox txtRs;
         internal System.Windows.Forms.Label lblRs;
         internal System.Windows.Forms.TextBox txtAmount;
         internal System.Windows.Forms.Label lblAmount;
-        internal System.Windows.Forms.GroupBox GroupBox1;
-        internal System.Windows.Forms.Label lblVoucherNum;
-        internal System.Windows.Forms.Label lblVoucherL;
-        internal System.Windows.Forms.Label lblDate;
-        internal System.Windows.Forms.Label lblDateL;
         internal System.Windows.Forms.Panel Panel2;
-        internal System.Windows.Forms.ComboBox cmbClient;
         internal System.Windows.Forms.Label lblClient;
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.TextBox txtDiscountRate;
         internal System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.ComboBox cmbRate;
         internal System.Windows.Forms.Label lblRate;
-        internal System.Windows.Forms.ComboBox cmbCurrency;
+        internal System.Windows.Forms.ComboBox comboCurrency;
         internal System.Windows.Forms.Label lblCurrency;
-        internal System.Windows.Forms.ComboBox cmbType;
+        internal System.Windows.Forms.ComboBox comboType;
         internal System.Windows.Forms.Label lblType;
         internal System.Windows.Forms.GroupBox grpMovement;
+        private System.Windows.Forms.ComboBox comboClient;
     }
 }

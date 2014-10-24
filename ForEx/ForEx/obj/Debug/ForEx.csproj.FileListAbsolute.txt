@@ -48,7 +48,7 @@ C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.Transaction.re
 C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.UserManagement.resources
 C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.ViewClient.resources
 C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.csproj.GenerateResource.Cache
-C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.pdb
+C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.exe
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.BulkCashIn.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.CashCount.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.CashIn.resources
@@ -60,6 +60,7 @@ C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.HomeScreen.resou
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.Login.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.ManagerDashboard.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.Properties.Resources.resources
+C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.RateManagement.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.Resource.CountriesRes.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.frmSupervisorDashBoard.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.temp.resources
@@ -67,7 +68,8 @@ C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.Transaction.reso
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.UserManagement.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.ViewClient.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.csproj.GenerateResource.Cache
+C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.pdb
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\bin\Debug\ForEx.exe.config
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\bin\Debug\ForEx.exe
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\bin\Debug\ForEx.pdb
-C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.exe
+C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.csprojResolveAssemblyReference.cache

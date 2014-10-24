@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="Classes\Clients.cs" />
     <Compile Include="Classes\Countries.cs" />
+    <Compile Include="Classes\Rate.cs" />
     <Compile Include="Classes\UserLoggedIn.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Client.cs">
@@ -118,6 +119,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RateManagement.Designer.cs">
+      <DependentUpon>RateManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Annex1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -288,6 +295,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RateManagement.resx">
+      <DependentUpon>RateManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Annex1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Annex1.cs</LastGenOutput>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ForEx.Classes;
 
 namespace ForEx
 {
@@ -16,7 +17,7 @@ namespace ForEx
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmClientManagement());
+            Application.Run(new RateManagement());
         }
     }
 }

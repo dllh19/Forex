@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ForEx.Classes
 {
-    class Clients
+    public class Clients
     {
+
+        public Clients()
+        {
+        }
     }
 }

@@ -245,6 +245,7 @@
             this.GroupBox1.Size = new System.Drawing.Size(898, 54);
             this.GroupBox1.TabIndex = 22;
             this.GroupBox1.TabStop = false;
+            this.GroupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
             // lblVoucherNum
             // 
@@ -427,6 +428,7 @@
             this.Controls.Add(this.grpMovement);
             this.Name = "Transaction";
             this.Text = "Transaction";
+            this.Load += new System.EventHandler(this.Transaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).EndInit();
             this.GroupBox5.ResumeLayout(false);
             this.GroupBox5.PerformLayout();

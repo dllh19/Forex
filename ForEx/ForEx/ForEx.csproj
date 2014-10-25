@@ -126,6 +126,12 @@
     <Compile Include="RateManagement.Designer.cs">
       <DependentUpon>RateManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Annex1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -233,6 +239,12 @@
     <Compile Include="SupervisorDashBoard.Designer.cs">
       <DependentUpon>SupervisorDashBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="TellerDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TellerDashboard.Designer.cs">
+      <DependentUpon>TellerDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="temp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +310,9 @@
     </Compile>
     <EmbeddedResource Include="RateManagement.resx">
       <DependentUpon>RateManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Annex1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -369,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupervisorDashBoard.resx">
       <DependentUpon>SupervisorDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TellerDashboard.resx">
+      <DependentUpon>TellerDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="temp.resx">
       <DependentUpon>temp.cs</DependentUpon>

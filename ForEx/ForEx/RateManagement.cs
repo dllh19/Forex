@@ -255,5 +255,10 @@ namespace ForEx
 
         }
 
+        private void gridUpdateRate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }

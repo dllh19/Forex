@@ -708,9 +708,12 @@
             // 
             // gridSearchClient
             // 
+            this.gridSearchClient.AllowUserToAddRows = false;
+            this.gridSearchClient.AllowUserToDeleteRows = false;
             this.gridSearchClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSearchClient.Location = new System.Drawing.Point(10, 114);
             this.gridSearchClient.Name = "gridSearchClient";
+            this.gridSearchClient.ReadOnly = true;
             this.gridSearchClient.Size = new System.Drawing.Size(759, 376);
             this.gridSearchClient.TabIndex = 4;
             this.gridSearchClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSearchClient_CellClick);

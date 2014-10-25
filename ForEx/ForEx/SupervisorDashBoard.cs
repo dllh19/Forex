@@ -16,5 +16,29 @@ namespace ForEx
         {
             InitializeComponent();
         }
+
+        private void btnRateManagement_Click(object sender, EventArgs e)
+        {
+            var form = new RateManagement();
+            form.Show();
+        }
+
+        private void btnTransaction_Click(object sender, EventArgs e)
+        {
+            var form = new Transaction();
+            form.Show();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            var form = new frmReports();
+            form.Show();
+        }
+
+        private void btnClientManagement_Click(object sender, EventArgs e)
+        {
+            var form = new frmClientManagement();
+            form.Show();
+        }
     }
 }

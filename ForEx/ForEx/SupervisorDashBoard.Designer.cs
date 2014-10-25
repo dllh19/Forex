@@ -44,6 +44,7 @@
             this.btnTransaction.TabIndex = 13;
             this.btnTransaction.Text = "Transaction Management";
             this.btnTransaction.UseVisualStyleBackColor = true;
+            this.btnTransaction.Click += new System.EventHandler(this.btnTransaction_Click);
             // 
             // btnReports
             // 
@@ -53,6 +54,7 @@
             this.btnReports.TabIndex = 12;
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnRateManagement
             // 
@@ -62,6 +64,7 @@
             this.btnRateManagement.TabIndex = 11;
             this.btnRateManagement.Text = "Rate Management";
             this.btnRateManagement.UseVisualStyleBackColor = true;
+            this.btnRateManagement.Click += new System.EventHandler(this.btnRateManagement_Click);
             // 
             // btnClientManagement
             // 
@@ -71,6 +74,7 @@
             this.btnClientManagement.TabIndex = 10;
             this.btnClientManagement.Text = "Client Management";
             this.btnClientManagement.UseVisualStyleBackColor = true;
+            this.btnClientManagement.Click += new System.EventHandler(this.btnClientManagement_Click);
             // 
             // dataGridView1
             // 

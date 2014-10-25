@@ -54,8 +54,8 @@ namespace ForEx
                     if (Role == "teller")
                     {
                         this.Hide();
-                        //var tellerform = new TellerDashboard();
-                        //tellerform.Show();
+                        var tellerform = new TellerDashboard();
+                        tellerform.Show();
                     }
 
                     if (Role == "supervisor")

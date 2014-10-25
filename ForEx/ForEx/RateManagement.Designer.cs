@@ -83,6 +83,7 @@
             this.gridUpdateRate.Size = new System.Drawing.Size(1077, 350);
             this.gridUpdateRate.TabIndex = 0;
             this.gridUpdateRate.DataSourceChanged += new System.EventHandler(this.gridUpdateRate_DataSourceChanged);
+            this.gridUpdateRate.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridUpdateRate_CellContentClick);
             this.gridUpdateRate.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridUpdateRate_RowLeave);
             this.gridUpdateRate.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.gridUpdateRate_RowValidating);
             // 
@@ -119,7 +120,10 @@
             // 
             // gridSearchRate
             // 
+            this.gridSearchRate.AllowUserToAddRows = false;
+            this.gridSearchRate.AllowUserToDeleteRows = false;
             this.gridSearchRate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSearchRate.Enabled = false;
             this.gridSearchRate.Location = new System.Drawing.Point(3, 52);
             this.gridSearchRate.Name = "gridSearchRate";
             this.gridSearchRate.Size = new System.Drawing.Size(1080, 350);

@@ -285,7 +285,7 @@ namespace ForEx
         {
             try
             {
-               cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, country, address, phone, email, id_type,passport_no, occupation, username, isblacklisted) VALUES (@type, @name, @surname,@dob, @nationality, @country, @address, @phone, @email , @id_type, @passport_no, @occupation, @username , 'false')");
+                cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, country, address, phone, email, id_type,passport_no, occupation, username, isblacklisted) VALUES (@type, @name, @surname,@dob, @nationality, @country, @address, @phone, @email , @id_type, @passport_no, @occupation, @username , 'false',@date_client_created)");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@type", comboType.SelectedItem.ToString());
@@ -302,6 +302,8 @@ namespace ForEx
                 cmd.Parameters.AddWithValue("@occupation", textOccupation.Text);
                 //cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //To change when Login implemented
                 cmd.Parameters.AddWithValue("@username", "TEST"); //To delete when Login implemented
+                cmd.Parameters.AddWithValue("@date_client_created", DateTime.Now);
+
                 con.Open();
                 int row = cmd.ExecuteNonQuery();
                 con.Close();

@@ -79,7 +79,10 @@ namespace ForEx
             
 
             gridUpdateRate.DataSource = bs;                                           
-            gridUpdateRate.AutoGenerateColumns = true; 
+            gridUpdateRate.AutoGenerateColumns = true;
+
+            //hide and change column name -David
+            changeGridProperty();
         }
 
         private void gridUpdateRate_RowLeave(object sender, DataGridViewCellEventArgs e)
@@ -233,6 +236,23 @@ namespace ForEx
 
                 con.Close();
             }
+        }
+
+        private void changeGridProperty()
+        {
+            this.gridUpdateRate.Columns["CurrencyId"].Visible = false;
+            this.gridUpdateRate.Columns["PurchaseMin"].Visible = false;
+            this.gridUpdateRate.Columns["PurchaseMax"].Visible = false;
+            this.gridUpdateRate.Columns["SaleMin"].Visible = false;
+            this.gridUpdateRate.Columns["SaleMax"].Visible = false;
+            this.gridUpdateRate.Columns["SaleMidrate"].Visible = false;
+            this.gridUpdateRate.Columns["PurchaseMidrate"].Visible = false;
+
+            this.gridUpdateRate.AllowUserToResizeRows = false;
+
+
+
+
         }
 
     }

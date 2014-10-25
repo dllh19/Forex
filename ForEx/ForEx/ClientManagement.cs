@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ForEx.Classes;
-using Telerik.WinControls;
 
 namespace ForEx
 {

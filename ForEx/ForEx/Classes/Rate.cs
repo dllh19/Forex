@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ForEx.Classes
 {
-    class Rate
+    public class Rate
     {
         public int CurrencyId { get; set; }
 

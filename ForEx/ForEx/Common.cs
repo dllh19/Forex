@@ -242,6 +242,12 @@ namespace ForEx
             {
                 System.Diagnostics.Debug.Print(ex.Message);
             }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                    conn.Close();
+            }
+            return rateList;
         }
 
     }

@@ -198,6 +198,51 @@ namespace ForEx
             return currencyList;
         }
 
+        public static List<Rate> getRateforToday()
+        {
+            string connection = Common.GetConnectionString();
+
+            List<Rate> rateList = new List<Rate>();
+
+            SqlConnection conn = new SqlConnection(connection);
+
+            try
+            {
+                const string sql = "SELECT * FROM tbl_rate  WHERE CONVERT(VARCHAR(10),date_updated,10)" +
+                                   "=CONVERT(VARCHAR(10),@DateCreated,10) ";
+
+                conn.Open();
+                var cmd = new SqlCommand(sql, conn);
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                            var CurrencyId = Convert.ToInt32(dr["CurrencyId"]);
+                            var Symbol = Convert.ToString(dr["Symbol"]);
+                            var PurchaseMin = Convert.ToDecimal(dr["PurchaseMin"]);
+                            var PurchaseMax = Convert.ToDecimal(dr["PurchaseMax"]);
+                            var PurchaseRate = Convert.ToDecimal(dr["PurchaseRate"]);
+                            var PurchaseMidrate = Convert.ToDecimal(dr["PurchaseMidrate"]);
+                            var SaleMin = Convert.ToDecimal(dr["SaleMin"]);
+                            var SaleMax = Convert.ToDecimal(dr["SaleMax"]);
+                            var SaleRate = Convert.ToDecimal(dr["SaleRate"]);
+                            var SaleMidrate = Convert.ToDecimal(dr["SaleMidrate"]);
+                            var BankPurchase = Convert.ToDecimal(dr["BankPurchase"]);
+                            var BankSale = Convert.ToDecimal(dr["BankSale"]);
+                        
+                        rateList.Add(new Rate(CurrencyId, Symbol, PurchaseMin, PurchaseMax,
+                        PurchaseRate, PurchaseMidrate, SaleMin,
+                        SaleMax, SaleRate, SaleMidrate, BankPurchase, BankSale));
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(ex.Message);
+            }
+        }
 
     }
 

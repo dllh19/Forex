@@ -114,6 +114,8 @@
             this.dtpRate.Name = "dtpRate";
             this.dtpRate.Size = new System.Drawing.Size(200, 20);
             this.dtpRate.TabIndex = 2;
+            this.dtpRate.ValueChanged += new System.EventHandler(this.dtpRate_ValueChanged);
+            this.dtpRate.Validated += new System.EventHandler(this.dtpRate_Validated);
             // 
             // gridSearchRate
             // 

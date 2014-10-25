@@ -74,6 +74,7 @@
             this.textBRN = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.panelIDType = new System.Windows.Forms.Panel();
+            this.comboIDType = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panelPassport = new System.Windows.Forms.Panel();
             this.textPassport = new System.Windows.Forms.TextBox();
@@ -87,17 +88,16 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.tabSearch = new System.Windows.Forms.TabPage();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridSearchClient = new System.Windows.Forms.DataGridView();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearchClient = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnEditSearch = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboIDType = new System.Windows.Forms.ComboBox();
             this.tabControl.SuspendLayout();
             this.tabAddClient.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -120,7 +120,7 @@
             this.panelOccupation.SuspendLayout();
             this.panelUpload.SuspendLayout();
             this.tabSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).BeginInit();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -173,6 +173,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(769, 584);
             this.flowLayoutPanel1.TabIndex = 50;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // panelType
             // 
@@ -568,6 +569,15 @@
             this.panelIDType.TabIndex = 9;
             this.panelIDType.Visible = false;
             // 
+            // comboIDType
+            // 
+            this.comboIDType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboIDType.FormattingEnabled = true;
+            this.comboIDType.Location = new System.Drawing.Point(131, 9);
+            this.comboIDType.Name = "comboIDType";
+            this.comboIDType.Size = new System.Drawing.Size(200, 21);
+            this.comboIDType.TabIndex = 72;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -673,10 +683,10 @@
             // tabSearch
             // 
             this.tabSearch.Controls.Add(this.btnSearch);
-            this.tabSearch.Controls.Add(this.dataGridView1);
+            this.tabSearch.Controls.Add(this.gridSearchClient);
             this.tabSearch.Controls.Add(this.cmbFilter);
             this.tabSearch.Controls.Add(this.label2);
-            this.tabSearch.Controls.Add(this.textBox1);
+            this.tabSearch.Controls.Add(this.txtSearchClient);
             this.tabSearch.Controls.Add(this.label1);
             this.tabSearch.Location = new System.Drawing.Point(4, 22);
             this.tabSearch.Name = "tabSearch";
@@ -694,15 +704,17 @@
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // dataGridView1
+            // gridSearchClient
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 114);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(759, 376);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.gridSearchClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSearchClient.Location = new System.Drawing.Point(10, 114);
+            this.gridSearchClient.Name = "gridSearchClient";
+            this.gridSearchClient.Size = new System.Drawing.Size(759, 376);
+            this.gridSearchClient.TabIndex = 4;
+            this.gridSearchClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSearchClient_CellClick);
+            this.gridSearchClient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // cmbFilter
             // 
@@ -727,12 +739,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Filter";
             // 
-            // textBox1
+            // txtSearchClient
             // 
-            this.textBox1.Location = new System.Drawing.Point(145, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(272, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtSearchClient.Location = new System.Drawing.Point(145, 38);
+            this.txtSearchClient.Name = "txtSearchClient";
+            this.txtSearchClient.Size = new System.Drawing.Size(272, 20);
+            this.txtSearchClient.TabIndex = 1;
             // 
             // label1
             // 
@@ -791,15 +803,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Enter Client Name";
             // 
-            // comboIDType
-            // 
-            this.comboIDType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboIDType.FormattingEnabled = true;
-            this.comboIDType.Location = new System.Drawing.Point(131, 9);
-            this.comboIDType.Name = "comboIDType";
-            this.comboIDType.Size = new System.Drawing.Size(200, 21);
-            this.comboIDType.TabIndex = 72;
-            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -849,7 +852,7 @@
             this.panelUpload.PerformLayout();
             this.tabSearch.ResumeLayout(false);
             this.tabSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).EndInit();
             this.tabEdit.ResumeLayout(false);
             this.tabEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -863,10 +866,10 @@
         private System.Windows.Forms.TabPage tabAddClient;
         private System.Windows.Forms.TabPage tabSearch;
         private System.Windows.Forms.TabPage tabEdit;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridSearchClient;
         private System.Windows.Forms.ComboBox cmbFilter;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSearch;

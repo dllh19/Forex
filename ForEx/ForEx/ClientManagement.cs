@@ -8,15 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ForEx.Classes;
+using Telerik.WinControls;
 
 namespace ForEx
 {
     public partial class frmClientManagement : Form
     {
-        private SqlConnection con;
-        private SqlDataAdapter da;
-        private SqlCommand cmd;
-
+        BindingSource bs = new BindingSource();
+        private SqlConnection con = new SqlConnection(Common.GetConnectionString());
+        private SqlDataAdapter da = new SqlDataAdapter();
+        private SqlCommand cmd = new SqlCommand();
+        
         public frmClientManagement()
         {
             InitializeComponent();
@@ -282,8 +285,7 @@ namespace ForEx
         {
             try
             {
-                con = new SqlConnection(Common.GetConnectionString());
-                cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, country, address, phone, email, id_type,passport_no, occupation, username, isblacklisted) VALUES (@type, @name, @surname,@dob, @nationality, @country, @address, @phone, @email , @id_type, @passport_no, @occupation, @username , 'false')");
+               cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, country, address, phone, email, id_type,passport_no, occupation, username, isblacklisted) VALUES (@type, @name, @surname,@dob, @nationality, @country, @address, @phone, @email , @id_type, @passport_no, @occupation, @username , 'false')");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@type", comboType.SelectedItem.ToString());
@@ -320,8 +322,7 @@ namespace ForEx
         {
             try
             {
-                con = new SqlConnection(Common.GetConnectionString());
-                cmd = new SqlCommand("INSERT INTO tbl_client (type, company_name, contact_person, date_incorporated, vat, nationality, country, address, phone, email, brn, username, isblacklisted) VALUES (@type, @company_name, @contact_name, @date_incorporated, @vat, @nationality, @country, @address, @phone, @email , @brn, @username , 'false')");
+                cmd = new SqlCommand("INSERT INTO tbl_client (type, company_name, contact_person, date_incorporated, vat, nationality, country, address, phone, email, brn, username, isblacklisted) VALUES (@type, @company_name, @contact_name, @date_incorporated, @vat, @nationality, @country, @address, @phone, @email , @brn, @username , 'false',@date_client_created)");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@type", comboType.SelectedItem.ToString());
@@ -337,6 +338,8 @@ namespace ForEx
                 cmd.Parameters.AddWithValue("@brn", textBRN.Text);
                 //cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //To change when Login implemented
                 cmd.Parameters.AddWithValue("@username", "TEST"); //To delete when Login implemented
+                cmd.Parameters.AddWithValue("@date_client_created", DateTime.Now);
+                
                 con.Open();
                 int row = cmd.ExecuteNonQuery();
                 con.Close();
@@ -349,6 +352,159 @@ namespace ForEx
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            gridSearchClient.AllowUserToAddRows = false;
+
+
+            var FilterText = cmbFilter.Text;
+            string query;
+
+            //Parameterized queries not working...
+
+            if (FilterText.Equals("By Name"))
+            {
+                query = "SELECT * FROM tbl_client WHERE name LIKE '%" + txtSearchClient.Text + "%'";
+            }
+            else if (FilterText.Equals("By Passport"))
+            {
+                query = "SELECT * FROM tbl_client WHERE passport_no LIKE '%" + txtSearchClient.Text + "%'";
+            }
+            else if (FilterText.Equals("By ID Number"))
+            {
+                //what is ID number?
+                query = "S";
+            }
+            else if (FilterText.Equals("By Type"))
+            {
+                query = "SELECT * FROM tbl_client WHERE type LIKE '%" + txtSearchClient.Text + "%'";
+            }
+            else
+            {
+                MessageBox.Show("Please select a filter first");
+                return;
+            }
+            con.Open();
+
+            cmd = new SqlCommand(query, con);
+            var reader = cmd.ExecuteReader();
+
+            bs.DataSource = typeof(Clients);
+            if (reader.HasRows)
+            {
+                DataTable myTable = new DataTable();
+                myTable.Load(reader);
+                foreach (DataRow row in myTable.Rows)
+                {
+                    int Code;
+                    if (!string.IsNullOrEmpty(row["code"].ToString()))
+                        Code = Convert.ToInt32(row["code"].ToString());
+                    else
+                        Code = 0;
+
+                    string Name = row["name"].ToString();
+                    DateTime DateOfBirth = new DateTime();
+                    if (!string.IsNullOrEmpty(row["dob"].ToString()))
+                    {
+                        DateOfBirth = Convert.ToDateTime(row["dob"]);
+                    }
+
+                    string PassportNo = Convert.ToString(row["passport_no"]);
+                    string Address = Convert.ToString(row["address"]);
+                    string Surname = Convert.ToString(row["surname"]);
+                    string Phone = Convert.ToString(row["phone"]);
+                    string ContactPerson = Convert.ToString(row["contact_person"]);
+                    string CompanyName = Convert.ToString(row["company_name"]);
+
+                    DateTime DateIncorporated = new DateTime();
+                    if (!string.IsNullOrEmpty(row["date_incorporated"].ToString()))
+                    {
+                        DateIncorporated = Convert.ToDateTime(row["date_incorporated"]);
+                    }
+
+                    string Country = Convert.ToString(row["country"]);
+                    string Nationality = Convert.ToString(row["nationality"]);
+                    string Email = Convert.ToString(row["email"]);
+                    string VAT = Convert.ToString(row["vat"]);
+                    string BRN = Convert.ToString(row["brn"]);
+                    string IdType = Convert.ToString(row["id_type"]);
+                    string Occupation = Convert.ToString(row["occupation"]);
+                    string Username = Convert.ToString(row["username"]);
+
+                    bool IsBlackListed = false;
+                    if (!string.IsNullOrEmpty(row["isblacklisted"].ToString()))
+                    {
+                        IsBlackListed = Convert.ToBoolean(row["isblacklisted"]);
+                    }
+                    string Type = Convert.ToString(row["type"]);
+                    DateTime DateCreated = Convert.ToDateTime(row["date_client_created"]);
+
+
+                    Clients clients = new Clients
+                    {
+                        Code = Code,
+                        Name = Name,
+                        DateOfBirth = DateOfBirth,
+                        PassportNo = PassportNo,
+                        Address = Address,
+                        Surname = Surname,
+                        Phone = Phone,
+                        ContactPerson = ContactPerson,
+                        CompanyName = CompanyName,
+                        DateIncorporated = DateIncorporated,
+                        Country = Country,
+                        Nationality = Nationality,
+                        Email = Email,
+                        VAT = VAT,
+                        BRN = BRN,
+                        IdType = IdType,
+                        Occupation = Occupation,
+                        Username = Username,
+                        IsBlackListed = IsBlackListed,
+                        Type = Type,
+                        DateCreated = DateCreated,
+                    };
+                    bs.Add(clients);
+                }
+           
+            }
+           
+            con.Close();
+
+
+            gridSearchClient.DataSource = bs;
+            gridSearchClient.AutoGenerateColumns = true; 
+        }
+
+        private DataGridViewRow gridrow;
+        private void gridSearchClient_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var tempRow = gridSearchClient.CurrentRow;
+            if (gridrow == null)
+            {
+                gridrow = tempRow;
+            }
+            else
+            {
+                if (gridrow == tempRow)
+                {
+                    //open transacform
+                    var clients = (Clients) gridrow.DataBoundItem;
+                    var trnsacForm = new Transaction(clients);
+                    trnsacForm.Show();
+                }
+                else
+                {
+                    gridrow = tempRow;
+                }
             }
         }
 

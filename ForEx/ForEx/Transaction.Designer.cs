@@ -38,10 +38,8 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnCheck = new System.Windows.Forms.Button();
-            this.GroupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtRemarks = new System.Windows.Forms.TextBox();
-            this.txtRs = new System.Windows.Forms.TextBox();
+            this.btnCalculate = new System.Windows.Forms.Button();
+            this.textTotal = new System.Windows.Forms.TextBox();
             this.lblRs = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
@@ -49,7 +47,7 @@
             this.comboClient = new System.Windows.Forms.ComboBox();
             this.lblClient = new System.Windows.Forms.Label();
             this.Panel1 = new System.Windows.Forms.Panel();
-            this.txtDiscountRate = new System.Windows.Forms.TextBox();
+            this.textRate = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
             this.lblRate = new System.Windows.Forms.Label();
             this.comboCurrency = new System.Windows.Forms.ComboBox();
@@ -58,9 +56,9 @@
             this.lblType = new System.Windows.Forms.Label();
             this.grpMovement = new System.Windows.Forms.GroupBox();
             this.textRateReadOnly = new System.Windows.Forms.TextBox();
+            this.btnCalAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.GroupBox5.SuspendLayout();
-            this.GroupBox4.SuspendLayout();
             this.Panel2.SuspendLayout();
             this.grpMovement.SuspendLayout();
             this.SuspendLayout();
@@ -77,9 +75,9 @@
             // dgvTransaction
             // 
             this.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTransaction.Location = new System.Drawing.Point(31, 346);
+            this.dgvTransaction.Location = new System.Drawing.Point(184, 338);
             this.dgvTransaction.Name = "dgvTransaction";
-            this.dgvTransaction.Size = new System.Drawing.Size(863, 184);
+            this.dgvTransaction.Size = new System.Drawing.Size(543, 184);
             this.dgvTransaction.TabIndex = 27;
             // 
             // ComboBox5
@@ -156,54 +154,39 @@
             this.GroupBox5.Size = new System.Drawing.Size(863, 53);
             this.GroupBox5.TabIndex = 26;
             this.GroupBox5.TabStop = false;
+            this.GroupBox5.Visible = false;
             // 
-            // btnCheck
+            // btnCalculate
             // 
-            this.btnCheck.Location = new System.Drawing.Point(306, 127);
-            this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(89, 33);
-            this.btnCheck.TabIndex = 19;
-            this.btnCheck.Text = "Check";
-            this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCalculate.Location = new System.Drawing.Point(664, 125);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(89, 42);
+            this.btnCalculate.TabIndex = 19;
+            this.btnCalculate.Text = "Calculate";
+            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
-            // GroupBox4
+            // textTotal
             // 
-            this.GroupBox4.Controls.Add(this.txtRemarks);
-            this.GroupBox4.Location = new System.Drawing.Point(492, 28);
-            this.GroupBox4.Name = "GroupBox4";
-            this.GroupBox4.Size = new System.Drawing.Size(406, 62);
-            this.GroupBox4.TabIndex = 18;
-            this.GroupBox4.TabStop = false;
-            this.GroupBox4.Text = "Remarks";
-            // 
-            // txtRemarks
-            // 
-            this.txtRemarks.Location = new System.Drawing.Point(6, 19);
-            this.txtRemarks.Multiline = true;
-            this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(394, 37);
-            this.txtRemarks.TabIndex = 19;
-            // 
-            // txtRs
-            // 
-            this.txtRs.Location = new System.Drawing.Point(319, 98);
-            this.txtRs.Name = "txtRs";
-            this.txtRs.Size = new System.Drawing.Size(152, 20);
-            this.txtRs.TabIndex = 16;
+            this.textTotal.Location = new System.Drawing.Point(553, 98);
+            this.textTotal.Name = "textTotal";
+            this.textTotal.ReadOnly = true;
+            this.textTotal.Size = new System.Drawing.Size(152, 20);
+            this.textTotal.TabIndex = 16;
             // 
             // lblRs
             // 
             this.lblRs.AutoSize = true;
             this.lblRs.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblRs.Location = new System.Drawing.Point(253, 101);
+            this.lblRs.Location = new System.Drawing.Point(466, 101);
             this.lblRs.Name = "lblRs";
-            this.lblRs.Size = new System.Drawing.Size(22, 13);
+            this.lblRs.Size = new System.Drawing.Size(36, 13);
             this.lblRs.TabIndex = 15;
-            this.lblRs.Text = "Rs";
+            this.lblRs.Text = "Total";
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(73, 101);
+            this.txtAmount.Location = new System.Drawing.Point(245, 101);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(122, 20);
             this.txtAmount.TabIndex = 14;
@@ -212,7 +195,7 @@
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(18, 101);
+            this.lblAmount.Location = new System.Drawing.Point(132, 101);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(49, 13);
             this.lblAmount.TabIndex = 13;
@@ -253,38 +236,38 @@
             this.Panel1.Size = new System.Drawing.Size(424, 46);
             this.Panel1.TabIndex = 23;
             // 
-            // txtDiscountRate
+            // textRate
             // 
-            this.txtDiscountRate.Location = new System.Drawing.Point(319, 60);
-            this.txtDiscountRate.Name = "txtDiscountRate";
-            this.txtDiscountRate.Size = new System.Drawing.Size(152, 20);
-            this.txtDiscountRate.TabIndex = 12;
+            this.textRate.Location = new System.Drawing.Point(553, 60);
+            this.textRate.Name = "textRate";
+            this.textRate.Size = new System.Drawing.Size(152, 20);
+            this.textRate.TabIndex = 12;
             // 
             // Label9
             // 
             this.Label9.AutoSize = true;
             this.Label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.Label9.Location = new System.Drawing.Point(218, 63);
+            this.Label9.Location = new System.Drawing.Point(466, 63);
             this.Label9.Name = "Label9";
-            this.Label9.Size = new System.Drawing.Size(88, 13);
+            this.Label9.Size = new System.Drawing.Size(34, 13);
             this.Label9.TabIndex = 11;
-            this.Label9.Text = "Discount Rate";
+            this.Label9.Text = "Rate";
             // 
             // lblRate
             // 
-            this.lblRate.AutoSize = true;
+            this.lblRate.AutoEllipsis = true;
             this.lblRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRate.Location = new System.Drawing.Point(18, 63);
+            this.lblRate.Location = new System.Drawing.Point(132, 63);
             this.lblRate.Name = "lblRate";
-            this.lblRate.Size = new System.Drawing.Size(34, 13);
+            this.lblRate.Size = new System.Drawing.Size(94, 27);
             this.lblRate.TabIndex = 10;
-            this.lblRate.Text = "Rate";
+            this.lblRate.Text = "Recommended Rate";
             // 
             // comboCurrency
             // 
             this.comboCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCurrency.FormattingEnabled = true;
-            this.comboCurrency.Location = new System.Drawing.Point(319, 28);
+            this.comboCurrency.Location = new System.Drawing.Point(553, 28);
             this.comboCurrency.Name = "comboCurrency";
             this.comboCurrency.Size = new System.Drawing.Size(152, 21);
             this.comboCurrency.TabIndex = 7;
@@ -293,7 +276,7 @@
             // 
             this.lblCurrency.AutoSize = true;
             this.lblCurrency.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrency.Location = new System.Drawing.Point(218, 28);
+            this.lblCurrency.Location = new System.Drawing.Point(466, 28);
             this.lblCurrency.Name = "lblCurrency";
             this.lblCurrency.Size = new System.Drawing.Size(57, 13);
             this.lblCurrency.TabIndex = 8;
@@ -303,7 +286,7 @@
             // 
             this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboType.FormattingEnabled = true;
-            this.comboType.Location = new System.Drawing.Point(73, 28);
+            this.comboType.Location = new System.Drawing.Point(245, 28);
             this.comboType.Name = "comboType";
             this.comboType.Size = new System.Drawing.Size(122, 21);
             this.comboType.TabIndex = 6;
@@ -312,7 +295,7 @@
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblType.Location = new System.Drawing.Point(18, 28);
+            this.lblType.Location = new System.Drawing.Point(132, 28);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(35, 13);
             this.lblType.TabIndex = 6;
@@ -320,14 +303,14 @@
             // 
             // grpMovement
             // 
+            this.grpMovement.Controls.Add(this.btnCalAdd);
             this.grpMovement.Controls.Add(this.textRateReadOnly);
-            this.grpMovement.Controls.Add(this.btnCheck);
-            this.grpMovement.Controls.Add(this.GroupBox4);
-            this.grpMovement.Controls.Add(this.txtRs);
+            this.grpMovement.Controls.Add(this.btnCalculate);
+            this.grpMovement.Controls.Add(this.textTotal);
             this.grpMovement.Controls.Add(this.lblRs);
             this.grpMovement.Controls.Add(this.txtAmount);
             this.grpMovement.Controls.Add(this.lblAmount);
-            this.grpMovement.Controls.Add(this.txtDiscountRate);
+            this.grpMovement.Controls.Add(this.textRate);
             this.grpMovement.Controls.Add(this.Label9);
             this.grpMovement.Controls.Add(this.lblRate);
             this.grpMovement.Controls.Add(this.comboCurrency);
@@ -342,11 +325,21 @@
             // 
             // textRateReadOnly
             // 
-            this.textRateReadOnly.Location = new System.Drawing.Point(73, 60);
+            this.textRateReadOnly.Location = new System.Drawing.Point(245, 60);
             this.textRateReadOnly.Name = "textRateReadOnly";
             this.textRateReadOnly.ReadOnly = true;
             this.textRateReadOnly.Size = new System.Drawing.Size(122, 20);
             this.textRateReadOnly.TabIndex = 20;
+            // 
+            // btnCalAdd
+            // 
+            this.btnCalAdd.Location = new System.Drawing.Point(792, 125);
+            this.btnCalAdd.Name = "btnCalAdd";
+            this.btnCalAdd.Size = new System.Drawing.Size(89, 42);
+            this.btnCalAdd.TabIndex = 21;
+            this.btnCalAdd.Text = "Calculate and Add";
+            this.btnCalAdd.UseVisualStyleBackColor = true;
+            this.btnCalAdd.Click += new System.EventHandler(this.btnCalAdd_Click);
             // 
             // Transaction
             // 
@@ -366,8 +359,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).EndInit();
             this.GroupBox5.ResumeLayout(false);
             this.GroupBox5.PerformLayout();
-            this.GroupBox4.ResumeLayout(false);
-            this.GroupBox4.PerformLayout();
             this.Panel2.ResumeLayout(false);
             this.Panel2.PerformLayout();
             this.grpMovement.ResumeLayout(false);
@@ -388,17 +379,15 @@
         internal System.Windows.Forms.Label lblTotal;
         internal System.Windows.Forms.Button btnPrint;
         internal System.Windows.Forms.GroupBox GroupBox5;
-        internal System.Windows.Forms.Button btnCheck;
-        internal System.Windows.Forms.GroupBox GroupBox4;
-        internal System.Windows.Forms.TextBox txtRemarks;
-        internal System.Windows.Forms.TextBox txtRs;
+        internal System.Windows.Forms.Button btnCalculate;
+        internal System.Windows.Forms.TextBox textTotal;
         internal System.Windows.Forms.Label lblRs;
         internal System.Windows.Forms.TextBox txtAmount;
         internal System.Windows.Forms.Label lblAmount;
         internal System.Windows.Forms.Panel Panel2;
         internal System.Windows.Forms.Label lblClient;
         internal System.Windows.Forms.Panel Panel1;
-        internal System.Windows.Forms.TextBox txtDiscountRate;
+        internal System.Windows.Forms.TextBox textRate;
         internal System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.Label lblRate;
         internal System.Windows.Forms.ComboBox comboCurrency;
@@ -408,5 +397,6 @@
         internal System.Windows.Forms.GroupBox grpMovement;
         private System.Windows.Forms.ComboBox comboClient;
         private System.Windows.Forms.TextBox textRateReadOnly;
+        internal System.Windows.Forms.Button btnCalAdd;
     }
 }

@@ -61,11 +61,17 @@ namespace ForEx
                 {
                     var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.SaleRate);
                     textRateReadOnly.Text = fileredCurrency.First().ToString();
+                    textRate.Text = fileredCurrency.First().ToString();
+
+                    textTotal.Text = null;
                 }
                 else
                 {
                     var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.PurchaseRate);
                     textRateReadOnly.Text = fileredCurrency.First().ToString();
+                    textRate.Text = fileredCurrency.First().ToString();
+
+                    textTotal.Text = null;
                 }
             }
         }
@@ -80,12 +86,33 @@ namespace ForEx
                 {
                     var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.SaleRate);
                     textRateReadOnly.Text = fileredCurrency.First().ToString();
+                    textRate.Text = fileredCurrency.First().ToString();
+
+                    textTotal.Text = null;
                 }
                 else
                 {
                     var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.PurchaseRate);
                     textRateReadOnly.Text = fileredCurrency.First().ToString();
+                    textRate.Text = fileredCurrency.First().ToString();
+
+                    textTotal.Text = null;
                 }
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
 
@@ -95,7 +122,153 @@ namespace ForEx
             populate_client();
             populate_type();
             populate_currency();
-            
+
+            this.textRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+
+            InitializeDataGridView();
+        }
+
+        private bool validateAndCalculate()
+        {
+
+            //calculate total
+            if (string.IsNullOrEmpty(textRate.Text))
+            {
+                MessageBox.Show("Rate is empty");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtAmount.Text))
+            {
+                MessageBox.Show("Please insert an amount");
+                return false;
+            }
+
+            decimal rate = Convert.ToDecimal(textRate.Text);
+            decimal amount = Convert.ToDecimal(txtAmount.Text);
+            decimal total = rate * amount;
+
+            //check if CheckIn was done - TODO
+
+            //check if stock is available -TODO
+
+            textTotal.Text = total.ToString();
+
+            return true;
+        }
+
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+            if (validateAndCalculate())
+            {
+                //MessageBox.Show("Good");
+            }
+        }
+
+        private void btnCalAdd_Click(object sender, EventArgs e)
+        {
+            if (validateAndCalculate())
+            {
+                var row1 = new object[] { comboType.SelectedItem, comboCurrency.SelectedValue, txtAmount.Text, textRate.Text, textTotal.Text };
+
+                dgvTransaction.Rows.Add(row1);
+            }
+        }
+
+        private void InitializeDataGridView()
+        {
+            #region type
+            try
+            {
+
+                var typeTxt = new DataGridViewTextBoxColumn();
+                typeTxt.HeaderText = "Type";
+                typeTxt.Name = "Type";
+                this.dgvTransaction.Columns.Add(typeTxt);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            #endregion
+
+            #region Currency
+            try
+            {
+
+                var currencyTxt = new DataGridViewTextBoxColumn();
+                currencyTxt.HeaderText = "Currency";
+                currencyTxt.Name = "Currency";
+                this.dgvTransaction.Columns.Add(currencyTxt);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            #endregion
+
+            #region Amount
+            try
+            {
+
+                var amountTxt = new DataGridViewTextBoxColumn();
+                amountTxt.HeaderText = "Amount";
+                amountTxt.Name = "Amount";
+                this.dgvTransaction.Columns.Add(amountTxt);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            #endregion
+
+            #region Rates
+            try
+            {
+
+                var rateTxt = new DataGridViewTextBoxColumn();
+                rateTxt.HeaderText = "Rates";
+                rateTxt.Name = "Rates";
+                this.dgvTransaction.Columns.Add(rateTxt);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            #endregion
+
+            #region total
+            try
+            {
+
+                var totalTxt = new DataGridViewTextBoxColumn();
+                totalTxt.HeaderText = "Total";
+                totalTxt.Name = "Total";
+                this.dgvTransaction.Columns.Add(totalTxt);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            #endregion
+
+            // Create an unbound DataGridView by declaring a
+            // column count.
+            dgvTransaction.ColumnCount = 5;//to be modifiy if column changed
+            dgvTransaction.ColumnHeadersVisible = true;
+            dgvTransaction.AllowUserToAddRows = false;
+            dgvTransaction.ReadOnly = true;
         }
     }
 }

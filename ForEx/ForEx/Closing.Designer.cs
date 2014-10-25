@@ -140,6 +140,7 @@
             this.Controls.Add(this.lblTransactions);
             this.Name = "Closing";
             this.Text = "Closing";
+            this.Load += new System.EventHandler(this.Closing_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();

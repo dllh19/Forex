@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -284,7 +285,12 @@ namespace ForEx
         {
             try
             {
-                cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, country, address, phone, email, id_type,passport_no, occupation, username, isblacklisted) VALUES (@type, @name, @surname,@dob, @nationality, @country, @address, @phone, @email , @id_type, @passport_no, @occupation, @username , 'false',@date_client_created)");
+                cmd = new SqlCommand("INSERT INTO tbl_client (type, name, surname, dob, nationality, " +
+                                     "country, address, phone, email, id_type,passport_no, occupation, " +
+                                     "username, isblacklisted,date_client_created) VALUES (@type, @name, @surname,@dob," +
+                                     " @nationality, @country, @address, @phone, @email , @id_type," +
+                                     " @passport_no, @occupation, @username , 'false',@date_client_created); " +
+                                     "SELECT SCOPE_IDENTITY();");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@type", comboType.SelectedItem.ToString());
@@ -302,14 +308,21 @@ namespace ForEx
                 //cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //To change when Login implemented
                 cmd.Parameters.AddWithValue("@username", "TEST"); //To delete when Login implemented
                 cmd.Parameters.AddWithValue("@date_client_created", DateTime.Now);
-
-                con.Open();
-                int row = cmd.ExecuteNonQuery();
-                con.Close();
-
-                if (row > 0)
+                try
                 {
-                    MessageBox.Show("Client has been added successfully");
+                    con.Open();
+                    var idReturned = cmd.ExecuteScalar();
+                    con.Close();
+
+                    int clientId = Convert.ToInt32(idReturned);
+                    if (clientId > 0)
+                    {
+                        MessageBox.Show("Client has been added successfully");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error when saving client: " + ex.InnerException);
                 }
             }
             catch (Exception ex)
@@ -323,7 +336,15 @@ namespace ForEx
         {
             try
             {
-                cmd = new SqlCommand("INSERT INTO tbl_client (type, company_name, contact_person, date_incorporated, vat, nationality, country, address, phone, email, brn, username, isblacklisted) VALUES (@type, @company_name, @contact_name, @date_incorporated, @vat, @nationality, @country, @address, @phone, @email , @brn, @username , 'false',@date_client_created)");
+                cmd = new SqlCommand("INSERT INTO tbl_client (type, company_name, " +
+                                     "contact_person, date_incorporated, vat," +
+                                     " nationality, country, address, phone," +
+                                     " email, brn, username, isblacklisted,date_client_created)" +
+                                     " VALUES (@type, @company_name, @contact_name, " +
+                                     "@date_incorporated, @vat, @nationality, @country," +
+                                     " @address, @phone, @email , @brn, @username ," +
+                                     " 'false',@date_client_created); " +
+                                     "SELECT SCOPE_IDENTITY();");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@type", comboType.SelectedItem.ToString());
@@ -340,12 +361,14 @@ namespace ForEx
                 //cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //To change when Login implemented
                 cmd.Parameters.AddWithValue("@username", "TEST"); //To delete when Login implemented
                 cmd.Parameters.AddWithValue("@date_client_created", DateTime.Now);
-                
+
                 con.Open();
-                int row = cmd.ExecuteNonQuery();
+                var idReturned = cmd.ExecuteScalar();
                 con.Close();
 
-                if (row > 0)
+                int clientId = Convert.ToInt32(idReturned);
+
+                if (clientId > 0)
                 {
                     MessageBox.Show("Bank/Corporate has been added successfully");
                 }
@@ -363,8 +386,11 @@ namespace ForEx
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            gridSearchClient.DataSource = null;
+            gridSearchClient.Rows.Clear();
+            gridSearchClient.Refresh();
             gridSearchClient.AllowUserToAddRows = false;
-
+            bs.Clear();
 
             var FilterText = cmbFilter.Text;
             string query;
@@ -373,20 +399,21 @@ namespace ForEx
 
             if (FilterText.Equals("By Name"))
             {
-                query = "SELECT * FROM tbl_client WHERE name LIKE '%" + txtSearchClient.Text + "%'";
+                if (string.IsNullOrEmpty(txtSearchName.Text) && string.IsNullOrEmpty(txtSearchSurname.Text))
+                {
+                    MessageBox.Show("Please enter a name and search to search");
+                    return;
+                }
+                query = "SELECT * FROM tbl_client WHERE name LIKE '%" + txtSearchName.Text + "%' AND surname LIKE '%" + txtSearchSurname.Text + "%'";
             }
             else if (FilterText.Equals("By Passport"))
             {
-                query = "SELECT * FROM tbl_client WHERE passport_no LIKE '%" + txtSearchClient.Text + "%'";
+                query = "SELECT * FROM tbl_client WHERE passport_no LIKE '%" + txtSearchPassport.Text + "%'";
             }
-            else if (FilterText.Equals("By ID Number"))
-            {
-                //what is ID number?
-                query = "S";
-            }
+          
             else if (FilterText.Equals("By Type"))
             {
-                query = "SELECT * FROM tbl_client WHERE type LIKE '%" + txtSearchClient.Text + "%'";
+                query = "SELECT * FROM tbl_client WHERE type LIKE '%" + cmbSearchType.Text + "%'";
             }
             else
             {
@@ -507,6 +534,49 @@ namespace ForEx
                     gridrow = tempRow;
                 }
             }
+        }
+
+        private void frmClientManagement_Load(object sender, EventArgs e)
+        {
+            panelSearchName.Visible = false;
+            panelSearchType.Visible = false;
+            panelSearchpassport.Visible = false;
+        }
+
+        private void cmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string value = cmbFilter.Text;
+            if (value == "By Name")
+            {
+                panelSearchName.Visible = true;
+                panelSearchType.Visible = false;
+                panelSearchpassport.Visible = false;
+
+            }
+            else if (value == "By Passport")
+            {
+                panelSearchName.Visible = false;
+                panelSearchType.Visible = false;
+                panelSearchpassport.Visible = true;
+            }
+            else if (value == "By Type")
+            {
+                panelSearchName.Visible = false;
+                panelSearchType.Visible = true;
+                panelSearchpassport.Visible = false;
+            }
+            else
+            {
+                panelSearchName.Visible = false;
+                panelSearchType.Visible = false;
+                panelSearchpassport.Visible = false;
+            }
+        }
+
+        public void CreateFolder(string foldername)
+        {
+            if (!Directory.Exists(@"C:\\" + foldername))
+                Directory.CreateDirectory(@"C:\\" + foldername);
         }
 
     }

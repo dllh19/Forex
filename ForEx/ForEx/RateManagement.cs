@@ -19,8 +19,7 @@ namespace ForEx
         private SqlConnection con = new SqlConnection(Common.GetConnectionString());
         private SqlDataAdapter da = new SqlDataAdapter();
         private SqlCommand cmd = new SqlCommand();
-        private bool UpdateRate = false;
-
+ 
         public RateManagement()
         {
             InitializeComponent();
@@ -60,7 +59,7 @@ namespace ForEx
                         PurchaseRate, PurchaseMidrate, SaleMin, 
                         SaleMax, SaleRate, SaleMidrate, BankPurchase, BankSale));
                 }
-                UpdateRate = true;
+        
             }
             else
             {
@@ -127,25 +126,12 @@ namespace ForEx
             {
                 try
                 {
-                    if (UpdateRate)
-                    {
-                        cmd =
-                        new SqlCommand(
-                            "UPDATE tbl_rate SET  Symbol = @Symbol,PurchaseMin = @PurchaseMin," +
-                            "PurchaseMax = @PurchaseMax,PurchaseRate = @PurchaseRate," +
-                            "PurchaseMidrate = @PurchaseMidrate,SaleMin = @SaleMin," +
-                            "SaleMax = @SaleMax,SaleRate = @SaleRate,SaleMidrate = @SaleMidrate," +
-                            "BankPurchase = @BankPurchase,BankSale = @BankSale" +
-                            " WHERE CONVERT(VARCHAR(10),date_updated,10) =  CONVERT(VARCHAR(10),@date_updated,10) AND CurrencyId = @CurrencyId");
-                   
-                    }
-                    else
-                    {
+
                         cmd =
                           new SqlCommand(
                               "INSERT INTO tbl_rate VALUES ( @Symbol, @PurchaseMin,@PurchaseMax, @PurchaseRate, @PurchaseMidrate,@SaleMin,@SaleMax,@SaleRate,@SaleMidrate,@BankPurchase,@BankSale,@date_updated,@CurrencyId)");
                      
-                    }
+                    
                     
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = con;
@@ -196,12 +182,18 @@ namespace ForEx
 
         private void dtpRate_ValueChanged(object sender, EventArgs e)
         {
+            gridSearchRate.DataSource = null;
+            gridSearchRate.Rows.Clear();
+            gridSearchRate.Refresh();
+            
             var dateSelected = dtpRate.Value;
             BindingSource bs2 = new BindingSource();
 
             con.Open();
-            string query = "SELECT * FROM tbl_rate  WHERE CONVERT(VARCHAR(10),date_updated,10)" +
-                           "=CONVERT(VARCHAR(10),@DateCreated,10) ";
+            string query = "   SELECT *  FROM [ForExDB].[dbo].[tbl_rate] INNER JOIN ( select max([date_updated]) "+
+                           " as MaxDate from [ForExDB].[dbo].[tbl_rate]) tm on "+
+                            "[ForExDB].[dbo].[tbl_rate].[date_updated] = tm.MaxDate "+
+                           "WHERE CONVERT(VARCHAR(10),[date_updated],10)=CONVERT(VARCHAR(10),@DateCreated,10)" ;
             cmd = new SqlCommand(query, con);
             cmd.Parameters.Add("@DateCreated", SqlDbType.DateTime).Value = dateSelected;
             var reader = cmd.ExecuteReader();
@@ -256,6 +248,11 @@ namespace ForEx
         }
 
         private void gridUpdateRate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }

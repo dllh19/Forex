@@ -27,7 +27,12 @@ namespace ForEx
         {
             //Query to get last transaction for each currency
             con.Open();
-            string query = "SELECT DISTINCT([currencyid]),[tbl_transacid],[name],[symbol],[date_inserted],[balance] FROM [ForExDB].[dbo].[tbl_transactemp] INNER JOIN ( select max([date_inserted]) as MaxDate from [ForExDB].[dbo].[tbl_transactemp]) tm on [ForExDB].[dbo].[tbl_transactemp].[date_inserted] = tm.MaxDate INNER JOIN [ForExDB].[dbo].[tbl_currency] ON [ForExDB].[dbo].[tbl_currency].[currency_id] = [ForExDB].[dbo].[tbl_transactemp].[currencyid]";
+            string query = "SELECT DISTINCT([currencyid]),[tbl_transacid],[name],[symbol],[date_inserted],[balance]" +
+                           " FROM [ForExDB].[dbo].[tbl_transactemp] INNER JOIN ( select max([date_inserted])" +
+                           " as MaxDate from [ForExDB].[dbo].[tbl_transactemp]) tm on" +
+                           " [ForExDB].[dbo].[tbl_transactemp].[date_inserted] = tm.MaxDate " +
+                           "INNER JOIN [ForExDB].[dbo].[tbl_currency] ON [ForExDB].[dbo].[tbl_currency].[currency_id]" +
+                           " = [ForExDB].[dbo].[tbl_transactemp].[currencyid]";
             cmd = new SqlCommand(query, con);
             var reader = cmd.ExecuteReader();
 

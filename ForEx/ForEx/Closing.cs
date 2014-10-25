@@ -16,5 +16,10 @@ namespace ForEx
         {
             InitializeComponent();
         }
+
+        private void Closing_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

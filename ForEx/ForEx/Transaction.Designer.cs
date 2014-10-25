@@ -140,6 +140,7 @@
             this.btnPrint.TabIndex = 28;
             this.btnPrint.Text = "Print and Exit";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // GroupBox5
             // 

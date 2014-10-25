@@ -74,3 +74,5 @@ C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\bin\Debug\ForEx.exe
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\bin\Debug\ForEx.pdb
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.csprojResolveAssemblyReference.cache
 C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.RateManagement.resources
+C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.frmReports.resources
+C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.TellerDashboard.resources

@@ -270,5 +270,22 @@ namespace ForEx
             dgvTransaction.AllowUserToAddRows = false;
             dgvTransaction.ReadOnly = true;
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (comboClient.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a client");
+                return;
+            }
+
+            if (dgvTransaction.Rows.Count == 0)
+            {
+                MessageBox.Show("No transactions");
+                return;
+            }
+
+
+        }
     }
 }

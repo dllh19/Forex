@@ -56,7 +56,17 @@ namespace ForEx
         {
             if (comboCurrency.SelectedItem != null)
             {
-                MessageBox.Show("Good type");
+                var latestCurrency = Common.getRateforToday();
+                if (comboType.SelectedItem.ToString() == "Sell")
+                {
+                    var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.SaleRate);
+                    textRateReadOnly.Text = fileredCurrency.First().ToString();
+                }
+                else
+                {
+                    var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.PurchaseRate);
+                    textRateReadOnly.Text = fileredCurrency.First().ToString();
+                }
             }
         }
 
@@ -65,7 +75,17 @@ namespace ForEx
         {
             if (comboType.SelectedItem != null)
             {
-                MessageBox.Show("Good currency");
+                var latestCurrency = Common.getRateforToday();
+                if (comboType.SelectedItem.ToString() == "Sell")
+                {
+                    var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.SaleRate);
+                    textRateReadOnly.Text = fileredCurrency.First().ToString();
+                }
+                else
+                {
+                    var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.PurchaseRate);
+                    textRateReadOnly.Text = fileredCurrency.First().ToString();
+                }
             }
         }
 

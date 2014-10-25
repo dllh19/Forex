@@ -51,13 +51,13 @@
             this.Panel1 = new System.Windows.Forms.Panel();
             this.txtDiscountRate = new System.Windows.Forms.TextBox();
             this.Label9 = new System.Windows.Forms.Label();
-            this.cmbRate = new System.Windows.Forms.ComboBox();
             this.lblRate = new System.Windows.Forms.Label();
             this.comboCurrency = new System.Windows.Forms.ComboBox();
             this.lblCurrency = new System.Windows.Forms.Label();
             this.comboType = new System.Windows.Forms.ComboBox();
             this.lblType = new System.Windows.Forms.Label();
             this.grpMovement = new System.Windows.Forms.GroupBox();
+            this.textRateReadOnly = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.GroupBox5.SuspendLayout();
             this.GroupBox4.SuspendLayout();
@@ -270,14 +270,6 @@
             this.Label9.TabIndex = 11;
             this.Label9.Text = "Discount Rate";
             // 
-            // cmbRate
-            // 
-            this.cmbRate.FormattingEnabled = true;
-            this.cmbRate.Location = new System.Drawing.Point(73, 63);
-            this.cmbRate.Name = "cmbRate";
-            this.cmbRate.Size = new System.Drawing.Size(122, 21);
-            this.cmbRate.TabIndex = 9;
-            // 
             // lblRate
             // 
             this.lblRate.AutoSize = true;
@@ -328,6 +320,7 @@
             // 
             // grpMovement
             // 
+            this.grpMovement.Controls.Add(this.textRateReadOnly);
             this.grpMovement.Controls.Add(this.btnCheck);
             this.grpMovement.Controls.Add(this.GroupBox4);
             this.grpMovement.Controls.Add(this.txtRs);
@@ -336,7 +329,6 @@
             this.grpMovement.Controls.Add(this.lblAmount);
             this.grpMovement.Controls.Add(this.txtDiscountRate);
             this.grpMovement.Controls.Add(this.Label9);
-            this.grpMovement.Controls.Add(this.cmbRate);
             this.grpMovement.Controls.Add(this.lblRate);
             this.grpMovement.Controls.Add(this.comboCurrency);
             this.grpMovement.Controls.Add(this.lblCurrency);
@@ -347,6 +339,14 @@
             this.grpMovement.Size = new System.Drawing.Size(898, 173);
             this.grpMovement.TabIndex = 25;
             this.grpMovement.TabStop = false;
+            // 
+            // textRateReadOnly
+            // 
+            this.textRateReadOnly.Location = new System.Drawing.Point(73, 60);
+            this.textRateReadOnly.Name = "textRateReadOnly";
+            this.textRateReadOnly.ReadOnly = true;
+            this.textRateReadOnly.Size = new System.Drawing.Size(122, 20);
+            this.textRateReadOnly.TabIndex = 20;
             // 
             // Transaction
             // 
@@ -400,7 +400,6 @@
         internal System.Windows.Forms.Panel Panel1;
         internal System.Windows.Forms.TextBox txtDiscountRate;
         internal System.Windows.Forms.Label Label9;
-        internal System.Windows.Forms.ComboBox cmbRate;
         internal System.Windows.Forms.Label lblRate;
         internal System.Windows.Forms.ComboBox comboCurrency;
         internal System.Windows.Forms.Label lblCurrency;
@@ -408,5 +407,6 @@
         internal System.Windows.Forms.Label lblType;
         internal System.Windows.Forms.GroupBox grpMovement;
         private System.Windows.Forms.ComboBox comboClient;
+        private System.Windows.Forms.TextBox textRateReadOnly;
     }
 }

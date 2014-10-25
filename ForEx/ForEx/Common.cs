@@ -213,6 +213,7 @@ namespace ForEx
 
                 conn.Open();
                 var cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.Add("@DateCreated", SqlDbType.DateTime).Value = DateTime.Now;
 
                 using (var dr = cmd.ExecuteReader())
                 {

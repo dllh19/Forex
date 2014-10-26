@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace ForEx
     public partial class Transaction : Form
     {
         private Clients clients;
+
+        private SqlConnection con = new SqlConnection(Common.GetConnectionString());
+        private SqlDataAdapter da = new SqlDataAdapter();
+        private SqlCommand cmd = new SqlCommand();
 
         public Transaction(Clients clients)
         {
@@ -82,6 +87,13 @@ namespace ForEx
             if (comboType.SelectedItem != null)
             {
                 var latestCurrency = Common.getRateforToday();
+
+                if (latestCurrency.Count == 0)
+                {
+                    MessageBox.Show("No rate for the day! Please insert rate for the day!");
+                    return;
+                }
+
                 if (comboType.SelectedItem.ToString() == "Sell")
                 {
                     var fileredCurrency = latestCurrency.Where(x => x.Symbol == comboCurrency.SelectedValue.ToString()).Select(x => x.SaleRate);
@@ -271,6 +283,66 @@ namespace ForEx
             dgvTransaction.ReadOnly = true;
         }
 
+        private void saveReceipt()
+        {
+            int receiptId;
+            try
+            {
+                cmd = new SqlCommand("INSERT INTO tbl_receipt (teller, date_create, num_transaction, client) VALUES (@teller, @date_created, @num_transaction, @client); " +
+                                     "SELECT SCOPE_IDENTITY();");
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@teller", "TEST");
+                cmd.Parameters.AddWithValue("@date_created", DateTime.Now);
+                cmd.Parameters.AddWithValue("@num_transaction", dgvTransaction.Rows.Count);
+                cmd.Parameters.AddWithValue("@client", comboClient.SelectedItem.ToString()); // todo - change to implement client name or bank name
+                
+                try
+                {
+                    con.Open();
+                    var idReturned = cmd.ExecuteScalar();
+                    con.Close();
+                    receiptId = Convert.ToInt32(idReturned);
+                    
+                    //save transactions
+                    saveTransactions(receiptId);
+
+                    MessageBox.Show("Receipt and transactions saved");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error when saving receipt: " + ex.InnerException);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void saveTransactions(int receiptId)
+        {
+            foreach (DataGridViewRow row in dgvTransaction.Rows)
+            {
+                cmd =new SqlCommand("INSERT INTO tbl_transaction (type, currency, amount, rates, total, date_created, username, receipt_id) VALUES ( @type, @currency,@amount, @rates, @total, @date_created, @username, @receipt_id)");
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@type", row.Cells[0].Value.ToString());
+                cmd.Parameters.AddWithValue("@currency", row.Cells[1].Value.ToString());
+                cmd.Parameters.AddWithValue("@amount", Convert.ToDecimal(row.Cells[2].Value));
+                cmd.Parameters.AddWithValue("@rates", Convert.ToDecimal(row.Cells[3].Value));
+                cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(row.Cells[3].Value));
+                cmd.Parameters.AddWithValue("@date_created", DateTime.Now);
+                cmd.Parameters.AddWithValue("@username", "TEST"); //todo - change get username
+                cmd.Parameters.AddWithValue("@receipt_id", receiptId);
+
+                con.Open();
+                int sqlrow = cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (comboClient.SelectedItem == null)
@@ -285,6 +357,7 @@ namespace ForEx
                 return;
             }
 
+            saveReceipt();
 
         }
     }

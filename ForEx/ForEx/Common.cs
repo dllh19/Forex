@@ -255,6 +255,20 @@ namespace ForEx
             return rateList;
         }
 
+        public static int getCurrencyId(string name)
+        {
+            string connection = Common.GetConnectionString();
+            SqlConnection conn = new SqlConnection(connection);
+            conn.Open();
+            string query = " SELECT [currency_id] FROM [ForExDB].[dbo].[tbl_currency] where [symbol] = @symbol";
+            var cmd = new SqlCommand(query, conn);
+            cmd.Parameters.Add("@symbol", SqlDbType.VarChar).Value = name;
+            int currencyid = Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Close();
+
+            return currencyid;
+        }
+
         public static Balance getLatestBalanceForToday(string symbol)
         {
             string connection = Common.GetConnectionString();

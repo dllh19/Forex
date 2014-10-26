@@ -69,6 +69,7 @@ namespace ForEx
                     textRate.Text = fileredCurrency.First().ToString();
 
                     textTotal.Text = null;
+                    txtAmount.Text = null;
                 }
                 else
                 {
@@ -77,6 +78,7 @@ namespace ForEx
                     textRate.Text = fileredCurrency.First().ToString();
 
                     textTotal.Text = null;
+                    txtAmount.Text = null;
                 }
             }
         }
@@ -101,6 +103,7 @@ namespace ForEx
                     textRate.Text = fileredCurrency.First().ToString();
 
                     textTotal.Text = null;
+                    txtAmount.Text = null;
                 }
                 else
                 {
@@ -109,6 +112,7 @@ namespace ForEx
                     textRate.Text = fileredCurrency.First().ToString();
 
                     textTotal.Text = null;
+                    txtAmount.Text = null;
                 }
             }
         }
@@ -346,6 +350,64 @@ namespace ForEx
             }
         }
 
+        private void updateBalance(Balance rsBal, Balance curBal)
+        {
+            decimal RsBuytotal = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy")
+                    .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
+
+            decimal newBuyBalance = rsBal.balance - RsBuytotal;
+
+
+        }
+
+        private bool validateRsBalance(Balance bl)
+        {
+            bool value = true;
+
+            decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy")
+                    .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
+
+            if (total > bl.balance)
+            {
+                MessageBox.Show("MUR balance of " + bl.balance.ToString() + " has been exceeded!");
+                value = false;
+            }
+
+            return value;
+        }
+
+        private bool validateCurrencyBalance(Balance bl)
+        {
+            bool value = true;
+            List<string> distinctCurrency = new List<string>();
+
+            //get distinct currency in datagridview
+            foreach (DataGridViewRow row in dgvTransaction.Rows)
+            {
+                distinctCurrency.Add(row.Cells[1].Value.ToString());
+            }
+
+            distinctCurrency = distinctCurrency.Distinct().ToList();
+
+            foreach (string cur in distinctCurrency)
+            {
+                decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+                .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
+
+                if (total > bl.balance)
+                {
+                    MessageBox.Show(cur + " balance of " + bl.balance.ToString() + " has been exceeded!");
+                    value = false;
+                    break;
+                }
+            }
+
+            return value;
+        }
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (comboClient.SelectedItem == null)
@@ -357,6 +419,60 @@ namespace ForEx
             if (dgvTransaction.Rows.Count == 0)
             {
                 MessageBox.Show("No transactions");
+                return;
+            }
+
+            var currencyBalance = Common.getLatestBalanceForToday(comboCurrency.SelectedValue.ToString());
+            var RsBalance = Common.getLatestBalanceForToday("MUR");
+            //List<string> distinctCurrency = new List<string>();
+
+            ////get distinct currency in datagridview
+            //foreach (DataGridViewRow row in dgvTransaction.Rows)
+            //{
+            //    distinctCurrency.Add(row.Cells[1].Value.ToString());
+            //}
+
+            //distinctCurrency = distinctCurrency.Distinct().ToList();
+
+
+            ///*Validate if you have the balance*/
+            //if (comboType.SelectedItem.ToString() == "Buy")
+            //{
+            //    decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+            //        .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy")
+            //        .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
+
+            //    if (total > RsBalance.balance)
+            //    {
+            //        MessageBox.Show("MUR balance of " + RsBalance.balance.ToString() + " has been exceeded!");
+            //        return;
+            //    }
+            //}
+
+            ///*Validate if you have the balance*/
+            //if (comboType.SelectedItem.ToString() == "Sell")
+            //{
+            //    foreach (string cur in distinctCurrency)
+            //    {
+            //        decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+            //        .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+            //        .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
+
+            //        if (total > RsBalance.balance)
+            //        {
+            //            MessageBox.Show(cur + " balance of " + RsBalance.balance.ToString() + " has been exceeded!");
+            //            return;
+            //        }
+            //    }                
+            //}
+
+            if (!validateRsBalance(RsBalance))
+            {
+                return;
+            }
+
+            if (!validateCurrencyBalance(currencyBalance))
+            {
                 return;
             }
 
@@ -377,6 +493,9 @@ namespace ForEx
 
                 ts.Add(newTs);
             }
+
+            //create audit
+            Common.Audit(Common.Operation.Transaction, Common.GetUser().Name + " " + Common.GetUser().Surname + " has processed transaction with Receipt ID: " + receiptID);
 
             Receipt tick = new Receipt(DateTime.Now, Common.GetUser().Name + " " + Common.GetUser().Surname, ts,receiptID);
             tick.print();

@@ -169,7 +169,7 @@ namespace ForEx
             {
                 MessageBox.Show("Rates have been updated for date: " + string.Format("{0:d/M/yyyy}", DateTime.Now));
                 Common.Audit(Common.Operation.RateUpdate,
-                    Common.GetUser().Name + " has update the rates at " + currentdate);
+                    Common.GetUser().Name + " " + Common.GetUser().Surname +   " has update the rates at " + currentdate);
             }
 
         }

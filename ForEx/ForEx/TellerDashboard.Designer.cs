@@ -74,6 +74,7 @@
             this.btnClientManagement.TabIndex = 24;
             this.btnClientManagement.Text = "Client Management";
             this.btnClientManagement.UseVisualStyleBackColor = true;
+            this.btnClientManagement.Click += new System.EventHandler(this.btnClientManagement_Click);
             // 
             // btnPOSPanel
             // 

@@ -55,5 +55,10 @@ namespace ForEx
             login.Closed += (s, args) => this.Close();
             login.Show();
         }
+
+        private void btnClientManagement_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,70 +12,24 @@ namespace ForEx.Classes
 {
     public class Receipt
     {
-        PrintDocument pdoc = null;
-        int ticketNo;
-        DateTime TicketDate;
-        String Source, Destination, DrawnBy;
-        float Amount;
+        private PrintDocument pdoc;
+        public DateTime CurrentDate { get; set; }
+        public string TellerName { get; set; }
 
-        public int TicketNo
-        {
-
-            set { this.ticketNo = value; }
-
-            get { return this.ticketNo; }
-        }
-        public DateTime ReceiptDate
-        {
-
-            set { this.ReceiptDate = value; }
-  
-            get { return this.ReceiptDate; }
-        }
-
-        public String source
-        {
-
-            set { this.Source = value; }
-
-            get { return this.Source; }
-        }
-        public String destination
-        {
-  
-            set { this.Destination = value; }
-     
-            get { return this.Destination; }
-        }
-        public float amount
-        {
-        
-            set { this.Amount = value; }
-       
-            get { return this.Amount; }
-        }
-        public String drawnBy
-        {
-          
-            set { this.DrawnBy = value; }
-      
-            get { return this.DrawnBy; }
-        }
+        public List<string> transactions { get; set; }
 
         public Receipt()
         {
+            
+        }
 
-        }
-        public Receipt(int ticketNo, DateTime TicketDate, String Source,
-               String Destination, float Amount, String DrawnBy)
+        public Receipt(DateTime CurrentDate, string TellerName, List<string> transactions )
         {
-            this.ticketNo = ticketNo;
-            this.TicketDate = TicketDate;
-            this.Source = Source;
-            this.Destination = Destination;
-            this.Amount = Amount;
-            this.DrawnBy = DrawnBy;
+            this.CurrentDate = CurrentDate;
+            this.TellerName = TellerName;
+            this.transactions = transactions;
         }
+
         public void print()
         {
             PrintDialog pd = new PrintDialog();
@@ -116,41 +71,89 @@ namespace ForEx.Classes
             int startX = 50;
             int startY = 55;
             int Offset = 40;
-            graphics.DrawString("Welcome to MSST", new Font("Courier New", 14),
+            graphics.DrawString("   Easychange Mauritius Co Ltd", new Font("Courier New", 14),
                                 new SolidBrush(Color.Black), startX, startY + Offset);
             Offset = Offset + 20;
-            graphics.DrawString("Ticket No:" + this.TicketNo,
+            graphics.DrawString("   Queen Mary Avenue, Floreal", new Font("Courier New", 14),
+                                new SolidBrush(Color.Black), startX, startY + Offset);
+            Offset = Offset + 20;
+            graphics.DrawString("     Mauritius Tel: 696 9107", new Font("Courier New", 14),
+                                new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 50;
+            graphics.DrawString("Date:" + this.CurrentDate,
                      new Font("Courier New", 14),
                      new SolidBrush(Color.Black), startX, startY + Offset);
             Offset = Offset + 20;
-            graphics.DrawString("Ticket Date :" + this.ReceiptDate,
+            graphics.DrawString("Teller :" + this.TellerName,
                      new Font("Courier New", 12),
                      new SolidBrush(Color.Black), startX, startY + Offset);
             Offset = Offset + 20;
             String underLine = "------------------------------------------";
+
+
             graphics.DrawString(underLine, new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
-            Offset = Offset + 20;
-            String Source = this.source;
-            graphics.DrawString("From " + Source + " To " + Destination, new Font("Courier New", 10),
+             Offset = Offset + 50;
+            graphics.DrawString("BUYING", new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+             Offset = Offset + 20;
+            graphics.DrawString("TYPE \t CURR \t \t AMT \t RATES \t TOTAL", new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
             Offset = Offset + 20;
-            String Grosstotal = "Total Amount to Pay = " + this.amount;
+            String BuyingTotal = "Total: ";
+            graphics.DrawString(BuyingTotal, new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+             Offset = Offset + 50;
+            graphics.DrawString("SELLING", new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+             Offset = Offset + 20;
+            graphics.DrawString("TYPE \t CURR \t \t AMT \t RATES \t TOTAL", new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+            
+            Offset = Offset + 20;
+            String Grosstotal = "Total: ";
+            graphics.DrawString(Grosstotal, new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
 
             Offset = Offset + 20;
             underLine = "------------------------------------------";
+
             graphics.DrawString(underLine, new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
-            Offset = Offset + 20;
 
-            graphics.DrawString(Grosstotal, new Font("Courier New", 10),
+            Offset = Offset + 50;
+            graphics.DrawString("Teller Signature:", new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
+
             Offset = Offset + 20;
-            String DrawnBy = this.drawnBy;
-            graphics.DrawString("Conductor - " + DrawnBy, new Font("Courier New", 10),
+            graphics.DrawString("Client Signature:", new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            graphics.DrawString("Thanks for your business", new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            graphics.DrawString("We hope to see you soon", new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            graphics.DrawString("at your counter", new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            underLine = "------------------------------------------";
+
+            graphics.DrawString(underLine, new Font("Courier New", 10),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
         }
     }
 }

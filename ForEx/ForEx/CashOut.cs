@@ -56,7 +56,11 @@ namespace ForEx
 
         private void btnCashOut_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+            if (!CheckCashOut())
+            {
+                MessageBox.Show("You have already cash out today");
+            }
+            else if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
             {
                 MessageBox.Show("Please enter the supervisor\'s username and password");
             }
@@ -98,5 +102,27 @@ namespace ForEx
             }
 
         }
+
+        private bool CheckCashOut()
+        {
+
+            con.Open();
+            string query = "SELECT count(*) FROM [tbl_cashout] WHERE CONVERT(VARCHAR(10),[date_cashout],10) =CONVERT(VARCHAR(10),@date_cashout,10) ";
+            cmd = new SqlCommand(query, con);
+            cmd.Parameters.Add("@date_cashout", SqlDbType.DateTime).Value = DateTime.Now;
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            con.Close();
+
+            if (count > 0)
+            {
+               return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
     }
 }

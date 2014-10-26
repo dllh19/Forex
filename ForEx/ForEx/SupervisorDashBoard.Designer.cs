@@ -96,6 +96,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmSupervisorDashBoard";
             this.Text = "SupervisorDashBoard";
+            this.Load += new System.EventHandler(this.frmSupervisorDashBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

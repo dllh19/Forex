@@ -50,22 +50,48 @@ namespace ForEx
 
         private void btnCashIn_Click(object sender, EventArgs e)
         {
-            cmd = new SqlCommand("CashInProcedure", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@CurrentDate", SqlDbType.DateTime).Value = DateTime.Now;
+            if (CheckCashIn())
+            {
+                cmd = new SqlCommand("CashInProcedure", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@CurrentDate", SqlDbType.DateTime).Value = DateTime.Now;
 
-            try
-            {
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
+                try
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error has occured while trying to cash in. Find more information below :\n" +
+                                    ex.InnerException);
+                }
+                MessageBox.Show("Cash In completed for " + string.Format("{0:d/M/yyyy}", DateTime.Now));
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error has occured while trying to cash in. Find more information below :\n" +
-                                ex.InnerException);
-            }
-            MessageBox.Show("Cash In completed for " + string.Format("{0:d/M/yyyy}", DateTime.Now));
         }
+
+        private bool CheckCashIn()
+        {
+ 
+                con.Open();
+                string query = "SELECT count(*) FROM [tbl_cashin] WHERE CONVERT(VARCHAR(10),[date_cashin],10) =CONVERT(VARCHAR(10),@date_cashin,10) ";
+                cmd = new SqlCommand(query, con);
+                cmd.Parameters.Add("@date_cashin", SqlDbType.DateTime).Value = DateTime.Now;
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                con.Close();
+
+                if (count > 0)
+                {
+                    MessageBox.Show("You have already cash in today");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
+        }
+
     }
 }

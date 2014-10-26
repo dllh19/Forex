@@ -283,9 +283,9 @@ namespace ForEx
             dgvTransaction.ReadOnly = true;
         }
 
-        private void saveReceipt()
+        private int saveReceipt()
         {
-            int receiptId;
+            int receiptId = 0;
             try
             {
                 cmd = new SqlCommand("INSERT INTO tbl_receipt (teller, date_create, num_transaction, client) VALUES (@teller, @date_created, @num_transaction, @client); " +
@@ -308,16 +308,19 @@ namespace ForEx
                     saveTransactions(receiptId);
 
                     MessageBox.Show("Receipt and transactions saved");
+                    return receiptId;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error when saving receipt: " + ex.InnerException);
                 }
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+            return receiptId;
         }
 
         private void saveTransactions(int receiptId)
@@ -334,7 +337,7 @@ namespace ForEx
                 cmd.Parameters.AddWithValue("@rates", Convert.ToDecimal(row.Cells[3].Value));
                 cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(row.Cells[4].Value));
                 cmd.Parameters.AddWithValue("@date_created", DateTime.Now);
-                cmd.Parameters.AddWithValue("@username", "TEST"); //todo - change get username
+                cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //todo - change get username
                 cmd.Parameters.AddWithValue("@receipt_id", receiptId);
 
                 con.Open();
@@ -357,7 +360,26 @@ namespace ForEx
                 return;
             }
 
-            saveReceipt();
+            int receiptID =  saveReceipt();
+
+            List<Classes.Transaction> ts = new List<Classes.Transaction>();
+            foreach (DataGridViewRow row in dgvTransaction.Rows)
+            {
+                Classes.Transaction newTs = new Classes.Transaction();
+                newTs.type = row.Cells[0].Value.ToString();
+                newTs.currency = row.Cells[1].Value.ToString();
+                newTs.amount = Convert.ToDecimal(row.Cells[2].Value);
+                newTs.rates = Convert.ToDecimal(row.Cells[3].Value);
+                newTs.total = Convert.ToDecimal(row.Cells[4].Value);
+                newTs.dateCreated = DateTime.Now;
+                newTs.username = Common.GetUser().Username;
+                newTs.receiptId = receiptID;
+
+                ts.Add(newTs);
+            }
+
+            Receipt tick = new Receipt(DateTime.Now, Common.GetUser().Name + " " + Common.GetUser().Surname, ts);
+            tick.print();
 
         }
     }

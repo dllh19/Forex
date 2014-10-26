@@ -69,5 +69,14 @@ namespace ForEx
 
             this.dataGridView1.AllowUserToResizeRows = false;
         }
+
+        private void btnSignout_Click(object sender, EventArgs e)
+        {
+            Common.UnsetUser();
+            this.Hide();
+            var login = new Login();
+            login.Closed += (s, args) => this.Close();
+            login.Show();
+        }
     }
 }

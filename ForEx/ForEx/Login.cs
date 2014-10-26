@@ -56,6 +56,7 @@ namespace ForEx
                     {
                         this.Hide();
                         var tellerform = new TellerDashboard();
+                        tellerform.Closed += (s, args) => this.Close();
                         tellerform.Show();
                     }
 
@@ -63,6 +64,7 @@ namespace ForEx
                     {
                         this.Hide();
                         var supervisorform = new frmSupervisorDashBoard();
+                        supervisorform.Closed += (s, args) => this.Close();
                         supervisorform.Show();
                     }
 
@@ -77,6 +79,7 @@ namespace ForEx
                     {
                         this.Hide();
                         var managerform = new ManagerDashboard();
+                        managerform.Closed += (s, args) => this.Close();
                         managerform.Show();
                     }
 

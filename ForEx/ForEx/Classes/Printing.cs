@@ -95,36 +95,64 @@ namespace ForEx.Classes
             graphics.DrawString(underLine, new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
-            //var ListBuy = transactions.Where(t => t.type == "buy").ToList();
+            var ListBuy = transactions.Where(t => t.type == "buy").ToList();
 
-             Offset = Offset + 50;
-            graphics.DrawString("BUYING", new Font("Courier New", 10),
+            if (ListBuy != null)
+            {
+                Offset = Offset + 50;
+                graphics.DrawString("BUYING", new Font("Courier New", 10),
+                    new SolidBrush(Color.Black), startX, startY + Offset);
+
+                Offset = Offset + 20;
+                graphics.DrawString("TYPE \t CURR \t \t AMT \t RATES \t TOTAL", new Font("Courier New", 10),
+                    new SolidBrush(Color.Black), startX, startY + Offset);
+
+                decimal total = 0;
+                foreach (var buy in ListBuy)
+                {
+                    Offset = Offset + 20;
+                    graphics.DrawString(buy.type.ToString() + "\t " + buy.currency.ToString() + "\t \t " + buy.amount.ToString() + " \t " + buy.rates.ToString() + " \t " + buy.total.ToString() + "", new Font("Courier New", 10),
+                    new SolidBrush(Color.Black), startX, startY + Offset);
+
+                    total = total + buy.total;
+                }
+                
+
+                Offset = Offset + 20;
+                String BuyingTotal = "Total: ";
+                graphics.DrawString(BuyingTotal, new Font("Courier New", 10),
+                    new SolidBrush(Color.Black), startX, startY + Offset);
+            }
+
+             var ListSell = transactions.Where(t => t.type == "sell").ToList();
+
+            if (ListSell != null)
+            {
+                Offset = Offset + 50;
+                graphics.DrawString("SELLING", new Font("Courier New", 10),
+                    new SolidBrush(Color.Black), startX, startY + Offset);
+
+                Offset = Offset + 20;
+                graphics.DrawString("TYPE \t CURR \t \t AMT \t RATES \t TOTAL", new Font("Courier New", 10),
+                    new SolidBrush(Color.Black), startX, startY + Offset);
+
+                decimal total = 0;
+                foreach (var sell in ListSell)
+                {
+                    Offset = Offset + 20;
+                    graphics.DrawString(sell.type.ToString() + "\t " + sell.currency.ToString() + "\t \t " + sell.amount.ToString() + " \t " + sell.rates.ToString() + " \t " + sell.total.ToString() + "", new Font("Courier New", 10),
+                    new SolidBrush(Color.Black), startX, startY + Offset);
+
+                    total = total + sell.total;
+                }
+
+                Offset = Offset + 20;
+                String Grosstotal = "Total: ";
+                graphics.DrawString(Grosstotal, new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
-
-             Offset = Offset + 20;
-            graphics.DrawString("TYPE \t CURR \t \t AMT \t RATES \t TOTAL", new Font("Courier New", 10),
-                     new SolidBrush(Color.Black), startX, startY + Offset);
-
-            Offset = Offset + 20;
-            String BuyingTotal = "Total: ";
-            graphics.DrawString(BuyingTotal, new Font("Courier New", 10),
-                     new SolidBrush(Color.Black), startX, startY + Offset);
-
-           // var ListSell = transactions.Where(t => t.type == "sell").ToList();
-
-             Offset = Offset + 50;
-            graphics.DrawString("SELLING", new Font("Courier New", 10),
-                     new SolidBrush(Color.Black), startX, startY + Offset);
-
-             Offset = Offset + 20;
-            graphics.DrawString("TYPE \t CURR \t \t AMT \t RATES \t TOTAL", new Font("Courier New", 10),
-                     new SolidBrush(Color.Black), startX, startY + Offset);
+            }
 
             
-            Offset = Offset + 20;
-            String Grosstotal = "Total: ";
-            graphics.DrawString(Grosstotal, new Font("Courier New", 10),
-                     new SolidBrush(Color.Black), startX, startY + Offset);
 
             Offset = Offset + 20;
             underLine = "------------------------------------------";

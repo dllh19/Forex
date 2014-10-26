@@ -102,8 +102,8 @@ namespace ForEx
 
         private void Login_Load_1(object sender, EventArgs e)
         {
-            Receipt tick = new Receipt(34234,DateTime.Now,"aera","ar",324234f,"are");
-            tick.print();
+            //Receipt tick = new Receipt(34234,DateTime.Now,"aera","ar",324234f,"are");
+            //tick.print();
         }
     }
 }

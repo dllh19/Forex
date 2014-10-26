@@ -78,5 +78,4 @@ C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.frmReports.res
 C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.TellerDashboard.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.frmReports.resources
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.TellerDashboard.resources
-C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.Form1.resources
 C:\Users\David\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.Form1.resources

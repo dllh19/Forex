@@ -16,6 +16,7 @@ namespace ForEx.Classes
         public DateTime CurrentDate { get; set; }
         public string TellerName { get; set; }
 
+        public int TransactionID { get; set; }
         public List<Classes.Transaction> transactions { get; set; }
 
         public Receipt()
@@ -23,11 +24,12 @@ namespace ForEx.Classes
             
         }
 
-        public Receipt(DateTime CurrentDate, string TellerName, List<Classes.Transaction> transactions)
+        public Receipt(DateTime CurrentDate, string TellerName, List<Classes.Transaction> transactions, int TransactionID)
         {
             this.CurrentDate = CurrentDate;
             this.TellerName = TellerName;
             this.transactions = transactions;
+            this.TransactionID = TransactionID;
         }
 
         public void print()
@@ -88,6 +90,12 @@ namespace ForEx.Classes
             graphics.DrawString("Teller :" + this.TellerName,
                      new Font("Courier New", 12),
                      new SolidBrush(Color.Black), startX, startY + Offset);
+
+            Offset = Offset + 20;
+            graphics.DrawString("Transaction ID:" + this.TransactionID,
+                     new Font("Courier New", 12),
+                     new SolidBrush(Color.Black), startX, startY + Offset);
+
             Offset = Offset + 20;
             String underLine = "------------------------------------------";
 
@@ -95,9 +103,9 @@ namespace ForEx.Classes
             graphics.DrawString(underLine, new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
-            var ListBuy = transactions.Where(t => t.type == "buy").ToList();
+            var ListBuy = transactions.Where(t => t.type == "Buy").ToList();
 
-            if (ListBuy != null)
+            if (ListBuy != null && ListBuy.Any())
             {
                 Offset = Offset + 50;
                 graphics.DrawString("BUYING", new Font("Courier New", 10),
@@ -111,22 +119,22 @@ namespace ForEx.Classes
                 foreach (var buy in ListBuy)
                 {
                     Offset = Offset + 20;
-                    graphics.DrawString(buy.type.ToString() + "\t " + buy.currency.ToString() + "\t \t " + buy.amount.ToString() + " \t " + buy.rates.ToString() + " \t " + buy.total.ToString() + "", new Font("Courier New", 10),
+                    graphics.DrawString(buy.type.ToString() + "\t " + buy.currency.ToString() + "\t " + buy.amount.ToString() + " \t " + buy.rates.ToString() + " \t " + buy.total.ToString() + "", new Font("Courier New", 10),
                     new SolidBrush(Color.Black), startX, startY + Offset);
 
                     total = total + buy.total;
                 }
                 
 
-                Offset = Offset + 20;
-                String BuyingTotal = "Total: ";
+                Offset = Offset + 50;
+                String BuyingTotal = "Total: " + total;
                 graphics.DrawString(BuyingTotal, new Font("Courier New", 10),
                     new SolidBrush(Color.Black), startX, startY + Offset);
             }
 
-             var ListSell = transactions.Where(t => t.type == "sell").ToList();
+             var ListSell = transactions.Where(t => t.type == "Sell").ToList();
 
-            if (ListSell != null)
+            if (ListSell != null && ListSell.Any())
             {
                 Offset = Offset + 50;
                 graphics.DrawString("SELLING", new Font("Courier New", 10),
@@ -140,14 +148,14 @@ namespace ForEx.Classes
                 foreach (var sell in ListSell)
                 {
                     Offset = Offset + 20;
-                    graphics.DrawString(sell.type.ToString() + "\t " + sell.currency.ToString() + "\t \t " + sell.amount.ToString() + " \t " + sell.rates.ToString() + " \t " + sell.total.ToString() + "", new Font("Courier New", 10),
+                    graphics.DrawString(sell.type.ToString() + "\t " + sell.currency.ToString() + "\t " + sell.amount.ToString() + " \t " + sell.rates.ToString() + " \t " + sell.total.ToString() + "", new Font("Courier New", 10),
                     new SolidBrush(Color.Black), startX, startY + Offset);
 
                     total = total + sell.total;
                 }
 
-                Offset = Offset + 20;
-                String Grosstotal = "Total: ";
+                Offset = Offset + 50;
+                String Grosstotal = "Total: " + total;
                 graphics.DrawString(Grosstotal, new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
             }
@@ -161,11 +169,11 @@ namespace ForEx.Classes
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
             Offset = Offset + 50;
-            graphics.DrawString("Teller Signature:", new Font("Courier New", 10),
+            graphics.DrawString("Teller Signature: \t _______________________", new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
-            Offset = Offset + 20;
-            graphics.DrawString("Client Signature:", new Font("Courier New", 10),
+            Offset = Offset + 50;
+            graphics.DrawString("Client Signature: \t _______________________", new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
             Offset = Offset + 50;

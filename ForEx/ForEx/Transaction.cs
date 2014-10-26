@@ -378,7 +378,7 @@ namespace ForEx
                 ts.Add(newTs);
             }
 
-            Receipt tick = new Receipt(DateTime.Now, Common.GetUser().Name + " " + Common.GetUser().Surname, ts);
+            Receipt tick = new Receipt(DateTime.Now, Common.GetUser().Name + " " + Common.GetUser().Surname, ts,receiptID);
             tick.print();
 
         }

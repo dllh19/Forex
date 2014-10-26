@@ -136,7 +136,7 @@ namespace ForEx.Classes
             graphics.DrawString("Client Signature:", new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
-            Offset = Offset + 20;
+            Offset = Offset + 50;
             graphics.DrawString("Thanks for your business", new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 

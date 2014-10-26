@@ -168,12 +168,8 @@ namespace ForEx
             if (!error)
             {
                 MessageBox.Show("Rates have been updated for date: " + string.Format("{0:d/M/yyyy}", DateTime.Now));
-                Common.Audit(Common.Operation.RateUpdate,
-<<<<<<< HEAD
-                    Common.GetUser().Name + " " + Common.GetUser().Surname +   " has update the rates at " + currentdate);
-=======
-                    Common.GetUser().Username + " has update the rates at " + currentdate);
->>>>>>> 05af2d8944cb428b6bf51ceb49d25a9460edfbee
+                Common.Audit(Common.Operation.RateUpdate, Common.GetUser().Name + " " + Common.GetUser().Surname +   " has update the rates at " + currentdate);
+     
             }
 
         }

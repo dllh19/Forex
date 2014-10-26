@@ -68,6 +68,8 @@ namespace ForEx
                                     ex.InnerException);
                 }
                 MessageBox.Show("Cash In completed for " + string.Format("{0:d/M/yyyy}", DateTime.Now));
+                Common.Audit(Common.Operation.RateUpdate, Common.GetUser().Name + " " + Common.GetUser().Surname + " has just cash in " + DateTime.Now);
+
             }
         }
 

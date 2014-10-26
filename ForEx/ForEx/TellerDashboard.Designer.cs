@@ -28,25 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCashInCashOut = new System.Windows.Forms.Button();
+            this.btnPOS = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
-            this.btnCloseCash = new System.Windows.Forms.Button();
+            this.btnRate = new System.Windows.Forms.Button();
             this.btnClientManagement = new System.Windows.Forms.Button();
-            this.btnPOSPanel = new System.Windows.Forms.Button();
-            this.btnBulkCashIn = new System.Windows.Forms.Button();
+            this.btnCashOut = new System.Windows.Forms.Button();
+            this.btnCashIn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSignout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCashInCashOut
+            // btnPOS
             // 
-            this.btnCashInCashOut.Location = new System.Drawing.Point(240, 160);
-            this.btnCashInCashOut.Name = "btnCashInCashOut";
-            this.btnCashInCashOut.Size = new System.Drawing.Size(119, 60);
-            this.btnCashInCashOut.TabIndex = 27;
-            this.btnCashInCashOut.Text = "Cash In / Cash Out";
-            this.btnCashInCashOut.UseVisualStyleBackColor = true;
+            this.btnPOS.Location = new System.Drawing.Point(240, 160);
+            this.btnPOS.Name = "btnPOS";
+            this.btnPOS.Size = new System.Drawing.Size(119, 60);
+            this.btnPOS.TabIndex = 27;
+            this.btnPOS.Text = "POS";
+            this.btnPOS.UseVisualStyleBackColor = true;
+            this.btnPOS.Click += new System.EventHandler(this.btnPOS_Click);
             // 
             // btnReports
             // 
@@ -57,14 +58,15 @@
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = true;
             // 
-            // btnCloseCash
+            // btnRate
             // 
-            this.btnCloseCash.Location = new System.Drawing.Point(240, 272);
-            this.btnCloseCash.Name = "btnCloseCash";
-            this.btnCloseCash.Size = new System.Drawing.Size(119, 60);
-            this.btnCloseCash.TabIndex = 25;
-            this.btnCloseCash.Text = "Close Cash";
-            this.btnCloseCash.UseVisualStyleBackColor = true;
+            this.btnRate.Location = new System.Drawing.Point(240, 272);
+            this.btnRate.Name = "btnRate";
+            this.btnRate.Size = new System.Drawing.Size(119, 60);
+            this.btnRate.TabIndex = 25;
+            this.btnRate.Text = "Rate Management";
+            this.btnRate.UseVisualStyleBackColor = true;
+            this.btnRate.Click += new System.EventHandler(this.btnRate_Click);
             // 
             // btnClientManagement
             // 
@@ -76,23 +78,25 @@
             this.btnClientManagement.UseVisualStyleBackColor = true;
             this.btnClientManagement.Click += new System.EventHandler(this.btnClientManagement_Click);
             // 
-            // btnPOSPanel
+            // btnCashOut
             // 
-            this.btnPOSPanel.Location = new System.Drawing.Point(240, 46);
-            this.btnPOSPanel.Name = "btnPOSPanel";
-            this.btnPOSPanel.Size = new System.Drawing.Size(119, 60);
-            this.btnPOSPanel.TabIndex = 23;
-            this.btnPOSPanel.Text = "POS Panel";
-            this.btnPOSPanel.UseVisualStyleBackColor = true;
+            this.btnCashOut.Location = new System.Drawing.Point(240, 46);
+            this.btnCashOut.Name = "btnCashOut";
+            this.btnCashOut.Size = new System.Drawing.Size(119, 60);
+            this.btnCashOut.TabIndex = 23;
+            this.btnCashOut.Text = "Cash Out";
+            this.btnCashOut.UseVisualStyleBackColor = true;
+            this.btnCashOut.Click += new System.EventHandler(this.btnCashOut_Click);
             // 
-            // btnBulkCashIn
+            // btnCashIn
             // 
-            this.btnBulkCashIn.Location = new System.Drawing.Point(55, 46);
-            this.btnBulkCashIn.Name = "btnBulkCashIn";
-            this.btnBulkCashIn.Size = new System.Drawing.Size(119, 60);
-            this.btnBulkCashIn.TabIndex = 22;
-            this.btnBulkCashIn.Text = "Bulk Cash In";
-            this.btnBulkCashIn.UseVisualStyleBackColor = true;
+            this.btnCashIn.Location = new System.Drawing.Point(55, 46);
+            this.btnCashIn.Name = "btnCashIn";
+            this.btnCashIn.Size = new System.Drawing.Size(119, 60);
+            this.btnCashIn.TabIndex = 22;
+            this.btnCashIn.Text = "Cash In";
+            this.btnCashIn.UseVisualStyleBackColor = true;
+            this.btnCashIn.Click += new System.EventHandler(this.btnCashIn_Click);
             // 
             // dataGridView1
             // 
@@ -118,12 +122,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 508);
             this.Controls.Add(this.btnSignout);
-            this.Controls.Add(this.btnCashInCashOut);
+            this.Controls.Add(this.btnPOS);
             this.Controls.Add(this.btnReports);
-            this.Controls.Add(this.btnCloseCash);
+            this.Controls.Add(this.btnRate);
             this.Controls.Add(this.btnClientManagement);
-            this.Controls.Add(this.btnPOSPanel);
-            this.Controls.Add(this.btnBulkCashIn);
+            this.Controls.Add(this.btnCashOut);
+            this.Controls.Add(this.btnCashIn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "TellerDashboard";
             this.Text = "TellerDashboard";
@@ -135,12 +139,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnCashInCashOut;
+        private System.Windows.Forms.Button btnPOS;
         private System.Windows.Forms.Button btnReports;
-        private System.Windows.Forms.Button btnCloseCash;
+        private System.Windows.Forms.Button btnRate;
         private System.Windows.Forms.Button btnClientManagement;
-        private System.Windows.Forms.Button btnPOSPanel;
-        private System.Windows.Forms.Button btnBulkCashIn;
+        private System.Windows.Forms.Button btnCashOut;
+        private System.Windows.Forms.Button btnCashIn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnSignout;
     }

@@ -45,9 +45,13 @@
             // 
             // gridCashIn
             // 
+            this.gridCashIn.AllowUserToAddRows = false;
+            this.gridCashIn.AllowUserToDeleteRows = false;
+            this.gridCashIn.AllowUserToResizeRows = false;
             this.gridCashIn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCashIn.Location = new System.Drawing.Point(12, 12);
             this.gridCashIn.Name = "gridCashIn";
+            this.gridCashIn.ReadOnly = true;
             this.gridCashIn.Size = new System.Drawing.Size(517, 603);
             this.gridCashIn.TabIndex = 8;
             // 

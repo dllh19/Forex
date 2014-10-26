@@ -16,14 +16,14 @@ namespace ForEx.Classes
         public DateTime CurrentDate { get; set; }
         public string TellerName { get; set; }
 
-        public List<string> transactions { get; set; }
+        public List<Classes.Transaction> transactions { get; set; }
 
         public Receipt()
         {
             
         }
 
-        public Receipt(DateTime CurrentDate, string TellerName, List<string> transactions )
+        public Receipt(DateTime CurrentDate, string TellerName, List<Classes.Transaction> transactions)
         {
             this.CurrentDate = CurrentDate;
             this.TellerName = TellerName;
@@ -95,6 +95,8 @@ namespace ForEx.Classes
             graphics.DrawString(underLine, new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
 
+            //var ListBuy = transactions.Where(t => t.type == "buy").ToList();
+
              Offset = Offset + 50;
             graphics.DrawString("BUYING", new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
@@ -107,6 +109,8 @@ namespace ForEx.Classes
             String BuyingTotal = "Total: ";
             graphics.DrawString(BuyingTotal, new Font("Courier New", 10),
                      new SolidBrush(Color.Black), startX, startY + Offset);
+
+           // var ListSell = transactions.Where(t => t.type == "sell").ToList();
 
              Offset = Offset + 50;
             graphics.DrawString("SELLING", new Font("Courier New", 10),

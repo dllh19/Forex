@@ -58,7 +58,32 @@ namespace ForEx
 
         private void btnClientManagement_Click(object sender, EventArgs e)
         {
+            var clietn = new frmClientManagement();
+            clietn.Show();
+        }
 
+        private void btnCashOut_Click(object sender, EventArgs e)
+        {
+            var cashout = new CashOut();
+            cashout.Show();
+        }
+
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            var transaction = new Transaction();
+            transaction.Show();
+        }
+
+        private void btnCashIn_Click(object sender, EventArgs e)
+        {
+            var cashin = new CashIn();
+            cashin.Show();
+        }
+
+        private void btnRate_Click(object sender, EventArgs e)
+        {
+            var rate = new RateManagement();
+            rate.Show();
         }
     }
 }

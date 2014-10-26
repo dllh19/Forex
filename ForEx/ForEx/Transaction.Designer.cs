@@ -55,8 +55,8 @@
             this.comboType = new System.Windows.Forms.ComboBox();
             this.lblType = new System.Windows.Forms.Label();
             this.grpMovement = new System.Windows.Forms.GroupBox();
-            this.textRateReadOnly = new System.Windows.Forms.TextBox();
             this.btnCalAdd = new System.Windows.Forms.Button();
+            this.textRateReadOnly = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.GroupBox5.SuspendLayout();
             this.Panel2.SuspendLayout();
@@ -65,7 +65,7 @@
             // 
             // btnDiscard
             // 
-            this.btnDiscard.Location = new System.Drawing.Point(467, 552);
+            this.btnDiscard.Location = new System.Drawing.Point(465, 552);
             this.btnDiscard.Name = "btnDiscard";
             this.btnDiscard.Size = new System.Drawing.Size(89, 48);
             this.btnDiscard.TabIndex = 29;
@@ -134,7 +134,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(304, 552);
+            this.btnPrint.Location = new System.Drawing.Point(350, 552);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(89, 48);
             this.btnPrint.TabIndex = 28;
@@ -324,14 +324,6 @@
             this.grpMovement.TabIndex = 25;
             this.grpMovement.TabStop = false;
             // 
-            // textRateReadOnly
-            // 
-            this.textRateReadOnly.Location = new System.Drawing.Point(245, 60);
-            this.textRateReadOnly.Name = "textRateReadOnly";
-            this.textRateReadOnly.ReadOnly = true;
-            this.textRateReadOnly.Size = new System.Drawing.Size(122, 20);
-            this.textRateReadOnly.TabIndex = 20;
-            // 
             // btnCalAdd
             // 
             this.btnCalAdd.Location = new System.Drawing.Point(792, 125);
@@ -341,6 +333,14 @@
             this.btnCalAdd.Text = "Calculate and Add";
             this.btnCalAdd.UseVisualStyleBackColor = true;
             this.btnCalAdd.Click += new System.EventHandler(this.btnCalAdd_Click);
+            // 
+            // textRateReadOnly
+            // 
+            this.textRateReadOnly.Location = new System.Drawing.Point(245, 60);
+            this.textRateReadOnly.Name = "textRateReadOnly";
+            this.textRateReadOnly.ReadOnly = true;
+            this.textRateReadOnly.Size = new System.Drawing.Size(122, 20);
+            this.textRateReadOnly.TabIndex = 20;
             // 
             // Transaction
             // 

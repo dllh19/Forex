@@ -92,6 +92,7 @@
             this.Controls.Add(this.lblLogin);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

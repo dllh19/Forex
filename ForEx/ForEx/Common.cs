@@ -27,7 +27,8 @@ namespace ForEx
             LoggedOut,
             CashIn,
             CashOut,
-            Transaction
+            Transaction,
+            RateUpdate
         }
 
         public static void SetUser(int UserId, String Name, String Surname, String Role, String Username)

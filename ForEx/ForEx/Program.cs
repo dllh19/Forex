@@ -17,7 +17,7 @@ namespace ForEx
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RateManagement());
+            Application.Run(new Login());
         }
     }
 }

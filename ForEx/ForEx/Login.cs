@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ForEx.Classes;
 
 namespace ForEx
 {
@@ -97,6 +98,12 @@ namespace ForEx
         private void Login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Login_Load_1(object sender, EventArgs e)
+        {
+            Receipt tick = new Receipt(34234,DateTime.Now,"aera","ar",324234f,"are");
+            tick.print();
         }
     }
 }

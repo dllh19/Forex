@@ -80,6 +80,7 @@
     <Compile Include="Classes\Currency.cs" />
     <Compile Include="Classes\Printing.cs" />
     <Compile Include="Classes\Rate.cs" />
+    <Compile Include="Classes\Transaction.cs" />
     <Compile Include="Classes\UserLoggedIn.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Client.cs">

@@ -35,6 +35,7 @@
             this.btnPOSPanel = new System.Windows.Forms.Button();
             this.btnBulkCashIn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSignout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,11 +101,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(240, 478);
             this.dataGridView1.TabIndex = 21;
             // 
+            // btnSignout
+            // 
+            this.btnSignout.Location = new System.Drawing.Point(240, 433);
+            this.btnSignout.Name = "btnSignout";
+            this.btnSignout.Size = new System.Drawing.Size(119, 60);
+            this.btnSignout.TabIndex = 28;
+            this.btnSignout.Text = "Sign out";
+            this.btnSignout.UseVisualStyleBackColor = true;
+            this.btnSignout.Click += new System.EventHandler(this.btnSignout_Click);
+            // 
             // TellerDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 508);
+            this.Controls.Add(this.btnSignout);
             this.Controls.Add(this.btnCashInCashOut);
             this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnCloseCash);
@@ -129,5 +141,6 @@
         private System.Windows.Forms.Button btnPOSPanel;
         private System.Windows.Forms.Button btnBulkCashIn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnSignout;
     }
 }

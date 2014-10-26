@@ -332,7 +332,7 @@ namespace ForEx
                 cmd.Parameters.AddWithValue("@currency", row.Cells[1].Value.ToString());
                 cmd.Parameters.AddWithValue("@amount", Convert.ToDecimal(row.Cells[2].Value));
                 cmd.Parameters.AddWithValue("@rates", Convert.ToDecimal(row.Cells[3].Value));
-                cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(row.Cells[3].Value));
+                cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(row.Cells[4].Value));
                 cmd.Parameters.AddWithValue("@date_created", DateTime.Now);
                 cmd.Parameters.AddWithValue("@username", "TEST"); //todo - change get username
                 cmd.Parameters.AddWithValue("@receipt_id", receiptId);

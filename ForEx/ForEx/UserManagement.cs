@@ -26,7 +26,7 @@ namespace ForEx
 
             if (CheckName() && CheckPassword(txtPassword.Text, txtConfirmpass.Text) && CheckUsername(txtUsername.Text))
             {
-                cmd = new SqlCommand("INSERT INTO tbl_users (Name, Surname, Password,Address, Country, Phone,email,Date_created,Last_login_date,role,Username) VALUES (@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,'teller',@Username)");
+                cmd = new SqlCommand("INSERT INTO tbl_users (Name, Surname, Password,Address, Country, Phone,email,Date_created,Last_login_date,role,Username) VALUES (@Name, @Surname, @Password,@Address, @Country, @Phone,@email,GETDATE(),NULL,@type,@Username)");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
                 cmd.Parameters.AddWithValue("@Name", txtName.Text);
@@ -37,6 +37,7 @@ namespace ForEx
                 cmd.Parameters.AddWithValue("@Phone", textPhone.Text);
                 cmd.Parameters.AddWithValue("@email", textEmail.Text);
                 cmd.Parameters.AddWithValue("@Username", txtUsername.Text);
+                cmd.Parameters.AddWithValue("@type", cmbType.Text);
                 con.Open();
                 int row = cmd.ExecuteNonQuery();
                 con.Close();

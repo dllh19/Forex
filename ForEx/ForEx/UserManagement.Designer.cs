@@ -75,6 +75,9 @@
             this.btnUpdatePass = new System.Windows.Forms.Button();
             this.txtTellername = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.tabControl.SuspendLayout();
             this.tabAddUser.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -90,6 +93,7 @@
             this.tabEditUSer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabResetPassword.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textPhone
@@ -134,10 +138,11 @@
             this.flowLayoutPanel1.Controls.Add(this.panelCountry);
             this.flowLayoutPanel1.Controls.Add(this.panelEmail);
             this.flowLayoutPanel1.Controls.Add(this.panelPhone);
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(769, 423);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(769, 464);
             this.flowLayoutPanel1.TabIndex = 50;
             // 
             // panelName
@@ -384,7 +389,7 @@
             // 
             // btnAddUser
             // 
-            this.btnAddUser.Location = new System.Drawing.Point(312, 435);
+            this.btnAddUser.Location = new System.Drawing.Point(319, 476);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(75, 23);
             this.btnAddUser.TabIndex = 73;
@@ -542,6 +547,39 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Enter Teller\'s Username";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cmbType);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Location = new System.Drawing.Point(3, 423);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(476, 38);
+            this.panel2.TabIndex = 72;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(11, 10);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 20);
+            this.label13.TabIndex = 70;
+            this.label13.Text = "Type";
+            // 
+            // cmbType
+            // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.Items.AddRange(new object[] {
+            "supervisor",
+            "teller",
+            "admin",
+            "manager"});
+            this.cmbType.Location = new System.Drawing.Point(178, 8);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(218, 21);
+            this.cmbType.TabIndex = 71;
+            // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -577,6 +615,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabResetPassword.ResumeLayout(false);
             this.tabResetPassword.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -630,5 +670,8 @@
         private System.Windows.Forms.Button btnUpdatePass;
         private System.Windows.Forms.TextBox txtTellername;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.Label label13;
     }
 }

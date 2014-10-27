@@ -30,7 +30,11 @@ namespace ForEx
             gridUpdateRate.AllowUserToAddRows = false;
 
             con.Open();
-            string query = "SELECT * FROM tbl_rate  WHERE CONVERT(VARCHAR(10),date_updated,10)=CONVERT(VARCHAR(10),@DateCreated,10) ";
+            string query = "   SELECT *  FROM [ForExDB].[dbo].[tbl_rate] INNER JOIN ( select max([date_updated]) " +
+                           " as MaxDate from [ForExDB].[dbo].[tbl_rate]) tm on " +
+                            "[ForExDB].[dbo].[tbl_rate].[date_updated] = tm.MaxDate " +
+                           "WHERE CONVERT(VARCHAR(10),[date_updated],10)=CONVERT(VARCHAR(10),@DateCreated,10)";
+
                 cmd = new SqlCommand(query, con);
                 cmd.Parameters.Add("@DateCreated", SqlDbType.DateTime).Value = DateTime.Now;
                 var reader = cmd.ExecuteReader();

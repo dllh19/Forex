@@ -69,6 +69,7 @@ namespace ForEx
                     textRate.Text = fileredCurrency.First().ToString();
 
                     textTotal.Text = null;
+                    txtAmount.Text = null;
                 }
                 else
                 {
@@ -77,6 +78,7 @@ namespace ForEx
                     textRate.Text = fileredCurrency.First().ToString();
 
                     textTotal.Text = null;
+                    txtAmount.Text = null;
                 }
             }
         }
@@ -101,6 +103,7 @@ namespace ForEx
                     textRate.Text = fileredCurrency.First().ToString();
 
                     textTotal.Text = null;
+                    txtAmount.Text = null;
                 }
                 else
                 {
@@ -109,6 +112,7 @@ namespace ForEx
                     textRate.Text = fileredCurrency.First().ToString();
 
                     textTotal.Text = null;
+                    txtAmount.Text = null;
                 }
             }
         }
@@ -346,6 +350,134 @@ namespace ForEx
             }
         }
 
+        private void updateBalance(Balance rsBal, Balance curBal)
+        {
+            List<string> distinctCurrency = new List<string>();
+            decimal TotalRsBal = rsBal.balance;
+
+            //get distinct currency in datagridview
+            foreach (DataGridViewRow row in dgvTransaction.Rows)
+            {
+                distinctCurrency.Add(row.Cells[1].Value.ToString());
+            }
+
+            distinctCurrency = distinctCurrency.Distinct().ToList();
+
+            List<tempBalance> tb = new List<tempBalance>();
+
+            /*-----BUY ONLY ---------*/
+            decimal RsBuytotal = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy")
+                    .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
+
+            TotalRsBal = TotalRsBal - RsBuytotal;
+
+            decimal newBuyBalance = TotalRsBal;
+
+            tempBalance allBuyRs = new tempBalance();
+            allBuyRs.balance = newBuyBalance;
+            allBuyRs.currencyId = 1;
+            allBuyRs.date = DateTime.Now;
+            tb.Add(allBuyRs);
+
+            foreach (string cur in distinctCurrency)
+            {
+                decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+                .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
+
+                var bo = new tempBalance
+                {
+                    currencyId = Common.getCurrencyId(cur),
+                    balance = Common.getLatestBalanceForToday(cur).balance + total,
+                    date = DateTime.Now
+                };
+                tb.Add(bo);
+            }
+            /*--------END BUY ONLY----------*/
+
+            /*--------SELL ONLY----------*/
+            decimal RsSelltotal = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell")
+                    .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
+
+            TotalRsBal = TotalRsBal + RsSelltotal;
+
+            decimal newSellBalance = TotalRsBal;
+
+            tempBalance allSellRs = new tempBalance();
+            allSellRs.balance = TotalRsBal;
+            allSellRs.currencyId = 1;
+            allSellRs.date = DateTime.Now;
+            tb.Add(allSellRs);
+
+            foreach (string cur in distinctCurrency)
+            {
+                decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+                .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
+
+                var bo = new tempBalance
+                {
+                    currencyId = Common.getCurrencyId(cur),
+                    balance = Common.getLatestBalanceForToday(cur).balance - total,
+                    date = DateTime.Now
+                };
+                tb.Add(bo);
+            }
+            /*--------END SELL ONLY----------*/
+
+
+
+        }
+
+        private bool validateRsBalance(Balance bl)
+        {
+            bool value = true;
+
+            decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy")
+                    .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
+
+            if (total > bl.balance)
+            {
+                MessageBox.Show("MUR balance of " + bl.balance.ToString() + " has been exceeded!");
+                value = false;
+            }
+
+            return value;
+        }
+
+        private bool validateCurrencyBalance(Balance bl)
+        {
+            bool value = true;
+            List<string> distinctCurrency = new List<string>();
+
+            //get distinct currency in datagridview
+            foreach (DataGridViewRow row in dgvTransaction.Rows)
+            {
+                distinctCurrency.Add(row.Cells[1].Value.ToString());
+            }
+
+            distinctCurrency = distinctCurrency.Distinct().ToList();
+
+            foreach (string cur in distinctCurrency)
+            {
+                decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+                .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
+
+                if (total > bl.balance)
+                {
+                    MessageBox.Show(cur + " balance of " + bl.balance.ToString() + " has been exceeded!");
+                    value = false;
+                    break;
+                }
+            }
+
+            return value;
+        }
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (comboClient.SelectedItem == null)
@@ -357,6 +489,19 @@ namespace ForEx
             if (dgvTransaction.Rows.Count == 0)
             {
                 MessageBox.Show("No transactions");
+                return;
+            }
+
+            var currencyBalance = Common.getLatestBalanceForToday(comboCurrency.SelectedValue.ToString()); // todo - not good to fix (make a list of balance)
+            var RsBalance = Common.getLatestBalanceForToday("MUR");          
+
+            if (!validateRsBalance(RsBalance))
+            {
+                return;
+            }
+
+            if (!validateCurrencyBalance(currencyBalance))
+            {
                 return;
             }
 
@@ -377,6 +522,9 @@ namespace ForEx
 
                 ts.Add(newTs);
             }
+
+            //create audit
+            Common.Audit(Common.Operation.Transaction, Common.GetUser().Name + " " + Common.GetUser().Surname + " has processed transaction with Receipt ID: " + receiptID);
 
             Receipt tick = new Receipt(DateTime.Now, Common.GetUser().Name + " " + Common.GetUser().Surname, ts,receiptID);
             tick.print();

@@ -34,8 +34,51 @@ namespace ForEx
 
         private void populate_client()
         {
-            comboClient.Items.Add("Cash");
-            comboClient.SelectedItem = "Cash";
+            if (clients == null)
+            {
+                ComboboxItem item = new ComboboxItem();
+                item.Text = "Cash";
+                item.Value = 0;
+
+                comboClient.Items.Add(item);
+                comboClient.SelectedItem = item;
+                comboClient.Enabled = false;
+            }
+            else
+            {
+                if (clients.Type == "Individual")
+                {
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = clients.Name + " " + clients.Surname;
+                    item.Value = clients.Code;
+
+                    comboClient.Items.Add(item);
+                    comboClient.SelectedItem = item;
+                    comboClient.Enabled = false;
+                }
+                else
+                {
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = clients.CompanyName;
+                    item.Value = clients.Code;
+
+                    comboClient.Items.Add(item);
+                    comboClient.SelectedItem = item;
+                    comboClient.Enabled = false;
+                }
+            }
+            
+        }
+
+        public class ComboboxItem //declare object with combobox item
+        {
+            public string Text { get; set; }
+            public object Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
         }
 
         private void populate_type()
@@ -292,7 +335,7 @@ namespace ForEx
             int receiptId = 0;
             try
             {
-                cmd = new SqlCommand("INSERT INTO tbl_receipt (teller, date_create, num_transaction, client) VALUES (@teller, @date_created, @num_transaction, @client); " +
+                cmd = new SqlCommand("INSERT INTO tbl_receipt (teller, date_create, num_transaction, client, client_code) VALUES (@teller, @date_created, @num_transaction, @client, @client_code); " +
                                      "SELECT SCOPE_IDENTITY();");
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = con;
@@ -300,6 +343,7 @@ namespace ForEx
                 cmd.Parameters.AddWithValue("@date_created", DateTime.Now);
                 cmd.Parameters.AddWithValue("@num_transaction", dgvTransaction.Rows.Count);
                 cmd.Parameters.AddWithValue("@client", comboClient.SelectedItem.ToString()); // todo - change to implement client name or bank name
+                cmd.Parameters.AddWithValue("@client_code", (comboClient.SelectedItem as ComboboxItem).Value);
                 
                 try
                 {
@@ -357,14 +401,6 @@ namespace ForEx
             List<CurrencyBalance> TotalCurrency = new List<CurrencyBalance>();
             TotalCurrency = curBal;
 
-            ////get distinct currency in datagridview
-            //foreach (DataGridViewRow row in dgvTransaction.Rows)
-            //{
-            //    distinctCurrency.Add(row.Cells[1].Value.ToString());
-            //}
-
-            //distinctCurrency = distinctCurrency.Distinct().ToList();
-
             List<tempBalance> tb = new List<tempBalance>();
 
             /*-----BUY ONLY ---------*/
@@ -373,29 +409,6 @@ namespace ForEx
                     .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
 
             TotalRsBal = TotalRsBal - RsBuytotal;
-
-            //decimal newBuyBalance = TotalRsBal;
-
-            //tempBalance allBuyRs = new tempBalance();
-            //allBuyRs.balance = newBuyBalance;
-            //allBuyRs.currencyId = 1;
-            //allBuyRs.date = DateTime.Now;
-            //tb.Add(allBuyRs);
-
-            //foreach (string cur in distinctCurrency)
-            //{
-            //    decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
-            //    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
-            //    .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
-
-            //    var bo = new tempBalance
-            //    {
-            //        currencyId = Common.getCurrencyId(cur),
-            //        balance = Common.getLatestBalanceForToday(cur).balance + total,
-            //        date = DateTime.Now
-            //    };
-            //    tb.Add(bo);
-            //}
 
             foreach (CurrencyBalance cb in TotalCurrency)
             {
@@ -414,29 +427,6 @@ namespace ForEx
                     .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
 
             TotalRsBal = TotalRsBal + RsSelltotal;
-
-            //decimal newSellBalance = TotalRsBal;
-
-            //tempBalance allSellRs = new tempBalance();
-            //allSellRs.balance = TotalRsBal;
-            //allSellRs.currencyId = 1;
-            //allSellRs.date = DateTime.Now;
-            //tb.Add(allSellRs);
-
-            //foreach (string cur in distinctCurrency)
-            //{
-            //    decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
-            //    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
-            //    .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
-
-            //    var bo = new tempBalance
-            //    {
-            //        currencyId = Common.getCurrencyId(cur),
-            //        balance = Common.getLatestBalanceForToday(cur).balance - total,
-            //        date = DateTime.Now
-            //    };
-            //    tb.Add(bo);
-            //}
 
             foreach (CurrencyBalance cb in TotalCurrency)
             {
@@ -506,15 +496,6 @@ namespace ForEx
         private bool validateCurrencyBalance(List<CurrencyBalance> bl)
         {
             bool value = true;
-            //List<string> distinctCurrency = new List<string>();
-
-            ////get distinct currency in datagridview
-            //foreach (DataGridViewRow row in dgvTransaction.Rows)
-            //{
-            //    distinctCurrency.Add(row.Cells[1].Value.ToString());
-            //}
-
-            //distinctCurrency = distinctCurrency.Distinct().ToList();
 
             foreach (CurrencyBalance cur in bl)
             {
@@ -606,12 +587,18 @@ namespace ForEx
             Receipt tick = new Receipt(DateTime.Now, Common.GetUser().Name + " " + Common.GetUser().Surname, ts,receiptID);
             tick.print();
 
+            this.Close();
         }
 
         public class CurrencyBalance
         {
             public string currencyName { get; set; }
             public decimal totalValue { get; set; }
+        }
+
+        private void btnDiscard_Click(object sender, EventArgs e)
+        {
+            this.Close(); 
         }
     }
 }

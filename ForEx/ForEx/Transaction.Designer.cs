@@ -71,6 +71,7 @@
             this.btnDiscard.TabIndex = 29;
             this.btnDiscard.Text = "Discard and Exit";
             this.btnDiscard.UseVisualStyleBackColor = true;
+            this.btnDiscard.Click += new System.EventHandler(this.btnDiscard_Click);
             // 
             // dgvTransaction
             // 
@@ -213,7 +214,6 @@
             // 
             // comboClient
             // 
-            this.comboClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboClient.FormattingEnabled = true;
             this.comboClient.Location = new System.Drawing.Point(83, 14);
             this.comboClient.Name = "comboClient";

@@ -87,7 +87,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tabSearch = new System.Windows.Forms.TabPage();
-            this.flowSearchGrid = new System.Windows.Forms.FlowLayoutPanel();
             this.gridSearchClient = new System.Windows.Forms.DataGridView();
             this.panelSearchpassport = new System.Windows.Forms.FlowLayoutPanel();
             this.label19 = new System.Windows.Forms.Label();
@@ -109,6 +108,7 @@
             this.btnEditSearch = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl.SuspendLayout();
             this.tabAddClient.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -131,7 +131,6 @@
             this.panelOccupation.SuspendLayout();
             this.panelUpload.SuspendLayout();
             this.tabSearch.SuspendLayout();
-            this.flowSearchGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).BeginInit();
             this.panelSearchpassport.SuspendLayout();
             this.panelSearchType.SuspendLayout();
@@ -139,6 +138,7 @@
             this.panelSearchName.SuspendLayout();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -698,9 +698,6 @@
             // 
             // tabSearch
             // 
-            this.tabSearch.Controls.Add(this.flowSearchGrid);
-            this.tabSearch.Controls.Add(this.panelSearchpassport);
-            this.tabSearch.Controls.Add(this.panelSearchType);
             this.tabSearch.Controls.Add(this.flowLayoutPanel2);
             this.tabSearch.Controls.Add(this.btnSearch);
             this.tabSearch.Controls.Add(this.cmbFilter);
@@ -713,20 +710,12 @@
             this.tabSearch.Text = "Search Client";
             this.tabSearch.UseVisualStyleBackColor = true;
             // 
-            // flowSearchGrid
-            // 
-            this.flowSearchGrid.Controls.Add(this.gridSearchClient);
-            this.flowSearchGrid.Location = new System.Drawing.Point(10, 192);
-            this.flowSearchGrid.Name = "flowSearchGrid";
-            this.flowSearchGrid.Size = new System.Drawing.Size(872, 443);
-            this.flowSearchGrid.TabIndex = 9;
-            // 
             // gridSearchClient
             // 
             this.gridSearchClient.AllowUserToAddRows = false;
             this.gridSearchClient.AllowUserToDeleteRows = false;
             this.gridSearchClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSearchClient.Location = new System.Drawing.Point(3, 3);
+            this.gridSearchClient.Location = new System.Drawing.Point(3, 72);
             this.gridSearchClient.Name = "gridSearchClient";
             this.gridSearchClient.ReadOnly = true;
             this.gridSearchClient.Size = new System.Drawing.Size(869, 376);
@@ -738,7 +727,7 @@
             // 
             this.panelSearchpassport.Controls.Add(this.label19);
             this.panelSearchpassport.Controls.Add(this.txtSearchPassport);
-            this.panelSearchpassport.Location = new System.Drawing.Point(10, 92);
+            this.panelSearchpassport.Location = new System.Drawing.Point(667, 3);
             this.panelSearchpassport.Name = "panelSearchpassport";
             this.panelSearchpassport.Size = new System.Drawing.Size(658, 44);
             this.panelSearchpassport.TabIndex = 7;
@@ -764,7 +753,7 @@
             // 
             this.panelSearchType.Controls.Add(this.label21);
             this.panelSearchType.Controls.Add(this.cmbSearchType);
-            this.panelSearchType.Location = new System.Drawing.Point(10, 142);
+            this.panelSearchType.Location = new System.Drawing.Point(1331, 3);
             this.panelSearchType.Name = "panelSearchType";
             this.panelSearchType.Size = new System.Drawing.Size(658, 44);
             this.panelSearchType.TabIndex = 8;
@@ -794,7 +783,9 @@
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.panelSearchName);
+            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel3);
+            this.flowLayoutPanel2.Controls.Add(this.gridSearchClient);
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(10, 41);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(882, 603);
@@ -926,6 +917,17 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Enter Client Name";
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.panelSearchName);
+            this.flowLayoutPanel3.Controls.Add(this.panelSearchpassport);
+            this.flowLayoutPanel3.Controls.Add(this.panelSearchType);
+            this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(827, 63);
+            this.flowLayoutPanel3.TabIndex = 7;
+            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -976,7 +978,6 @@
             this.panelUpload.PerformLayout();
             this.tabSearch.ResumeLayout(false);
             this.tabSearch.PerformLayout();
-            this.flowSearchGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).EndInit();
             this.panelSearchpassport.ResumeLayout(false);
             this.panelSearchpassport.PerformLayout();
@@ -988,6 +989,7 @@
             this.tabEdit.ResumeLayout(false);
             this.tabEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1072,8 +1074,8 @@
         private System.Windows.Forms.TextBox txtSearchPassport;
         private System.Windows.Forms.FlowLayoutPanel panelSearchType;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.FlowLayoutPanel flowSearchGrid;
         private System.Windows.Forms.ComboBox cmbSearchType;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
     }
 }

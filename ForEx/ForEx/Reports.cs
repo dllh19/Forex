@@ -45,7 +45,10 @@ namespace ForEx
 
         private void btnTransacDaily_Click(object sender, EventArgs e)
         {
+            DateTime start = dtpTransacDaily.Value;
 
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportDaily, null, start);
+            crv.Show();
         }
 
         private void btnTransactionReportWeekly_Click(object sender, EventArgs e)

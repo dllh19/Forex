@@ -876,10 +876,6 @@ namespace ForEx.Datasets {
             
             private global::System.Data.DataColumn columnTransactionBuyBank;
             
-            private global::System.Data.DataColumn columnTransactionCustomer;
-            
-            private global::System.Data.DataColumn columnTransactionBank;
-            
             private global::System.Data.DataColumn columnDateRange;
             
             private global::System.Data.DataColumn columnTransactionSellCustomer;
@@ -977,22 +973,6 @@ namespace ForEx.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TransactionCustomerColumn {
-                get {
-                    return this.columnTransactionCustomer;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TransactionBankColumn {
-                get {
-                    return this.columnTransactionBank;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn DateRangeColumn {
                 get {
                     return this.columnDateRange;
@@ -1052,7 +1032,7 @@ namespace ForEx.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public AnnexOneRow AddAnnexOneRow(string Symbol, string OpeningBalanceOnHand, string OpeningBalanceAtBank, string ClosingBalanceOnHand, string ClosingBalanceAtBank, string TransactionBuyCustomer, string TransactionBuyBank, string TransactionCustomer, string TransactionBank, string DateRange, string TransactionSellCustomer, string TransactionSellBank) {
+            public AnnexOneRow AddAnnexOneRow(string Symbol, string OpeningBalanceOnHand, string OpeningBalanceAtBank, string ClosingBalanceOnHand, string ClosingBalanceAtBank, string TransactionBuyCustomer, string TransactionBuyBank, string DateRange, string TransactionSellCustomer, string TransactionSellBank) {
                 AnnexOneRow rowAnnexOneRow = ((AnnexOneRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Symbol,
@@ -1062,8 +1042,6 @@ namespace ForEx.Datasets {
                         ClosingBalanceAtBank,
                         TransactionBuyCustomer,
                         TransactionBuyBank,
-                        TransactionCustomer,
-                        TransactionBank,
                         DateRange,
                         TransactionSellCustomer,
                         TransactionSellBank};
@@ -1096,8 +1074,6 @@ namespace ForEx.Datasets {
                 this.columnClosingBalanceAtBank = base.Columns["ClosingBalanceAtBank"];
                 this.columnTransactionBuyCustomer = base.Columns["TransactionBuyCustomer"];
                 this.columnTransactionBuyBank = base.Columns["TransactionBuyBank"];
-                this.columnTransactionCustomer = base.Columns["TransactionCustomer"];
-                this.columnTransactionBank = base.Columns["TransactionBank"];
                 this.columnDateRange = base.Columns["DateRange"];
                 this.columnTransactionSellCustomer = base.Columns["TransactionSellCustomer"];
                 this.columnTransactionSellBank = base.Columns["TransactionSellBank"];
@@ -1120,10 +1096,6 @@ namespace ForEx.Datasets {
                 base.Columns.Add(this.columnTransactionBuyCustomer);
                 this.columnTransactionBuyBank = new global::System.Data.DataColumn("TransactionBuyBank", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTransactionBuyBank);
-                this.columnTransactionCustomer = new global::System.Data.DataColumn("TransactionCustomer", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTransactionCustomer);
-                this.columnTransactionBank = new global::System.Data.DataColumn("TransactionBank", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTransactionBank);
                 this.columnDateRange = new global::System.Data.DataColumn("DateRange", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateRange);
                 this.columnTransactionSellCustomer = new global::System.Data.DataColumn("TransactionSellCustomer", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1987,38 +1959,6 @@ namespace ForEx.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TransactionCustomer {
-                get {
-                    try {
-                        return ((string)(this[this.tableAnnexOne.TransactionCustomerColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionCustomer\' in table \'AnnexOne\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAnnexOne.TransactionCustomerColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TransactionBank {
-                get {
-                    try {
-                        return ((string)(this[this.tableAnnexOne.TransactionBankColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionBank\' in table \'AnnexOne\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAnnexOne.TransactionBankColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string DateRange {
                 get {
                     try {
@@ -2147,30 +2087,6 @@ namespace ForEx.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTransactionBuyBankNull() {
                 this[this.tableAnnexOne.TransactionBuyBankColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTransactionCustomerNull() {
-                return this.IsNull(this.tableAnnexOne.TransactionCustomerColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTransactionCustomerNull() {
-                this[this.tableAnnexOne.TransactionCustomerColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTransactionBankNull() {
-                return this.IsNull(this.tableAnnexOne.TransactionBankColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTransactionBankNull() {
-                this[this.tableAnnexOne.TransactionBankColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

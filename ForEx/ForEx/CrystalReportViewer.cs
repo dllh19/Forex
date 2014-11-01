@@ -70,6 +70,10 @@ namespace ForEx
                 case (Common.ReportType.SaleReportPeriod):
                     break;
                 case (Common.ReportType.TransactionReportDaily):
+                    Reports.Annex1 an1 = new Reports.Annex1();
+                    crystalReportViewer1.ReportSource = an1;
+                    an1.SetDataSource(GetTransactionDaily(start));
+
                     break;
                 case (Common.ReportType.TransactionReportPeriod):
                     Reports.Annex1 an = new Reports.Annex1();
@@ -214,39 +218,156 @@ namespace ForEx
                         else
                             symbol = string.Empty;
 
-                        decimal FirstCashIn;
+                        string FirstCashIn;
                         if (!string.IsNullOrEmpty(row["FirstCashIn"].ToString()))
                         {
-                            FirstCashIn = Convert.ToDecimal(row["FirstCashIn"]);
+                            FirstCashIn = (row["FirstCashIn"]).ToString();
                         }
                         else
                         {
-                            FirstCashIn = 0;
+                            FirstCashIn = "0";
                         }
 
-                        decimal ClientPurchaseTotal;
+                        string ClientPurchaseTotal;
                         if (!string.IsNullOrEmpty(row["ClientPurchaseTotal"].ToString()))
                         {
-                            ClientPurchaseTotal = Convert.ToDecimal(row["ClientPurchaseTotal"]);
+                            ClientPurchaseTotal = (row["ClientPurchaseTotal"]).ToString();
                         }
                         else
                         {
-                            ClientPurchaseTotal = 0;
+                            ClientPurchaseTotal = "0";
                         }
 
-                        decimal LastCashout;
-                        if (!string.IsNullOrEmpty(row["LastCashout"].ToString()))
+                        string ClientSellTotal;
+                        if (!string.IsNullOrEmpty(row["ClientSellTotal"].ToString()))
                         {
-                            LastCashout = Convert.ToDecimal(row["LastCashout"]);
+                            ClientSellTotal = (row["ClientSellTotal"]).ToString();
                         }
                         else
                         {
-                            LastCashout = 0;
+                            ClientSellTotal = "0";
+                        }
+
+                        string LastCashout;
+                        if (!string.IsNullOrEmpty(row["LastCashout"].ToString()))
+                        {
+                            LastCashout = (row["LastCashout"]).ToString();
+                        }
+                        else
+                        {
+                            LastCashout = "0";
                         }
 
                         AnnexOne annex = new AnnexOne
                         {
-    
+                            Symbol = symbol,
+                            OpeningBalanceAtBank = "0",
+                            OpeningBalanceOnHand = FirstCashIn,
+                            ClosingBalanceAtBank = "0",
+                            ClosingBalanceOnHand = LastCashout,
+                            TransactionBuyBank = "0",
+                            TransactionSellBank = "0",
+                            TransactionBuyCustomer = ClientPurchaseTotal,
+                            TransactionSellCustomer = ClientSellTotal,
+                            DateRange = start.ToString("ddd, MMM d, yyyy") + " - " + end.ToString("ddd, MMM d, yyyy")
+                        };
+
+                        ListAnnexOne.Add(annex);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while generating the report: " + ex.InnerException);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return ListAnnexOne;
+        }
+
+
+        private List<AnnexOne> GetTransactionDaily(DateTime daily)
+        {
+
+            con.Open();
+
+            List<AnnexOne> ListAnnexOne = new List<AnnexOne>();
+
+            cmd = new SqlCommand("GetTransactionDaily", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@CurrenctDate", SqlDbType.DateTime).Value = daily;
+
+            var reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    DataTable myTable = new DataTable();
+                    myTable.Load(reader);
+                    foreach (DataRow row in myTable.Rows)
+                    {
+                        string symbol;
+                        if (!string.IsNullOrEmpty(row["symbol"].ToString()))
+                            symbol = (row["symbol"].ToString());
+                        else
+                            symbol = string.Empty;
+
+                        string FirstCashIn;
+                        if (!string.IsNullOrEmpty(row["FirstCashIn"].ToString()))
+                        {
+                            FirstCashIn = (row["FirstCashIn"]).ToString();
+                        }
+                        else
+                        {
+                            FirstCashIn = "0";
+                        }
+
+                        string ClientPurchaseTotal;
+                        if (!string.IsNullOrEmpty(row["ClientPurchaseTotal"].ToString()))
+                        {
+                            ClientPurchaseTotal = (row["ClientPurchaseTotal"]).ToString();
+                        }
+                        else
+                        {
+                            ClientPurchaseTotal = "0";
+                        }
+
+                        string ClientSellTotal;
+                        if (!string.IsNullOrEmpty(row["ClientSellTotal"].ToString()))
+                        {
+                            ClientSellTotal = (row["ClientSellTotal"]).ToString();
+                        }
+                        else
+                        {
+                            ClientSellTotal = "0";
+                        }
+
+                        string LastCashout;
+                        if (!string.IsNullOrEmpty(row["LastCashout"].ToString()))
+                        {
+                            LastCashout = (row["LastCashout"]).ToString();
+                        }
+                        else
+                        {
+                            LastCashout = "0";
+                        }
+
+                        AnnexOne annex = new AnnexOne
+                        {
+                            Symbol = symbol,
+                            OpeningBalanceAtBank = "0",
+                            OpeningBalanceOnHand = FirstCashIn,
+                            ClosingBalanceAtBank = "0",
+                            ClosingBalanceOnHand = LastCashout,
+                            TransactionBuyBank = "0",
+                            TransactionSellBank = "0",
+                            TransactionBuyCustomer = ClientPurchaseTotal,
+                            TransactionSellCustomer = ClientSellTotal,
+                            DateRange = daily.ToString("ddd, MMM d, yyyy")
                         };
 
                         ListAnnexOne.Add(annex);

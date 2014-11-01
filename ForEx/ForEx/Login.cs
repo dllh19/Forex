@@ -25,7 +25,12 @@ namespace ForEx
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (!(string.IsNullOrEmpty(txtUsername.Text) && !(string.IsNullOrEmpty(txtPass.Text))))
+            loginProcess();
+        }
+
+        private void loginProcess()
+        {
+            if (txtUsername.Text != "" && txtPass.Text != "")
             {
                 con.Open();
                 string query = "SELECT * FROM tbl_users  WHERE Username=@Username AND Password=@Password ";
@@ -50,7 +55,7 @@ namespace ForEx
                     con.Close();
 
                     //Audit
-                    Common.Audit(Common.Operation.LoggedIn,Name + " " + Surname + " has logged into the system");
+                    Common.Audit(Common.Operation.LoggedIn, Name + " " + Surname + " has logged into the system");
 
                     if (Role == "teller")
                     {
@@ -95,18 +100,26 @@ namespace ForEx
             {
                 MessageBox.Show("Either the username or password field is empty");
             }
-
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private void tb_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginProcess();
+            }
         }
 
         private void Login_Load_1(object sender, EventArgs e)
         {
-            //Receipt tick = new Receipt(34234,DateTime.Now,"aera","ar",324234f,"are");
-            //tick.print();
+            formSetting();
+            txtPass.KeyDown += new KeyEventHandler(tb_KeyDown);
+        }
+
+        private void formSetting()
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
     }
 }

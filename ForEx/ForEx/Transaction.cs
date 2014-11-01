@@ -350,18 +350,20 @@ namespace ForEx
             }
         }
 
-        private void updateBalance(Balance rsBal, Balance curBal)
+        private void updateBalance(Balance rsBal, List<CurrencyBalance> curBal)
         {
-            List<string> distinctCurrency = new List<string>();
+            //List<string> distinctCurrency = new List<string>();
             decimal TotalRsBal = rsBal.balance;
+            List<CurrencyBalance> TotalCurrency = new List<CurrencyBalance>();
+            TotalCurrency = curBal;
 
-            //get distinct currency in datagridview
-            foreach (DataGridViewRow row in dgvTransaction.Rows)
-            {
-                distinctCurrency.Add(row.Cells[1].Value.ToString());
-            }
+            ////get distinct currency in datagridview
+            //foreach (DataGridViewRow row in dgvTransaction.Rows)
+            //{
+            //    distinctCurrency.Add(row.Cells[1].Value.ToString());
+            //}
 
-            distinctCurrency = distinctCurrency.Distinct().ToList();
+            //distinctCurrency = distinctCurrency.Distinct().ToList();
 
             List<tempBalance> tb = new List<tempBalance>();
 
@@ -372,27 +374,37 @@ namespace ForEx
 
             TotalRsBal = TotalRsBal - RsBuytotal;
 
-            decimal newBuyBalance = TotalRsBal;
+            //decimal newBuyBalance = TotalRsBal;
 
-            tempBalance allBuyRs = new tempBalance();
-            allBuyRs.balance = newBuyBalance;
-            allBuyRs.currencyId = 1;
-            allBuyRs.date = DateTime.Now;
-            tb.Add(allBuyRs);
+            //tempBalance allBuyRs = new tempBalance();
+            //allBuyRs.balance = newBuyBalance;
+            //allBuyRs.currencyId = 1;
+            //allBuyRs.date = DateTime.Now;
+            //tb.Add(allBuyRs);
 
-            foreach (string cur in distinctCurrency)
+            //foreach (string cur in distinctCurrency)
+            //{
+            //    decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+            //    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+            //    .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
+
+            //    var bo = new tempBalance
+            //    {
+            //        currencyId = Common.getCurrencyId(cur),
+            //        balance = Common.getLatestBalanceForToday(cur).balance + total,
+            //        date = DateTime.Now
+            //    };
+            //    tb.Add(bo);
+            //}
+
+            foreach (CurrencyBalance cb in TotalCurrency)
             {
                 decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
-                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy" && Convert.ToString(r.Cells[1].Value.ToString()) == cb.currencyName)
                 .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
 
-                var bo = new tempBalance
-                {
-                    currencyId = Common.getCurrencyId(cur),
-                    balance = Common.getLatestBalanceForToday(cur).balance + total,
-                    date = DateTime.Now
-                };
-                tb.Add(bo);
+                var obj = TotalCurrency.FirstOrDefault(x => x.currencyName == cb.currencyName);
+                if (obj != null) obj.totalValue = obj.totalValue + total;
             }
             /*--------END BUY ONLY----------*/
 
@@ -403,31 +415,74 @@ namespace ForEx
 
             TotalRsBal = TotalRsBal + RsSelltotal;
 
-            decimal newSellBalance = TotalRsBal;
+            //decimal newSellBalance = TotalRsBal;
 
-            tempBalance allSellRs = new tempBalance();
-            allSellRs.balance = TotalRsBal;
-            allSellRs.currencyId = 1;
-            allSellRs.date = DateTime.Now;
-            tb.Add(allSellRs);
+            //tempBalance allSellRs = new tempBalance();
+            //allSellRs.balance = TotalRsBal;
+            //allSellRs.currencyId = 1;
+            //allSellRs.date = DateTime.Now;
+            //tb.Add(allSellRs);
 
-            foreach (string cur in distinctCurrency)
+            //foreach (string cur in distinctCurrency)
+            //{
+            //    decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
+            //    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+            //    .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
+
+            //    var bo = new tempBalance
+            //    {
+            //        currencyId = Common.getCurrencyId(cur),
+            //        balance = Common.getLatestBalanceForToday(cur).balance - total,
+            //        date = DateTime.Now
+            //    };
+            //    tb.Add(bo);
+            //}
+
+            foreach (CurrencyBalance cb in TotalCurrency)
             {
                 decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
-                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cb.currencyName)
                 .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
 
-                var bo = new tempBalance
-                {
-                    currencyId = Common.getCurrencyId(cur),
-                    balance = Common.getLatestBalanceForToday(cur).balance - total,
-                    date = DateTime.Now
-                };
-                tb.Add(bo);
+                var obj = TotalCurrency.FirstOrDefault(x => x.currencyName == cb.currencyName);
+                if (obj != null) obj.totalValue = obj.totalValue - total;
             }
+
             /*--------END SELL ONLY----------*/
 
+            //build list to insert in DB
+            tempBalance newMUR = new tempBalance();
+            newMUR.balance = TotalRsBal;
+            newMUR.currencyId = 1;
+            newMUR.date = DateTime.Now;
+            tb.Add(newMUR);
 
+            foreach (CurrencyBalance cb in TotalCurrency)
+            {
+                tempBalance currBalance = new tempBalance();
+                currBalance.currencyId = Common.getCurrencyId(cb.currencyName);
+                currBalance.balance = cb.totalValue;
+                currBalance.date = DateTime.Now;
+                tb.Add(currBalance);
+            }
+            
+            //MessageBox.Show(tb.Count().ToString());
+            //insert in DB
+            foreach (tempBalance cb in tb)
+            {
+                cmd = new SqlCommand("INSERT INTO tbl_transactemp (currencyid, date_inserted, balance) VALUES (@currencyid, @date_inserted,@balance)");
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@currencyid", cb.currencyId);
+                cmd.Parameters.AddWithValue("@date_inserted", cb.date);
+                cmd.Parameters.AddWithValue("@balance", cb.balance);
+
+
+                con.Open();
+                int sqlrow = cmd.ExecuteNonQuery();
+                con.Close();
+            }
 
         }
 
@@ -442,34 +497,34 @@ namespace ForEx
             if (total > bl.balance)
             {
                 MessageBox.Show("MUR balance of " + bl.balance.ToString() + " has been exceeded!");
-                value = false;
+                value = false;                
             }
 
             return value;
         }
 
-        private bool validateCurrencyBalance(Balance bl)
+        private bool validateCurrencyBalance(List<CurrencyBalance> bl)
         {
             bool value = true;
-            List<string> distinctCurrency = new List<string>();
+            //List<string> distinctCurrency = new List<string>();
 
-            //get distinct currency in datagridview
-            foreach (DataGridViewRow row in dgvTransaction.Rows)
-            {
-                distinctCurrency.Add(row.Cells[1].Value.ToString());
-            }
+            ////get distinct currency in datagridview
+            //foreach (DataGridViewRow row in dgvTransaction.Rows)
+            //{
+            //    distinctCurrency.Add(row.Cells[1].Value.ToString());
+            //}
 
-            distinctCurrency = distinctCurrency.Distinct().ToList();
+            //distinctCurrency = distinctCurrency.Distinct().ToList();
 
-            foreach (string cur in distinctCurrency)
+            foreach (CurrencyBalance cur in bl)
             {
                 decimal total = dgvTransaction.Rows.Cast<DataGridViewRow>()
-                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur)
+                .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell" && Convert.ToString(r.Cells[1].Value.ToString()) == cur.currencyName)
                 .Sum(t => Convert.ToDecimal(t.Cells[2].Value));
 
-                if (total > bl.balance)
+                if (total > cur.totalValue)
                 {
-                    MessageBox.Show(cur + " balance of " + bl.balance.ToString() + " has been exceeded!");
+                    MessageBox.Show(total + " balance of " + cur.totalValue.ToString() + " has been exceeded!");
                     value = false;
                     break;
                 }
@@ -492,7 +547,27 @@ namespace ForEx
                 return;
             }
 
-            var currencyBalance = Common.getLatestBalanceForToday(comboCurrency.SelectedValue.ToString()); // todo - not good to fix (make a list of balance)
+            List<string> distinctCurrency = new List<string>();
+            List<CurrencyBalance> currencyBalanceList = new List<CurrencyBalance>();
+
+            //get distinct currency in datagridview
+            foreach (DataGridViewRow row in dgvTransaction.Rows)
+            {
+                distinctCurrency.Add(row.Cells[1].Value.ToString());
+            }
+
+            distinctCurrency = distinctCurrency.Distinct().ToList();
+
+            //get total balance for each currency
+            foreach (string cur in distinctCurrency)
+            {
+                CurrencyBalance cb = new CurrencyBalance();
+                cb.currencyName = cur;
+                cb.totalValue = Common.getLatestBalanceForToday(cur).balance;
+                currencyBalanceList.Add(cb);
+            }
+
+            //var currencyBalance = Common.getLatestBalanceForToday(comboCurrency.SelectedValue.ToString()); // todo - not good to fix (make a list of balance)
             var RsBalance = Common.getLatestBalanceForToday("MUR");          
 
             if (!validateRsBalance(RsBalance))
@@ -500,10 +575,12 @@ namespace ForEx
                 return;
             }
 
-            if (!validateCurrencyBalance(currencyBalance))
+            if (!validateCurrencyBalance(currencyBalanceList))
             {
                 return;
             }
+
+            updateBalance(RsBalance, currencyBalanceList);
 
             int receiptID =  saveReceipt();
 
@@ -529,6 +606,12 @@ namespace ForEx
             Receipt tick = new Receipt(DateTime.Now, Common.GetUser().Name + " " + Common.GetUser().Surname, ts,receiptID);
             tick.print();
 
+        }
+
+        public class CurrencyBalance
+        {
+            public string currencyName { get; set; }
+            public decimal totalValue { get; set; }
         }
     }
 }

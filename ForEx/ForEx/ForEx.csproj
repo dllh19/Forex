@@ -79,6 +79,7 @@
     <Compile Include="CashOut.Designer.cs">
       <DependentUpon>CashOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\AnnexOne.cs" />
     <Compile Include="Classes\Balance.cs" />
     <Compile Include="Classes\Clients.cs" />
     <Compile Include="Classes\Countries.cs" />

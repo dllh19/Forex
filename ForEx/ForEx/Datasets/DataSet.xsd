@@ -39,6 +39,24 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="AnnexOne" msprop:Generator_TableClassName="AnnexOneDataTable" msprop:Generator_TableVarName="tableAnnexOne" msprop:Generator_RowChangedName="AnnexOneRowChanged" msprop:Generator_TablePropName="AnnexOne" msprop:Generator_RowDeletingName="AnnexOneRowDeleting" msprop:Generator_RowChangingName="AnnexOneRowChanging" msprop:Generator_RowEvHandlerName="AnnexOneRowChangeEventHandler" msprop:Generator_RowDeletedName="AnnexOneRowDeleted" msprop:Generator_RowClassName="AnnexOneRow" msprop:Generator_UserTableName="AnnexOne" msprop:Generator_RowEvArgName="AnnexOneRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Symbol" msprop:Generator_ColumnVarNameInTable="columnSymbol" msprop:Generator_ColumnPropNameInRow="Symbol" msprop:Generator_ColumnPropNameInTable="SymbolColumn" msprop:Generator_UserColumnName="Symbol" type="xs:string" minOccurs="0" />
+              <xs:element name="OpeningBalanceOnHand" msprop:Generator_ColumnVarNameInTable="columnOpeningBalanceOnHand" msprop:Generator_ColumnPropNameInRow="OpeningBalanceOnHand" msprop:Generator_ColumnPropNameInTable="OpeningBalanceOnHandColumn" msprop:Generator_UserColumnName="OpeningBalanceOnHand" type="xs:string" minOccurs="0" />
+              <xs:element name="OpeningBalanceAtBank" msprop:Generator_ColumnVarNameInTable="columnOpeningBalanceAtBank" msprop:Generator_ColumnPropNameInRow="OpeningBalanceAtBank" msprop:Generator_ColumnPropNameInTable="OpeningBalanceAtBankColumn" msprop:Generator_UserColumnName="OpeningBalanceAtBank" type="xs:string" minOccurs="0" />
+              <xs:element name="ClosingBalanceOnHand" msprop:Generator_ColumnVarNameInTable="columnClosingBalanceOnHand" msprop:Generator_ColumnPropNameInRow="ClosingBalanceOnHand" msprop:Generator_ColumnPropNameInTable="ClosingBalanceOnHandColumn" msprop:Generator_UserColumnName="ClosingBalanceOnHand" type="xs:string" minOccurs="0" />
+              <xs:element name="ClosingBalanceAtBank" msprop:Generator_ColumnVarNameInTable="columnClosingBalanceAtBank" msprop:Generator_ColumnPropNameInRow="ClosingBalanceAtBank" msprop:Generator_ColumnPropNameInTable="ClosingBalanceAtBankColumn" msprop:Generator_UserColumnName="ClosingBalanceAtBank" type="xs:string" minOccurs="0" />
+              <xs:element name="TransactionBuyCustomer" msprop:Generator_ColumnVarNameInTable="columnTransactionBuyCustomer" msprop:Generator_ColumnPropNameInRow="TransactionBuyCustomer" msprop:Generator_ColumnPropNameInTable="TransactionBuyCustomerColumn" msprop:Generator_UserColumnName="TransactionBuyCustomer" type="xs:string" minOccurs="0" />
+              <xs:element name="TransactionBuyBank" msprop:Generator_ColumnVarNameInTable="columnTransactionBuyBank" msprop:Generator_ColumnPropNameInRow="TransactionBuyBank" msprop:Generator_ColumnPropNameInTable="TransactionBuyBankColumn" msprop:Generator_UserColumnName="TransactionBuyBank" type="xs:string" minOccurs="0" />
+              <xs:element name="TransactionCustomer" msprop:Generator_ColumnVarNameInTable="columnTransactionCustomer" msprop:Generator_ColumnPropNameInRow="TransactionCustomer" msprop:Generator_ColumnPropNameInTable="TransactionCustomerColumn" msprop:Generator_UserColumnName="TransactionCustomer" type="xs:string" minOccurs="0" />
+              <xs:element name="TransactionBank" msprop:Generator_ColumnVarNameInTable="columnTransactionBank" msprop:Generator_ColumnPropNameInRow="TransactionBank" msprop:Generator_ColumnPropNameInTable="TransactionBankColumn" msprop:Generator_UserColumnName="TransactionBank" type="xs:string" minOccurs="0" />
+              <xs:element name="DateRange" msprop:Generator_ColumnVarNameInTable="columnDateRange" msprop:Generator_ColumnPropNameInRow="DateRange" msprop:Generator_ColumnPropNameInTable="DateRangeColumn" msprop:Generator_UserColumnName="DateRange" type="xs:string" minOccurs="0" />
+              <xs:element name="TransactionSellCustomer" msprop:Generator_ColumnVarNameInTable="columnTransactionSellCustomer" msprop:Generator_ColumnPropNameInRow="TransactionSellCustomer" msprop:Generator_ColumnPropNameInTable="TransactionSellCustomerColumn" msprop:Generator_UserColumnName="TransactionSellCustomer" type="xs:string" minOccurs="0" />
+              <xs:element name="TransactionSellBank" msprop:Generator_ColumnVarNameInTable="columnTransactionSellBank" msprop:Generator_ColumnPropNameInRow="TransactionSellBank" msprop:Generator_ColumnPropNameInTable="TransactionSellBankColumn" msprop:Generator_UserColumnName="TransactionSellBank" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

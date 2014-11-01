@@ -72,6 +72,10 @@ namespace ForEx
                 case (Common.ReportType.TransactionReportDaily):
                     break;
                 case (Common.ReportType.TransactionReportPeriod):
+                    Reports.Annex1 an = new Reports.Annex1();
+                    crystalReportViewer1.ReportSource = an;
+                    an.SetDataSource(GetTransactionWeekly(start, end));
+
                     break;
 
                 default:
@@ -181,6 +185,85 @@ namespace ForEx
             }
 
             return ListClients;
+        }
+
+        private List<AnnexOne> GetTransactionWeekly(DateTime start, DateTime end)
+        {
+
+            con.Open();
+
+            List<AnnexOne> ListAnnexOne = new List<AnnexOne>();
+
+            cmd = new SqlCommand("GetTransactionPeriod", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = start;
+            cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = end;
+
+            var reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    DataTable myTable = new DataTable();
+                    myTable.Load(reader);
+                    foreach (DataRow row in myTable.Rows)
+                    {
+                        string symbol;
+                        if (!string.IsNullOrEmpty(row["symbol"].ToString()))
+                            symbol = (row["symbol"].ToString());
+                        else
+                            symbol = string.Empty;
+
+                        decimal FirstCashIn;
+                        if (!string.IsNullOrEmpty(row["FirstCashIn"].ToString()))
+                        {
+                            FirstCashIn = Convert.ToDecimal(row["FirstCashIn"]);
+                        }
+                        else
+                        {
+                            FirstCashIn = 0;
+                        }
+
+                        decimal ClientPurchaseTotal;
+                        if (!string.IsNullOrEmpty(row["ClientPurchaseTotal"].ToString()))
+                        {
+                            ClientPurchaseTotal = Convert.ToDecimal(row["ClientPurchaseTotal"]);
+                        }
+                        else
+                        {
+                            ClientPurchaseTotal = 0;
+                        }
+
+                        decimal LastCashout;
+                        if (!string.IsNullOrEmpty(row["LastCashout"].ToString()))
+                        {
+                            LastCashout = Convert.ToDecimal(row["LastCashout"]);
+                        }
+                        else
+                        {
+                            LastCashout = 0;
+                        }
+
+                        AnnexOne annex = new AnnexOne
+                        {
+    
+                        };
+
+                        ListAnnexOne.Add(annex);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while generating the report: " + ex.InnerException);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return ListAnnexOne;
         }
 
     }

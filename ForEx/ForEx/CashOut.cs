@@ -27,12 +27,12 @@ namespace ForEx
         {
             //Query to get last transaction for each currency
             con.Open();
-            string query = "SELECT DISTINCT([currencyid]),[tbl_transacid],[name],[symbol],[date_inserted],[balance]" +
-                           " FROM [ForExDB].[dbo].[tbl_transactemp] INNER JOIN ( select max([date_inserted])" +
-                           " as MaxDate from [ForExDB].[dbo].[tbl_transactemp]) tm on" +
-                           " [ForExDB].[dbo].[tbl_transactemp].[date_inserted] = tm.MaxDate " +
-                           "INNER JOIN [ForExDB].[dbo].[tbl_currency] ON [ForExDB].[dbo].[tbl_currency].[currency_id]" +
-                           " = [ForExDB].[dbo].[tbl_transactemp].[currencyid]";
+            string query = "select X.[currencyid], [tbl_transacid], [name], [symbol]," +
+                           " [date_inserted], [balance] from    (select [tbl_transacid]    " +
+                           "  ,[currencyid]     ,[date_inserted]      ,[balance],   " +
+                           "   dense_rank() over (partition by [currencyid] order by [date_inserted] desc) rank " +
+                           " from [tbl_transactemp]) X INNER JOIN " +
+                           " [tbl_currency] ON [tbl_currency].[currency_id] = X.[currencyid] where rank = 1";
             cmd = new SqlCommand(query, con);
             var reader = cmd.ExecuteReader();
 

@@ -294,13 +294,13 @@ namespace ForEx
 
             try
             {
-                const string sql = "SELECT DISTINCT([currencyid]),[tbl_transacid],[name],[symbol],[date_inserted],[balance] "+
-                                    "FROM [dbo].[tbl_transactemp] INNER JOIN ( select max([date_inserted]) "+
-                                    "as MaxDate from [ForExDB].[dbo].[tbl_transactemp]) tm on "+
-                                    "[ForExDB].[dbo].[tbl_transactemp].[date_inserted] = tm.MaxDate "+ 
-                                    "INNER JOIN [dbo].[tbl_currency] ON [ForExDB].[dbo].[tbl_currency].[currency_id] "+
-                                    "= [dbo].[tbl_transactemp].[currencyid] "+ 
-                                    "WHERE [dbo].[tbl_currency].[symbol] = @symbol";
+                const string sql = "select X.[currencyid], [tbl_transacid], [name], [symbol]," +
+                                   " [date_inserted], [balance] from    (select [tbl_transacid]    " +
+                                   "  ,[currencyid]     ,[date_inserted]      ,[balance],   " +
+                                   "   dense_rank() over (partition by [currencyid] order by [date_inserted] desc) rank " +
+                                   " from [tbl_transactemp]) X INNER JOIN " +
+                                   " [tbl_currency] ON [tbl_currency].[currency_id] = X.[currencyid] " +
+                                   "  where rank = 1 AND [dbo].[tbl_currency].[symbol] = @symbol";
 
                 conn.Open();
                 var cmd = new SqlCommand(sql, conn);

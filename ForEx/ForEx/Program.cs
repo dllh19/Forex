@@ -12,12 +12,12 @@ namespace ForEx
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
+        //[STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmReports());
+            Application.Run(new CashOut());
         }
     }
 }

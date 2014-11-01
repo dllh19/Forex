@@ -43,6 +43,20 @@ namespace ForEx
             crv.Show();
         }
 
+        private void btnTransacDaily_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTransactionReportWeekly_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpTransacStart.Value;
+            DateTime end = dtpTransacEnd.Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportPeriod, null,start,end);
+            crv.Show();
+        }
+
            
 
          

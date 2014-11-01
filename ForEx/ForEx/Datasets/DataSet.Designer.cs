@@ -26,6 +26,8 @@ namespace ForEx.Datasets {
         
         private ClientsDataTable tableClients;
         
+        private AnnexOneDataTable tableAnnexOne;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace ForEx.Datasets {
                 if ((ds.Tables["Clients"] != null)) {
                     base.Tables.Add(new ClientsDataTable(ds.Tables["Clients"]));
                 }
+                if ((ds.Tables["AnnexOne"] != null)) {
+                    base.Tables.Add(new AnnexOneDataTable(ds.Tables["AnnexOne"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace ForEx.Datasets {
         public ClientsDataTable Clients {
             get {
                 return this.tableClients;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public AnnexOneDataTable AnnexOne {
+            get {
+                return this.tableAnnexOne;
             }
         }
         
@@ -155,6 +170,9 @@ namespace ForEx.Datasets {
                 if ((ds.Tables["Clients"] != null)) {
                     base.Tables.Add(new ClientsDataTable(ds.Tables["Clients"]));
                 }
+                if ((ds.Tables["AnnexOne"] != null)) {
+                    base.Tables.Add(new AnnexOneDataTable(ds.Tables["AnnexOne"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace ForEx.Datasets {
                     this.tableClients.InitVars();
                 }
             }
+            this.tableAnnexOne = ((AnnexOneDataTable)(base.Tables["AnnexOne"]));
+            if ((initTable == true)) {
+                if ((this.tableAnnexOne != null)) {
+                    this.tableAnnexOne.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace ForEx.Datasets {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableClients = new ClientsDataTable();
             base.Tables.Add(this.tableClients);
+            this.tableAnnexOne = new AnnexOneDataTable();
+            base.Tables.Add(this.tableAnnexOne);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeClients() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeAnnexOne() {
             return false;
         }
         
@@ -271,6 +303,9 @@ namespace ForEx.Datasets {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ClientsRowChangeEventHandler(object sender, ClientsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void AnnexOneRowChangeEventHandler(object sender, AnnexOneRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -780,6 +815,407 @@ namespace ForEx.Datasets {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "ClientsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class AnnexOneDataTable : global::System.Data.TypedTableBase<AnnexOneRow> {
+            
+            private global::System.Data.DataColumn columnSymbol;
+            
+            private global::System.Data.DataColumn columnOpeningBalanceOnHand;
+            
+            private global::System.Data.DataColumn columnOpeningBalanceAtBank;
+            
+            private global::System.Data.DataColumn columnClosingBalanceOnHand;
+            
+            private global::System.Data.DataColumn columnClosingBalanceAtBank;
+            
+            private global::System.Data.DataColumn columnTransactionBuyCustomer;
+            
+            private global::System.Data.DataColumn columnTransactionBuyBank;
+            
+            private global::System.Data.DataColumn columnTransactionCustomer;
+            
+            private global::System.Data.DataColumn columnTransactionBank;
+            
+            private global::System.Data.DataColumn columnDateRange;
+            
+            private global::System.Data.DataColumn columnTransactionSellCustomer;
+            
+            private global::System.Data.DataColumn columnTransactionSellBank;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AnnexOneDataTable() {
+                this.TableName = "AnnexOne";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal AnnexOneDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected AnnexOneDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SymbolColumn {
+                get {
+                    return this.columnSymbol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OpeningBalanceOnHandColumn {
+                get {
+                    return this.columnOpeningBalanceOnHand;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OpeningBalanceAtBankColumn {
+                get {
+                    return this.columnOpeningBalanceAtBank;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ClosingBalanceOnHandColumn {
+                get {
+                    return this.columnClosingBalanceOnHand;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ClosingBalanceAtBankColumn {
+                get {
+                    return this.columnClosingBalanceAtBank;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TransactionBuyCustomerColumn {
+                get {
+                    return this.columnTransactionBuyCustomer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TransactionBuyBankColumn {
+                get {
+                    return this.columnTransactionBuyBank;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TransactionCustomerColumn {
+                get {
+                    return this.columnTransactionCustomer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TransactionBankColumn {
+                get {
+                    return this.columnTransactionBank;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateRangeColumn {
+                get {
+                    return this.columnDateRange;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TransactionSellCustomerColumn {
+                get {
+                    return this.columnTransactionSellCustomer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TransactionSellBankColumn {
+                get {
+                    return this.columnTransactionSellBank;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AnnexOneRow this[int index] {
+                get {
+                    return ((AnnexOneRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event AnnexOneRowChangeEventHandler AnnexOneRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event AnnexOneRowChangeEventHandler AnnexOneRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event AnnexOneRowChangeEventHandler AnnexOneRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event AnnexOneRowChangeEventHandler AnnexOneRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddAnnexOneRow(AnnexOneRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AnnexOneRow AddAnnexOneRow(string Symbol, string OpeningBalanceOnHand, string OpeningBalanceAtBank, string ClosingBalanceOnHand, string ClosingBalanceAtBank, string TransactionBuyCustomer, string TransactionBuyBank, string TransactionCustomer, string TransactionBank, string DateRange, string TransactionSellCustomer, string TransactionSellBank) {
+                AnnexOneRow rowAnnexOneRow = ((AnnexOneRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Symbol,
+                        OpeningBalanceOnHand,
+                        OpeningBalanceAtBank,
+                        ClosingBalanceOnHand,
+                        ClosingBalanceAtBank,
+                        TransactionBuyCustomer,
+                        TransactionBuyBank,
+                        TransactionCustomer,
+                        TransactionBank,
+                        DateRange,
+                        TransactionSellCustomer,
+                        TransactionSellBank};
+                rowAnnexOneRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowAnnexOneRow);
+                return rowAnnexOneRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                AnnexOneDataTable cln = ((AnnexOneDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new AnnexOneDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnSymbol = base.Columns["Symbol"];
+                this.columnOpeningBalanceOnHand = base.Columns["OpeningBalanceOnHand"];
+                this.columnOpeningBalanceAtBank = base.Columns["OpeningBalanceAtBank"];
+                this.columnClosingBalanceOnHand = base.Columns["ClosingBalanceOnHand"];
+                this.columnClosingBalanceAtBank = base.Columns["ClosingBalanceAtBank"];
+                this.columnTransactionBuyCustomer = base.Columns["TransactionBuyCustomer"];
+                this.columnTransactionBuyBank = base.Columns["TransactionBuyBank"];
+                this.columnTransactionCustomer = base.Columns["TransactionCustomer"];
+                this.columnTransactionBank = base.Columns["TransactionBank"];
+                this.columnDateRange = base.Columns["DateRange"];
+                this.columnTransactionSellCustomer = base.Columns["TransactionSellCustomer"];
+                this.columnTransactionSellBank = base.Columns["TransactionSellBank"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnSymbol = new global::System.Data.DataColumn("Symbol", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSymbol);
+                this.columnOpeningBalanceOnHand = new global::System.Data.DataColumn("OpeningBalanceOnHand", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOpeningBalanceOnHand);
+                this.columnOpeningBalanceAtBank = new global::System.Data.DataColumn("OpeningBalanceAtBank", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOpeningBalanceAtBank);
+                this.columnClosingBalanceOnHand = new global::System.Data.DataColumn("ClosingBalanceOnHand", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClosingBalanceOnHand);
+                this.columnClosingBalanceAtBank = new global::System.Data.DataColumn("ClosingBalanceAtBank", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClosingBalanceAtBank);
+                this.columnTransactionBuyCustomer = new global::System.Data.DataColumn("TransactionBuyCustomer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransactionBuyCustomer);
+                this.columnTransactionBuyBank = new global::System.Data.DataColumn("TransactionBuyBank", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransactionBuyBank);
+                this.columnTransactionCustomer = new global::System.Data.DataColumn("TransactionCustomer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransactionCustomer);
+                this.columnTransactionBank = new global::System.Data.DataColumn("TransactionBank", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransactionBank);
+                this.columnDateRange = new global::System.Data.DataColumn("DateRange", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateRange);
+                this.columnTransactionSellCustomer = new global::System.Data.DataColumn("TransactionSellCustomer", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransactionSellCustomer);
+                this.columnTransactionSellBank = new global::System.Data.DataColumn("TransactionSellBank", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransactionSellBank);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AnnexOneRow NewAnnexOneRow() {
+                return ((AnnexOneRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new AnnexOneRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(AnnexOneRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.AnnexOneRowChanged != null)) {
+                    this.AnnexOneRowChanged(this, new AnnexOneRowChangeEvent(((AnnexOneRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.AnnexOneRowChanging != null)) {
+                    this.AnnexOneRowChanging(this, new AnnexOneRowChangeEvent(((AnnexOneRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.AnnexOneRowDeleted != null)) {
+                    this.AnnexOneRowDeleted(this, new AnnexOneRowChangeEvent(((AnnexOneRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.AnnexOneRowDeleting != null)) {
+                    this.AnnexOneRowDeleting(this, new AnnexOneRowChangeEvent(((AnnexOneRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveAnnexOneRow(AnnexOneRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet ds = new DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "AnnexOneDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1424,6 +1860,357 @@ namespace ForEx.Datasets {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class AnnexOneRow : global::System.Data.DataRow {
+            
+            private AnnexOneDataTable tableAnnexOne;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal AnnexOneRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableAnnexOne = ((AnnexOneDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Symbol {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.SymbolColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Symbol\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.SymbolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OpeningBalanceOnHand {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.OpeningBalanceOnHandColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OpeningBalanceOnHand\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.OpeningBalanceOnHandColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OpeningBalanceAtBank {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.OpeningBalanceAtBankColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OpeningBalanceAtBank\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.OpeningBalanceAtBankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ClosingBalanceOnHand {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.ClosingBalanceOnHandColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ClosingBalanceOnHand\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.ClosingBalanceOnHandColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ClosingBalanceAtBank {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.ClosingBalanceAtBankColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ClosingBalanceAtBank\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.ClosingBalanceAtBankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TransactionBuyCustomer {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.TransactionBuyCustomerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionBuyCustomer\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.TransactionBuyCustomerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TransactionBuyBank {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.TransactionBuyBankColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionBuyBank\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.TransactionBuyBankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TransactionCustomer {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.TransactionCustomerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionCustomer\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.TransactionCustomerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TransactionBank {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.TransactionBankColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionBank\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.TransactionBankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DateRange {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.DateRangeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateRange\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.DateRangeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TransactionSellCustomer {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.TransactionSellCustomerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionSellCustomer\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.TransactionSellCustomerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TransactionSellBank {
+                get {
+                    try {
+                        return ((string)(this[this.tableAnnexOne.TransactionSellBankColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionSellBank\' in table \'AnnexOne\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAnnexOne.TransactionSellBankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSymbolNull() {
+                return this.IsNull(this.tableAnnexOne.SymbolColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSymbolNull() {
+                this[this.tableAnnexOne.SymbolColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOpeningBalanceOnHandNull() {
+                return this.IsNull(this.tableAnnexOne.OpeningBalanceOnHandColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOpeningBalanceOnHandNull() {
+                this[this.tableAnnexOne.OpeningBalanceOnHandColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOpeningBalanceAtBankNull() {
+                return this.IsNull(this.tableAnnexOne.OpeningBalanceAtBankColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOpeningBalanceAtBankNull() {
+                this[this.tableAnnexOne.OpeningBalanceAtBankColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsClosingBalanceOnHandNull() {
+                return this.IsNull(this.tableAnnexOne.ClosingBalanceOnHandColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetClosingBalanceOnHandNull() {
+                this[this.tableAnnexOne.ClosingBalanceOnHandColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsClosingBalanceAtBankNull() {
+                return this.IsNull(this.tableAnnexOne.ClosingBalanceAtBankColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetClosingBalanceAtBankNull() {
+                this[this.tableAnnexOne.ClosingBalanceAtBankColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTransactionBuyCustomerNull() {
+                return this.IsNull(this.tableAnnexOne.TransactionBuyCustomerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTransactionBuyCustomerNull() {
+                this[this.tableAnnexOne.TransactionBuyCustomerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTransactionBuyBankNull() {
+                return this.IsNull(this.tableAnnexOne.TransactionBuyBankColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTransactionBuyBankNull() {
+                this[this.tableAnnexOne.TransactionBuyBankColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTransactionCustomerNull() {
+                return this.IsNull(this.tableAnnexOne.TransactionCustomerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTransactionCustomerNull() {
+                this[this.tableAnnexOne.TransactionCustomerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTransactionBankNull() {
+                return this.IsNull(this.tableAnnexOne.TransactionBankColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTransactionBankNull() {
+                this[this.tableAnnexOne.TransactionBankColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDateRangeNull() {
+                return this.IsNull(this.tableAnnexOne.DateRangeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDateRangeNull() {
+                this[this.tableAnnexOne.DateRangeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTransactionSellCustomerNull() {
+                return this.IsNull(this.tableAnnexOne.TransactionSellCustomerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTransactionSellCustomerNull() {
+                this[this.tableAnnexOne.TransactionSellCustomerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTransactionSellBankNull() {
+                return this.IsNull(this.tableAnnexOne.TransactionSellBankColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTransactionSellBankNull() {
+                this[this.tableAnnexOne.TransactionSellBankColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1443,6 +2230,40 @@ namespace ForEx.Datasets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class AnnexOneRowChangeEvent : global::System.EventArgs {
+            
+            private AnnexOneRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AnnexOneRowChangeEvent(AnnexOneRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public AnnexOneRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -87,13 +87,21 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tabSearch = new System.Windows.Forms.TabPage();
+            this.flowSearchGrid = new System.Windows.Forms.FlowLayoutPanel();
+            this.gridSearchClient = new System.Windows.Forms.DataGridView();
+            this.panelSearchpassport = new System.Windows.Forms.FlowLayoutPanel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtSearchPassport = new System.Windows.Forms.TextBox();
+            this.panelSearchType = new System.Windows.Forms.FlowLayoutPanel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cmbSearchType = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelSearchName = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearchName = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtSearchSurname = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.gridSearchClient = new System.Windows.Forms.DataGridView();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabEdit = new System.Windows.Forms.TabPage();
@@ -101,14 +109,6 @@
             this.btnEditSearch = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panelSearchpassport = new System.Windows.Forms.FlowLayoutPanel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtSearchPassport = new System.Windows.Forms.TextBox();
-            this.panelSearchType = new System.Windows.Forms.FlowLayoutPanel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cmbSearchType = new System.Windows.Forms.ComboBox();
-            this.flowSearchGrid = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl.SuspendLayout();
             this.tabAddClient.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -131,14 +131,14 @@
             this.panelOccupation.SuspendLayout();
             this.panelUpload.SuspendLayout();
             this.tabSearch.SuspendLayout();
-            this.panelSearchName.SuspendLayout();
+            this.flowSearchGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).BeginInit();
-            this.tabEdit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panelSearchpassport.SuspendLayout();
             this.panelSearchType.SuspendLayout();
-            this.flowSearchGrid.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.panelSearchName.SuspendLayout();
+            this.tabEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -713,6 +713,93 @@
             this.tabSearch.Text = "Search Client";
             this.tabSearch.UseVisualStyleBackColor = true;
             // 
+            // flowSearchGrid
+            // 
+            this.flowSearchGrid.Controls.Add(this.gridSearchClient);
+            this.flowSearchGrid.Location = new System.Drawing.Point(10, 192);
+            this.flowSearchGrid.Name = "flowSearchGrid";
+            this.flowSearchGrid.Size = new System.Drawing.Size(872, 443);
+            this.flowSearchGrid.TabIndex = 9;
+            // 
+            // gridSearchClient
+            // 
+            this.gridSearchClient.AllowUserToAddRows = false;
+            this.gridSearchClient.AllowUserToDeleteRows = false;
+            this.gridSearchClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSearchClient.Location = new System.Drawing.Point(3, 3);
+            this.gridSearchClient.Name = "gridSearchClient";
+            this.gridSearchClient.ReadOnly = true;
+            this.gridSearchClient.Size = new System.Drawing.Size(869, 376);
+            this.gridSearchClient.TabIndex = 4;
+            this.gridSearchClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSearchClient_CellClick);
+            this.gridSearchClient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // panelSearchpassport
+            // 
+            this.panelSearchpassport.Controls.Add(this.label19);
+            this.panelSearchpassport.Controls.Add(this.txtSearchPassport);
+            this.panelSearchpassport.Location = new System.Drawing.Point(10, 92);
+            this.panelSearchpassport.Name = "panelSearchpassport";
+            this.panelSearchpassport.Size = new System.Drawing.Size(658, 44);
+            this.panelSearchpassport.TabIndex = 7;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(3, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(82, 24);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Passport";
+            // 
+            // txtSearchPassport
+            // 
+            this.txtSearchPassport.Location = new System.Drawing.Point(91, 3);
+            this.txtSearchPassport.Name = "txtSearchPassport";
+            this.txtSearchPassport.Size = new System.Drawing.Size(200, 20);
+            this.txtSearchPassport.TabIndex = 5;
+            // 
+            // panelSearchType
+            // 
+            this.panelSearchType.Controls.Add(this.label21);
+            this.panelSearchType.Controls.Add(this.cmbSearchType);
+            this.panelSearchType.Location = new System.Drawing.Point(10, 142);
+            this.panelSearchType.Name = "panelSearchType";
+            this.panelSearchType.Size = new System.Drawing.Size(658, 44);
+            this.panelSearchType.TabIndex = 8;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(3, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(53, 24);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "Type";
+            // 
+            // cmbSearchType
+            // 
+            this.cmbSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSearchType.FormattingEnabled = true;
+            this.cmbSearchType.Items.AddRange(new object[] {
+            "Individual",
+            "Bank",
+            "Corporate"});
+            this.cmbSearchType.Location = new System.Drawing.Point(62, 3);
+            this.cmbSearchType.Name = "cmbSearchType";
+            this.cmbSearchType.Size = new System.Drawing.Size(242, 21);
+            this.cmbSearchType.TabIndex = 5;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.panelSearchName);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(10, 41);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(882, 603);
+            this.flowLayoutPanel2.TabIndex = 7;
+            // 
             // panelSearchName
             // 
             this.panelSearchName.Controls.Add(this.label1);
@@ -768,21 +855,9 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // gridSearchClient
-            // 
-            this.gridSearchClient.AllowUserToAddRows = false;
-            this.gridSearchClient.AllowUserToDeleteRows = false;
-            this.gridSearchClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSearchClient.Location = new System.Drawing.Point(3, 3);
-            this.gridSearchClient.Name = "gridSearchClient";
-            this.gridSearchClient.ReadOnly = true;
-            this.gridSearchClient.Size = new System.Drawing.Size(869, 376);
-            this.gridSearchClient.TabIndex = 4;
-            this.gridSearchClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSearchClient_CellClick);
-            this.gridSearchClient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
             // cmbFilter
             // 
+            this.cmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFilter.FormattingEnabled = true;
             this.cmbFilter.Items.AddRange(new object[] {
             "By Name",
@@ -851,80 +926,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Enter Client Name";
             // 
-            // panelSearchpassport
-            // 
-            this.panelSearchpassport.Controls.Add(this.label19);
-            this.panelSearchpassport.Controls.Add(this.txtSearchPassport);
-            this.panelSearchpassport.Location = new System.Drawing.Point(10, 92);
-            this.panelSearchpassport.Name = "panelSearchpassport";
-            this.panelSearchpassport.Size = new System.Drawing.Size(658, 44);
-            this.panelSearchpassport.TabIndex = 7;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(3, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(82, 24);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Passport";
-            // 
-            // txtSearchPassport
-            // 
-            this.txtSearchPassport.Location = new System.Drawing.Point(91, 3);
-            this.txtSearchPassport.Name = "txtSearchPassport";
-            this.txtSearchPassport.Size = new System.Drawing.Size(200, 20);
-            this.txtSearchPassport.TabIndex = 5;
-            // 
-            // panelSearchType
-            // 
-            this.panelSearchType.Controls.Add(this.label21);
-            this.panelSearchType.Controls.Add(this.cmbSearchType);
-            this.panelSearchType.Location = new System.Drawing.Point(10, 142);
-            this.panelSearchType.Name = "panelSearchType";
-            this.panelSearchType.Size = new System.Drawing.Size(658, 44);
-            this.panelSearchType.TabIndex = 8;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(3, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(53, 24);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "Type";
-            // 
-            // cmbSearchType
-            // 
-            this.cmbSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSearchType.FormattingEnabled = true;
-            this.cmbSearchType.Items.AddRange(new object[] {
-            "Individual",
-            "Bank",
-            "Corporate"});
-            this.cmbSearchType.Location = new System.Drawing.Point(62, 3);
-            this.cmbSearchType.Name = "cmbSearchType";
-            this.cmbSearchType.Size = new System.Drawing.Size(242, 21);
-            this.cmbSearchType.TabIndex = 5;
-            // 
-            // flowSearchGrid
-            // 
-            this.flowSearchGrid.Controls.Add(this.gridSearchClient);
-            this.flowSearchGrid.Location = new System.Drawing.Point(10, 192);
-            this.flowSearchGrid.Name = "flowSearchGrid";
-            this.flowSearchGrid.Size = new System.Drawing.Size(872, 443);
-            this.flowSearchGrid.TabIndex = 9;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.panelSearchName);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(10, 41);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(882, 603);
-            this.flowLayoutPanel2.TabIndex = 7;
-            // 
             // frmClientManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -975,18 +976,18 @@
             this.panelUpload.PerformLayout();
             this.tabSearch.ResumeLayout(false);
             this.tabSearch.PerformLayout();
-            this.panelSearchName.ResumeLayout(false);
-            this.panelSearchName.PerformLayout();
+            this.flowSearchGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).EndInit();
-            this.tabEdit.ResumeLayout(false);
-            this.tabEdit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panelSearchpassport.ResumeLayout(false);
             this.panelSearchpassport.PerformLayout();
             this.panelSearchType.ResumeLayout(false);
             this.panelSearchType.PerformLayout();
-            this.flowSearchGrid.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.panelSearchName.ResumeLayout(false);
+            this.panelSearchName.PerformLayout();
+            this.tabEdit.ResumeLayout(false);
+            this.tabEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }

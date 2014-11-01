@@ -39,7 +39,7 @@
             // 
             // btnCashOut
             // 
-            this.btnCashOut.Location = new System.Drawing.Point(556, 245);
+            this.btnCashOut.Location = new System.Drawing.Point(538, 199);
             this.btnCashOut.Name = "btnCashOut";
             this.btnCashOut.Size = new System.Drawing.Size(131, 47);
             this.btnCashOut.TabIndex = 3;
@@ -53,16 +53,16 @@
             this.gridCashOut.AllowUserToDeleteRows = false;
             this.gridCashOut.AllowUserToResizeRows = false;
             this.gridCashOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCashOut.Location = new System.Drawing.Point(5, 8);
+            this.gridCashOut.Location = new System.Drawing.Point(12, 12);
             this.gridCashOut.Name = "gridCashOut";
             this.gridCashOut.ReadOnly = true;
-            this.gridCashOut.Size = new System.Drawing.Size(517, 603);
+            this.gridCashOut.Size = new System.Drawing.Size(480, 235);
             this.gridCashOut.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(556, 13);
+            this.label1.Location = new System.Drawing.Point(538, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 4;
@@ -70,14 +70,14 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(559, 40);
+            this.txtUsername.Location = new System.Drawing.Point(541, 55);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(128, 20);
             this.txtUsername.TabIndex = 5;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(556, 100);
+            this.txtPassword.Location = new System.Drawing.Point(538, 115);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(128, 20);
@@ -86,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(553, 73);
+            this.label2.Location = new System.Drawing.Point(535, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 13);
             this.label2.TabIndex = 6;
@@ -96,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 630);
+            this.ClientSize = new System.Drawing.Size(699, 320);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtUsername);

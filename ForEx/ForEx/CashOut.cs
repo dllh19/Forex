@@ -25,6 +25,35 @@ namespace ForEx
 
         private void CashOut_Load(object sender, EventArgs e)
         {
+            formSetting();
+            LoadDatagridView();
+            datagridSetting();
+   
+        }
+
+        private void formSetting()
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+        }
+
+        private void datagridSetting()
+        {
+            this.gridCashOut.Columns["currencyid"].Visible = false;
+            this.gridCashOut.Columns["tbl_transacid"].Visible = false;
+            this.gridCashOut.Columns["name"].HeaderText = "Country";
+            this.gridCashOut.Columns["symbol"].HeaderText = "Symbol";
+            this.gridCashOut.Columns["date_inserted"].HeaderText = "Last transaction";
+            this.gridCashOut.Columns["balance"].HeaderText = "Balance";
+
+            this.gridCashOut.Columns["name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; 
+            this.gridCashOut.Columns["symbol"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.gridCashOut.Columns["date_inserted"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            this.gridCashOut.Columns["balance"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; 
+        }
+
+        private void LoadDatagridView()
+        {
             //Query to get last transaction for each currency
             con.Open();
             string query = "select X.[currencyid], [tbl_transacid], [name], [symbol]," +
@@ -51,7 +80,6 @@ namespace ForEx
             {
                 con.Close();
             }
-   
         }
 
         private void btnCashOut_Click(object sender, EventArgs e)

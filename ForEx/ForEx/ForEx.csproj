@@ -80,6 +80,7 @@
       <DependentUpon>CashOut.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\AnnexOne.cs" />
+    <Compile Include="Classes\AuditClass.cs" />
     <Compile Include="Classes\Balance.cs" />
     <Compile Include="Classes\Clients.cs" />
     <Compile Include="Classes\Countries.cs" />
@@ -184,6 +185,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Annex5.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\AuditReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuditReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\BlackListedClients.cs">
@@ -366,6 +373,10 @@
     <EmbeddedResource Include="Reports\Annex5.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Annex5.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\AuditReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AuditReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\BlackListedClients.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

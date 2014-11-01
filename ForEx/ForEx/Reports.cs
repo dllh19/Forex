@@ -47,7 +47,7 @@ namespace ForEx
         {
             DateTime start = dtpTransacDaily.Value;
 
-            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportDaily, null, start);
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.AnnexOneDaily, null, start);
             crv.Show();
         }
 
@@ -56,7 +56,45 @@ namespace ForEx
             DateTime start = dtpTransacStart.Value;
             DateTime end = dtpTransacEnd.Value;
 
-            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportPeriod, null,start,end);
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.AnnexOneRange, null,start,end);
+            crv.Show();
+        }
+
+        private void frmReports_Load(object sender, EventArgs e)
+        {
+            var listAudit = Enum.GetValues(typeof(Common.Operation)).Cast<Common.Operation>();
+
+            foreach (var value in listAudit)
+            {
+                Common.ComboboxItem item = new Common.ComboboxItem();
+                item.Text = Common.OperationToList(value);
+                item.Value = value.ToString();
+
+                cmbAuditType1.Items.Add(item);
+                cmbAuditType2.Items.Add(item);
+
+            }
+        }
+
+        private void btnAuditDaily_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpAuditDaily.Value;
+
+            var op = (cmbAuditType2.SelectedItem as Common.ComboboxItem).Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.AuditDaily, op.ToString(), start);
+
+            crv.Show();
+        }
+
+        private void btnAuditRange_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpAuditStart.Value;
+            DateTime end = dtpAuditEnd.Value;
+
+            var op = (cmbAuditType1.SelectedItem as Common.ComboboxItem).Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.AuditRange, op.ToString(), start, end);
             crv.Show();
         }
 

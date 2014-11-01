@@ -28,7 +28,8 @@ namespace ForEx
             CashIn,
             CashOut,
             Transaction,
-            RateUpdate
+            RateUpdate,
+            All
         }
 
         public enum ReportType
@@ -43,7 +44,104 @@ namespace ForEx
             SaleReportDaily,
             SaleReportPeriod,
             TransactionReportDaily,
-            TransactionReportPeriod
+            TransactionReportPeriod,
+            AuditDaily,
+            AuditRange,
+            AnnexOneRange,
+            AnnexOneDaily
+        }
+
+        public static string OperationToList(Operation report)
+        {
+            switch (report)
+            {
+                case (Operation.LoggedIn):
+                    return "Logged In";
+                    break;
+
+                case (Operation.LoggedOut):
+                    return "Logged Out";
+
+                    break;
+
+                case (Operation.CashIn):
+                    return "Cash In";
+
+                    break;
+
+                case (Operation.CashOut):
+                    return "Cash Out";
+
+                    break;
+
+
+                case (Operation.Transaction):
+                    return "Transaction";
+
+                    break;
+
+                case (Operation.RateUpdate):
+                    return "Rate Update";
+
+                    break;
+
+                default:
+                    return "All";
+
+                    break;
+            }
+        }
+
+        public static Operation OperationToEnum(String report)
+        {
+            switch (report)
+            {
+                case ("Logged In"):
+                    return Operation.LoggedIn;
+                    break;
+
+                case ("Logged Out"):
+                    return Operation.LoggedOut;
+
+                    break;
+
+                case ("Cash In"):
+                    return Operation.CashIn;
+
+                    break;
+
+                case ("Cash Out"):
+                    return Operation.CashOut;
+
+                    break;
+
+
+                case ("Transaction"):
+                    return Operation.Transaction;
+
+                    break;
+
+                case ("Rate Update"):
+                    return Operation.RateUpdate;
+
+                    break;
+
+                default:
+                    return Operation.All;
+
+                    break;
+            }
+        }
+
+        public class ComboboxItem
+        {
+            public string Text { get; set; }
+            public string Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
         }
 
         public static void SetUser(int UserId, String Name, String Surname, String Role, String Username)

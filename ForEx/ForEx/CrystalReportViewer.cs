@@ -70,15 +70,31 @@ namespace ForEx
                 case (Common.ReportType.SaleReportPeriod):
                     break;
                 case (Common.ReportType.TransactionReportDaily):
-                    Reports.Annex1 an1 = new Reports.Annex1();
-                    crystalReportViewer1.ReportSource = an1;
-                    an1.SetDataSource(GetTransactionDaily(start));
-
                     break;
                 case (Common.ReportType.TransactionReportPeriod):
+                    break;
+
+                case (Common.ReportType.AuditDaily):
+                    Reports.AuditReport ar = new Reports.AuditReport();
+                    crystalReportViewer1.ReportSource = ar;
+                    ar.SetDataSource(GetAuditDaily(start,query));
+                    break;
+                case (Common.ReportType.AuditRange):
+                     Reports.AuditReport ar2 = new Reports.AuditReport();
+                    crystalReportViewer1.ReportSource = ar2;
+                    ar2.SetDataSource(GetAuditRange(start,end,query));
+                    break;
+
+                case (Common.ReportType.AnnexOneDaily):
                     Reports.Annex1 an = new Reports.Annex1();
                     crystalReportViewer1.ReportSource = an;
-                    an.SetDataSource(GetTransactionWeekly(start, end));
+                    an.SetDataSource(GetTransactionDaily(start));
+
+                    break;
+                case (Common.ReportType.AnnexOneRange):
+                    Reports.Annex1 an2 = new Reports.Annex1();
+                    crystalReportViewer1.ReportSource = an2;
+                    an2.SetDataSource(GetTransactionWeekly(start, end));
 
                     break;
 
@@ -287,6 +303,177 @@ namespace ForEx
             }
 
             return ListAnnexOne;
+        }
+
+        private List<AuditClass> GetAuditRange(DateTime start, DateTime end, string op)
+        {
+
+            con.Open();
+
+            List<AuditClass> ListAuditClass = new List<AuditClass>();
+
+            cmd = new SqlCommand("GetAuditByRange", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@Start", SqlDbType.DateTime).Value = start;
+            cmd.Parameters.Add("@End", SqlDbType.DateTime).Value = end;
+            cmd.Parameters.Add("@Operation", SqlDbType.VarChar).Value = op;
+
+            var reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    DataTable myTable = new DataTable();
+                    myTable.Load(reader);
+                    foreach (DataRow row in myTable.Rows)
+                    {
+                        string operation;
+                        if (!string.IsNullOrEmpty(row["operation"].ToString()))
+                            operation = (row["operation"].ToString());
+                        else
+                            operation = string.Empty;
+
+                        string description;
+                        if (!string.IsNullOrEmpty(row["description"].ToString()))
+                        {
+                            description = (row["description"]).ToString();
+                        }
+                        else
+                        {
+                            description = "None";
+                        }
+
+                        string date_created;
+                        if (!string.IsNullOrEmpty(row["date_created"].ToString()))
+                        {
+                            date_created = (row["date_created"]).ToString();
+                        }
+                        else
+                        {
+                            date_created = "";
+                        }
+
+                        string Username;
+                        if (!string.IsNullOrEmpty(row["Username"].ToString()))
+                        {
+                            Username = (row["Username"]).ToString();
+                        }
+                        else
+                        {
+                            Username = "";
+                        }
+
+
+                        AuditClass audit = new AuditClass
+                        {
+                            AuditType = operation,
+                            Description = description,
+                            DateCreated = date_created,
+                            ProcessedBy = Username,
+                            DateRange = start.ToString("ddd, MMM d, yyyy") + " - " + end.ToString("ddd, MMM d, yyyy")
+                        };
+
+                        ListAuditClass.Add(audit);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while generating the report: " + ex.InnerException);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return ListAuditClass;
+        }
+
+
+
+        private List<AuditClass> GetAuditDaily(DateTime daily, string op)
+        {
+
+            con.Open();
+
+            List<AuditClass> ListAuditClass = new List<AuditClass>();
+
+            cmd = new SqlCommand("GetAuditDaily", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@CurrenctDate", SqlDbType.DateTime).Value = daily;
+            cmd.Parameters.Add("@Operation", SqlDbType.VarChar).Value = op;
+
+            var reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    DataTable myTable = new DataTable();
+                    myTable.Load(reader);
+                    foreach (DataRow row in myTable.Rows)
+                    {
+                        string operation;
+                        if (!string.IsNullOrEmpty(row["operation"].ToString()))
+                            operation = (row["operation"].ToString());
+                        else
+                            operation = string.Empty;
+
+                        string description;
+                        if (!string.IsNullOrEmpty(row["description"].ToString()))
+                        {
+                            description = (row["description"]).ToString();
+                        }
+                        else
+                        {
+                            description = "None";
+                        }
+
+                        string date_created;
+                        if (!string.IsNullOrEmpty(row["date_created"].ToString()))
+                        {
+                            date_created = (row["date_created"]).ToString();
+                        }
+                        else
+                        {
+                            date_created = "";
+                        }
+
+                        string Username;
+                        if (!string.IsNullOrEmpty(row["Username"].ToString()))
+                        {
+                            Username = (row["Username"]).ToString();
+                        }
+                        else
+                        {
+                            Username = "";
+                        }
+
+
+                        AuditClass audit = new AuditClass
+                        {
+                            AuditType = operation,
+                            Description = description,
+                            DateCreated = date_created,
+                            ProcessedBy = Username,
+                            DateRange = daily.ToString("ddd, MMM d, yyyy") 
+                        };
+
+                        ListAuditClass.Add(audit);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while generating the report: " + ex.InnerException);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return ListAuditClass;
         }
 
 

@@ -84,7 +84,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(409, 34);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 478);
+            this.dataGridView1.Size = new System.Drawing.Size(520, 478);
             this.dataGridView1.TabIndex = 14;
             // 
             // btnUserManagement
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 522);
+            this.ClientSize = new System.Drawing.Size(941, 522);
             this.Controls.Add(this.btnSignout);
             this.Controls.Add(this.btnAuditTrail);
             this.Controls.Add(this.btnUserManagement);

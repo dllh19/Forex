@@ -31,6 +31,21 @@ namespace ForEx
             RateUpdate
         }
 
+        public enum ReportType
+        {
+            BlacklistedIndividuals,
+            BlacklistedBank,
+            BlacklistedCorporate,
+            ListCorporateClients,
+            TransactionPerClient,
+            PurchaseReportDaily,
+            PurchaseReportPeriod,
+            SaleReportDaily,
+            SaleReportPeriod,
+            TransactionReportDaily,
+            TransactionReportPeriod
+        }
+
         public static void SetUser(int UserId, String Name, String Surname, String Role, String Username)
         {
             user = new UserLoggedIn(UserId, Name, Surname, Role, Username);

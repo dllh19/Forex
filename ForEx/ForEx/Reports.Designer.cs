@@ -47,19 +47,43 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cmbAuditType1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnAuditRange = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpAuditEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpAuditStart = new System.Windows.Forms.DateTimePicker();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.cmbAuditType2 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnAuditDaily = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dtpAuditDaily = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbAuditType1 = new System.Windows.Forms.ComboBox();
-            this.cmbAuditType2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tabControl3 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnBuyTransacPeriod = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dtpBuyTransacEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpBuyTransacStart = new System.Windows.Forms.DateTimePicker();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnBuyTransacDaily = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dtpBuyTransacDaily = new System.Windows.Forms.DateTimePicker();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.btnSellTransacPeriod = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtpSellTransacEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpSellTransacStart = new System.Windows.Forms.DateTimePicker();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.btnSellTransacDaily = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dtpSellTransacDaily = new System.Windows.Forms.DateTimePicker();
             this.grpBlackList.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -69,6 +93,14 @@
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tabControl3.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tabControl4.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpBlackList
@@ -266,6 +298,24 @@
             this.tabPage3.Text = "Period";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cmbAuditType1
+            // 
+            this.cmbAuditType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAuditType1.FormattingEnabled = true;
+            this.cmbAuditType1.Location = new System.Drawing.Point(136, 80);
+            this.cmbAuditType1.Name = "cmbAuditType1";
+            this.cmbAuditType1.Size = new System.Drawing.Size(200, 21);
+            this.cmbAuditType1.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(26, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Audit Type";
+            // 
             // btnAuditRange
             // 
             this.btnAuditRange.Location = new System.Drawing.Point(94, 104);
@@ -323,6 +373,24 @@
             this.tabPage4.Text = "Daily";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // cmbAuditType2
+            // 
+            this.cmbAuditType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAuditType2.FormattingEnabled = true;
+            this.cmbAuditType2.Location = new System.Drawing.Point(130, 59);
+            this.cmbAuditType2.Name = "cmbAuditType2";
+            this.cmbAuditType2.Size = new System.Drawing.Size(200, 21);
+            this.cmbAuditType2.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 59);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Audit Type";
+            // 
             // btnAuditDaily
             // 
             this.btnAuditDaily.Location = new System.Drawing.Point(94, 104);
@@ -349,47 +417,245 @@
             this.dtpAuditDaily.Size = new System.Drawing.Size(200, 20);
             this.dtpAuditDaily.TabIndex = 4;
             // 
-            // label7
+            // groupBox3
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 80);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Audit Type";
+            this.groupBox3.Controls.Add(this.tabControl3);
+            this.groupBox3.Location = new System.Drawing.Point(590, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(371, 164);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Purchase Transaction";
             // 
-            // cmbAuditType1
+            // tabControl3
             // 
-            this.cmbAuditType1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAuditType1.FormattingEnabled = true;
-            this.cmbAuditType1.Location = new System.Drawing.Point(136, 80);
-            this.cmbAuditType1.Name = "cmbAuditType1";
-            this.cmbAuditType1.Size = new System.Drawing.Size(200, 21);
-            this.cmbAuditType1.TabIndex = 5;
+            this.tabControl3.Controls.Add(this.tabPage5);
+            this.tabControl3.Controls.Add(this.tabPage6);
+            this.tabControl3.Location = new System.Drawing.Point(6, 19);
+            this.tabControl3.Name = "tabControl3";
+            this.tabControl3.SelectedIndex = 0;
+            this.tabControl3.Size = new System.Drawing.Size(359, 139);
+            this.tabControl3.TabIndex = 0;
             // 
-            // cmbAuditType2
+            // tabPage5
             // 
-            this.cmbAuditType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAuditType2.FormattingEnabled = true;
-            this.cmbAuditType2.Location = new System.Drawing.Point(130, 59);
-            this.cmbAuditType2.Name = "cmbAuditType2";
-            this.cmbAuditType2.Size = new System.Drawing.Size(200, 21);
-            this.cmbAuditType2.TabIndex = 8;
+            this.tabPage5.Controls.Add(this.btnBuyTransacPeriod);
+            this.tabPage5.Controls.Add(this.label9);
+            this.tabPage5.Controls.Add(this.label10);
+            this.tabPage5.Controls.Add(this.dtpBuyTransacEnd);
+            this.tabPage5.Controls.Add(this.dtpBuyTransacStart);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(351, 113);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "Period";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // btnBuyTransacPeriod
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 59);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Audit Type";
+            this.btnBuyTransacPeriod.Location = new System.Drawing.Point(94, 79);
+            this.btnBuyTransacPeriod.Name = "btnBuyTransacPeriod";
+            this.btnBuyTransacPeriod.Size = new System.Drawing.Size(160, 28);
+            this.btnBuyTransacPeriod.TabIndex = 3;
+            this.btnBuyTransacPeriod.Text = "Show Report";
+            this.btnBuyTransacPeriod.UseVisualStyleBackColor = true;
+            this.btnBuyTransacPeriod.Click += new System.EventHandler(this.btnBuyTransacPeriod_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(26, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "End Date";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(26, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Start Date";
+            // 
+            // dtpBuyTransacEnd
+            // 
+            this.dtpBuyTransacEnd.Location = new System.Drawing.Point(136, 45);
+            this.dtpBuyTransacEnd.Name = "dtpBuyTransacEnd";
+            this.dtpBuyTransacEnd.Size = new System.Drawing.Size(200, 20);
+            this.dtpBuyTransacEnd.TabIndex = 1;
+            // 
+            // dtpBuyTransacStart
+            // 
+            this.dtpBuyTransacStart.Location = new System.Drawing.Point(136, 13);
+            this.dtpBuyTransacStart.Name = "dtpBuyTransacStart";
+            this.dtpBuyTransacStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpBuyTransacStart.TabIndex = 0;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.btnBuyTransacDaily);
+            this.tabPage6.Controls.Add(this.label11);
+            this.tabPage6.Controls.Add(this.dtpBuyTransacDaily);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(351, 113);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "Daily";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // btnBuyTransacDaily
+            // 
+            this.btnBuyTransacDaily.Location = new System.Drawing.Point(88, 59);
+            this.btnBuyTransacDaily.Name = "btnBuyTransacDaily";
+            this.btnBuyTransacDaily.Size = new System.Drawing.Size(160, 28);
+            this.btnBuyTransacDaily.TabIndex = 6;
+            this.btnBuyTransacDaily.Text = "Show Report";
+            this.btnBuyTransacDaily.UseVisualStyleBackColor = true;
+            this.btnBuyTransacDaily.Click += new System.EventHandler(this.btnBuyTransacDaily_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(20, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(30, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Date";
+            // 
+            // dtpBuyTransacDaily
+            // 
+            this.dtpBuyTransacDaily.Location = new System.Drawing.Point(130, 25);
+            this.dtpBuyTransacDaily.Name = "dtpBuyTransacDaily";
+            this.dtpBuyTransacDaily.Size = new System.Drawing.Size(200, 20);
+            this.dtpBuyTransacDaily.TabIndex = 4;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.tabControl4);
+            this.groupBox4.Location = new System.Drawing.Point(590, 191);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(371, 164);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Selling Transaction";
+            // 
+            // tabControl4
+            // 
+            this.tabControl4.Controls.Add(this.tabPage7);
+            this.tabControl4.Controls.Add(this.tabPage8);
+            this.tabControl4.Location = new System.Drawing.Point(6, 19);
+            this.tabControl4.Name = "tabControl4";
+            this.tabControl4.SelectedIndex = 0;
+            this.tabControl4.Size = new System.Drawing.Size(359, 139);
+            this.tabControl4.TabIndex = 0;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.btnSellTransacPeriod);
+            this.tabPage7.Controls.Add(this.label12);
+            this.tabPage7.Controls.Add(this.label13);
+            this.tabPage7.Controls.Add(this.dtpSellTransacEnd);
+            this.tabPage7.Controls.Add(this.dtpSellTransacStart);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(351, 113);
+            this.tabPage7.TabIndex = 0;
+            this.tabPage7.Text = "Period";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // btnSellTransacPeriod
+            // 
+            this.btnSellTransacPeriod.Location = new System.Drawing.Point(94, 79);
+            this.btnSellTransacPeriod.Name = "btnSellTransacPeriod";
+            this.btnSellTransacPeriod.Size = new System.Drawing.Size(160, 28);
+            this.btnSellTransacPeriod.TabIndex = 3;
+            this.btnSellTransacPeriod.Text = "Show Report";
+            this.btnSellTransacPeriod.UseVisualStyleBackColor = true;
+            this.btnSellTransacPeriod.Click += new System.EventHandler(this.btnSellTransacPeriod_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(26, 45);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(52, 13);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "End Date";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(26, 13);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 13);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Start Date";
+            // 
+            // dtpSellTransacEnd
+            // 
+            this.dtpSellTransacEnd.Location = new System.Drawing.Point(136, 45);
+            this.dtpSellTransacEnd.Name = "dtpSellTransacEnd";
+            this.dtpSellTransacEnd.Size = new System.Drawing.Size(200, 20);
+            this.dtpSellTransacEnd.TabIndex = 1;
+            // 
+            // dtpSellTransacStart
+            // 
+            this.dtpSellTransacStart.Location = new System.Drawing.Point(136, 13);
+            this.dtpSellTransacStart.Name = "dtpSellTransacStart";
+            this.dtpSellTransacStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpSellTransacStart.TabIndex = 0;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.btnSellTransacDaily);
+            this.tabPage8.Controls.Add(this.label14);
+            this.tabPage8.Controls.Add(this.dtpSellTransacDaily);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(351, 113);
+            this.tabPage8.TabIndex = 1;
+            this.tabPage8.Text = "Daily";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // btnSellTransacDaily
+            // 
+            this.btnSellTransacDaily.Location = new System.Drawing.Point(88, 59);
+            this.btnSellTransacDaily.Name = "btnSellTransacDaily";
+            this.btnSellTransacDaily.Size = new System.Drawing.Size(160, 28);
+            this.btnSellTransacDaily.TabIndex = 6;
+            this.btnSellTransacDaily.Text = "Show Report";
+            this.btnSellTransacDaily.UseVisualStyleBackColor = true;
+            this.btnSellTransacDaily.Click += new System.EventHandler(this.btnSellTransacDaily_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(20, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(30, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Date";
+            // 
+            // dtpSellTransacDaily
+            // 
+            this.dtpSellTransacDaily.Location = new System.Drawing.Point(130, 25);
+            this.dtpSellTransacDaily.Name = "dtpSellTransacDaily";
+            this.dtpSellTransacDaily.Size = new System.Drawing.Size(200, 20);
+            this.dtpSellTransacDaily.TabIndex = 4;
             // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 443);
+            this.ClientSize = new System.Drawing.Size(1088, 443);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpBlackList);
@@ -409,6 +675,18 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.tabControl3.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.tabControl4.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -447,5 +725,29 @@
         private System.Windows.Forms.DateTimePicker dtpAuditDaily;
         private System.Windows.Forms.ComboBox cmbAuditType2;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TabControl tabControl3;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button btnBuyTransacPeriod;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dtpBuyTransacEnd;
+        private System.Windows.Forms.DateTimePicker dtpBuyTransacStart;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Button btnBuyTransacDaily;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker dtpBuyTransacDaily;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TabControl tabControl4;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Button btnSellTransacPeriod;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dtpSellTransacEnd;
+        private System.Windows.Forms.DateTimePicker dtpSellTransacStart;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.Button btnSellTransacDaily;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DateTimePicker dtpSellTransacDaily;
     }
 }

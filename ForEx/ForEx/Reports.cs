@@ -98,6 +98,41 @@ namespace ForEx
             crv.Show();
         }
 
+        private void btnBuyTransacPeriod_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpBuyTransacStart.Value;
+            DateTime end = dtpBuyTransacEnd.Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportPeriod, "Buy", start, end);
+            crv.Show();
+        }
+
+        private void btnBuyTransacDaily_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpBuyTransacDaily.Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportDaily, "Buy", start);
+
+            crv.Show();
+        }
+
+        private void btnSellTransacPeriod_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpSellTransacStart.Value;
+            DateTime end = dtpSellTransacEnd.Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportPeriod, "Sell", start, end);
+            crv.Show();
+        }
+
+        private void btnSellTransacDaily_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpSellTransacDaily.Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportDaily, "Sell", start);
+            crv.Show();
+        }
+
            
 
          

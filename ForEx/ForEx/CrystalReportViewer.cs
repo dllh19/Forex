@@ -70,8 +70,15 @@ namespace ForEx
                 case (Common.ReportType.SaleReportPeriod):
                     break;
                 case (Common.ReportType.TransactionReportDaily):
+                    Reports.TransactionReport tr1 = new Reports.TransactionReport();
+                    crystalReportViewer1.ReportSource = tr1;
+                    tr1.SetDataSource(GetTransactionDaily(start,query));
                     break;
+
                 case (Common.ReportType.TransactionReportPeriod):
+                    Reports.TransactionReport tr = new Reports.TransactionReport();
+                    crystalReportViewer1.ReportSource = tr;
+                    tr.SetDataSource(GetTransactionRange(start, end,query));
                     break;
 
                 case (Common.ReportType.AuditDaily):
@@ -88,13 +95,13 @@ namespace ForEx
                 case (Common.ReportType.AnnexOneDaily):
                     Reports.Annex1 an = new Reports.Annex1();
                     crystalReportViewer1.ReportSource = an;
-                    an.SetDataSource(GetTransactionDaily(start));
+                    an.SetDataSource(GetAnnexOneDaily(start));
 
                     break;
                 case (Common.ReportType.AnnexOneRange):
                     Reports.Annex1 an2 = new Reports.Annex1();
                     crystalReportViewer1.ReportSource = an2;
-                    an2.SetDataSource(GetTransactionWeekly(start, end));
+                    an2.SetDataSource(GetAnnexOneRange(start, end));
 
                     break;
 
@@ -207,7 +214,7 @@ namespace ForEx
             return ListClients;
         }
 
-        private List<AnnexOne> GetTransactionWeekly(DateTime start, DateTime end)
+        private List<AnnexOne> GetAnnexOneRange(DateTime start, DateTime end)
         {
 
             con.Open();
@@ -391,6 +398,237 @@ namespace ForEx
         }
 
 
+        private List<TransactionData> GetTransactionRange(DateTime start, DateTime end, string type)
+        {
+
+            con.Open();
+
+            List<TransactionData> ListTransac = new List<TransactionData>();
+
+            if (type.Equals("Buy"))
+            {
+                cmd = new SqlCommand("GetTransactionBuyRange", con);
+            }
+            else
+            {
+                cmd = new SqlCommand("GetTransactionSellRange", con);
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@Start", SqlDbType.DateTime).Value = start;
+            cmd.Parameters.Add("@End", SqlDbType.DateTime).Value = end;
+
+            var reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    DataTable myTable = new DataTable();
+                    myTable.Load(reader);
+                    foreach (DataRow row in myTable.Rows)
+                    {
+                        string currency;
+                        if (!string.IsNullOrEmpty(row["currency"].ToString()))
+                            currency = (row["currency"].ToString());
+                        else
+                            currency = string.Empty;
+
+                        string amount;
+                        if (!string.IsNullOrEmpty(row["amount"].ToString()))
+                            amount = (row["amount"].ToString());
+                        else
+                            amount = "0.00";
+
+                        string rates;
+                        if (!string.IsNullOrEmpty(row["rates"].ToString()))
+                            rates = (row["rates"].ToString());
+                        else
+                            rates = "0.00";
+
+                        string total;
+                        if (!string.IsNullOrEmpty(row["total"].ToString()))
+                            total = (row["total"].ToString());
+                        else
+                            total = "0.00";
+
+                        string date_created;
+                        if (!string.IsNullOrEmpty(row["date_created"].ToString()))
+                            date_created = (row["date_created"].ToString());
+                        else
+                            date_created = string.Empty;
+
+                        string TellerUsername;
+                        if (!string.IsNullOrEmpty(row["TellerUsername"].ToString()))
+                            TellerUsername = (row["TellerUsername"].ToString());
+                        else
+                            TellerUsername = string.Empty;
+
+                        string receipt_id;
+                        if (!string.IsNullOrEmpty(row["receipt_id"].ToString()))
+                            receipt_id = (row["receipt_id"].ToString());
+                        else
+                            receipt_id = string.Empty;
+
+                        string ClientName;
+                        if (!string.IsNullOrEmpty(row["ClientName"].ToString()))
+                            ClientName = (row["ClientName"].ToString());
+                        else
+                            ClientName = string.Empty;
+
+                        string ClientType;
+                        if (!string.IsNullOrEmpty(row["ClientType"].ToString()))
+                            ClientType = (row["ClientType"].ToString());
+                        else
+                            ClientType = " - ";
+
+                        TransactionData data = new TransactionData
+                        {
+                            Currency = currency,
+                            Amount = amount,
+                            Rates = rates,
+                            Total = total,
+                            DateCreated = date_created,
+                            TellerUsername = TellerUsername,
+                            ReceiptId = receipt_id,
+                            ClientName = ClientName,
+                            ClientType = ClientType,
+                            DateRange = start.ToString("ddd, MMM d, yyyy") + " - " + end.ToString("ddd, MMM d, yyyy"),
+                            TransactionType = type
+                        };
+
+                        ListTransac.Add(data);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while generating the report: " + ex.InnerException);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return ListTransac;
+        }
+
+
+        private List<TransactionData> GetTransactionDaily(DateTime daily, string type)
+        {
+
+            con.Open();
+            List<TransactionData> ListTransac = new List<TransactionData>();
+
+            if (type.Equals("Buy"))
+            {
+                cmd = new SqlCommand("GetTransactionBuyDaily", con);
+            }
+            else
+            {
+                cmd = new SqlCommand("GetTransactionSellDaily", con);
+            }
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@CurrenctDate", SqlDbType.DateTime).Value = daily;
+
+            var reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    DataTable myTable = new DataTable();
+                    myTable.Load(reader);
+                    foreach (DataRow row in myTable.Rows)
+                    {
+                        string currency;
+                        if (!string.IsNullOrEmpty(row["currency"].ToString()))
+                            currency = (row["currency"].ToString());
+                        else
+                            currency = string.Empty;
+
+                        string amount;
+                        if (!string.IsNullOrEmpty(row["amount"].ToString()))
+                            amount = (row["amount"].ToString());
+                        else
+                            amount = "0.00";
+
+                        string rates;
+                        if (!string.IsNullOrEmpty(row["rates"].ToString()))
+                            rates = (row["rates"].ToString());
+                        else
+                            rates = "0.00";
+
+                        string total;
+                        if (!string.IsNullOrEmpty(row["total"].ToString()))
+                            total = (row["total"].ToString());
+                        else
+                            total = "0.00";
+
+                        string date_created;
+                        if (!string.IsNullOrEmpty(row["date_created"].ToString()))
+                            date_created = (row["date_created"].ToString());
+                        else
+                            date_created = string.Empty;
+
+                        string TellerUsername;
+                        if (!string.IsNullOrEmpty(row["TellerUsername"].ToString()))
+                            TellerUsername = (row["TellerUsername"].ToString());
+                        else
+                            TellerUsername = string.Empty;
+
+                        string receipt_id;
+                        if (!string.IsNullOrEmpty(row["receipt_id"].ToString()))
+                            receipt_id = (row["receipt_id"].ToString());
+                        else
+                            receipt_id = string.Empty;
+
+                        string ClientName;
+                        if (!string.IsNullOrEmpty(row["ClientName"].ToString()))
+                            ClientName = (row["ClientName"].ToString());
+                        else
+                            ClientName = string.Empty;
+
+                        string ClientType;
+                        if (!string.IsNullOrEmpty(row["ClientType"].ToString()))
+                            ClientType = (row["ClientType"].ToString());
+                        else
+                            ClientType = " - ";
+
+                        TransactionData data = new TransactionData
+                        {
+                            Currency = currency,
+                            Amount = amount,
+                            Rates = rates,
+                            Total = total,
+                            DateCreated = date_created,
+                            TellerUsername = TellerUsername,
+                            ReceiptId = receipt_id,
+                            ClientName = ClientName,
+                            ClientType = ClientType,
+                            DateRange = daily.ToString("ddd, MMM d, yyyy") ,
+                            TransactionType = type
+
+                        };
+
+                        ListTransac.Add(data);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while generating the report: " + ex.InnerException);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return ListTransac;
+        }
+
+
 
         private List<AuditClass> GetAuditDaily(DateTime daily, string op)
         {
@@ -477,7 +715,7 @@ namespace ForEx
         }
 
 
-        private List<AnnexOne> GetTransactionDaily(DateTime daily)
+        private List<AnnexOne> GetAnnexOneDaily(DateTime daily)
         {
 
             con.Open();

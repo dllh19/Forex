@@ -89,6 +89,7 @@
     <Compile Include="Classes\Rate.cs" />
     <Compile Include="Classes\tempBalance.cs" />
     <Compile Include="Classes\Transaction.cs" />
+    <Compile Include="Classes\TransactionData.cs" />
     <Compile Include="Classes\UserLoggedIn.cs" />
     <Compile Include="Classes\Users.cs" />
     <Compile Include="Client.cs">
@@ -251,6 +252,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TransacCheklist.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\voucher.cs">
@@ -417,6 +424,10 @@
     <EmbeddedResource Include="Reports\TransacCheklist.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TransacCheklist.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactionReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\voucher.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

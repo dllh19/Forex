@@ -66,6 +66,23 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="TransactionData" msprop:Generator_TableClassName="TransactionDataDataTable" msprop:Generator_TableVarName="tableTransactionData" msprop:Generator_RowChangedName="TransactionDataRowChanged" msprop:Generator_TablePropName="TransactionData" msprop:Generator_RowDeletingName="TransactionDataRowDeleting" msprop:Generator_RowChangingName="TransactionDataRowChanging" msprop:Generator_RowEvHandlerName="TransactionDataRowChangeEventHandler" msprop:Generator_RowDeletedName="TransactionDataRowDeleted" msprop:Generator_RowClassName="TransactionDataRow" msprop:Generator_UserTableName="TransactionData" msprop:Generator_RowEvArgName="TransactionDataRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Currency" msprop:Generator_ColumnVarNameInTable="columnCurrency" msprop:Generator_ColumnPropNameInRow="Currency" msprop:Generator_ColumnPropNameInTable="CurrencyColumn" msprop:Generator_UserColumnName="Currency" type="xs:string" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:string" minOccurs="0" />
+              <xs:element name="Rates" msprop:Generator_ColumnVarNameInTable="columnRates" msprop:Generator_ColumnPropNameInRow="Rates" msprop:Generator_ColumnPropNameInTable="RatesColumn" msprop:Generator_UserColumnName="Rates" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:string" minOccurs="0" />
+              <xs:element name="DateCreated" msprop:Generator_ColumnVarNameInTable="columnDateCreated" msprop:Generator_ColumnPropNameInRow="DateCreated" msprop:Generator_ColumnPropNameInTable="DateCreatedColumn" msprop:Generator_UserColumnName="DateCreated" type="xs:string" minOccurs="0" />
+              <xs:element name="TellerUsername" msprop:Generator_ColumnVarNameInTable="columnTellerUsername" msprop:Generator_ColumnPropNameInRow="TellerUsername" msprop:Generator_ColumnPropNameInTable="TellerUsernameColumn" msprop:Generator_UserColumnName="TellerUsername" type="xs:string" minOccurs="0" />
+              <xs:element name="ReceiptId" msprop:Generator_ColumnVarNameInTable="columnReceiptId" msprop:Generator_ColumnPropNameInRow="ReceiptId" msprop:Generator_ColumnPropNameInTable="ReceiptIdColumn" msprop:Generator_UserColumnName="ReceiptId" type="xs:string" minOccurs="0" />
+              <xs:element name="ClientName" msprop:Generator_ColumnVarNameInTable="columnClientName" msprop:Generator_ColumnPropNameInRow="ClientName" msprop:Generator_ColumnPropNameInTable="ClientNameColumn" msprop:Generator_UserColumnName="ClientName" type="xs:string" minOccurs="0" />
+              <xs:element name="ClientType" msprop:Generator_ColumnVarNameInTable="columnClientType" msprop:Generator_ColumnPropNameInRow="ClientType" msprop:Generator_ColumnPropNameInTable="ClientTypeColumn" msprop:Generator_UserColumnName="ClientType" type="xs:string" minOccurs="0" />
+              <xs:element name="DateRange" msprop:Generator_ColumnVarNameInTable="columnDateRange" msprop:Generator_ColumnPropNameInRow="DateRange" msprop:Generator_ColumnPropNameInTable="DateRangeColumn" msprop:Generator_UserColumnName="DateRange" type="xs:string" minOccurs="0" />
+              <xs:element name="TransactionType" msprop:Generator_ColumnVarNameInTable="columnTransactionType" msprop:Generator_ColumnPropNameInRow="TransactionType" msprop:Generator_ColumnPropNameInTable="TransactionTypeColumn" msprop:Generator_UserColumnName="TransactionType" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

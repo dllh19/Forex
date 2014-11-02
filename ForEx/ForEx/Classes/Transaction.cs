@@ -17,5 +17,6 @@ namespace ForEx.Classes
         public DateTime dateCreated;
         public string username;
         public int receiptId;
+
     }
 }

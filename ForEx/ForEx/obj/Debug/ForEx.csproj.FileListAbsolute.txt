@@ -78,3 +78,4 @@ C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.ViewClient.resou
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.csproj.GenerateResource.Cache
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.exe
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.pdb
+C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.csprojResolveAssemblyReference.cache

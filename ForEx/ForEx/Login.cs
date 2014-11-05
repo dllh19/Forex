@@ -33,7 +33,7 @@ namespace ForEx
             if (txtUsername.Text != "" && txtPass.Text != "")
             {
                 con.Open();
-                string query = "SELECT * FROM tbl_users  WHERE Username=@Username AND Password=@Password ";
+                string query = "SELECT * FROM tbl_users  WHERE Username=@Username COLLATE SQL_Latin1_General_CP1_CS_AS AND Password=@Password COLLATE SQL_Latin1_General_CP1_CS_AS";
                 cmd = new SqlCommand(query, con);
                 cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = txtUsername.Text.ToString();
                 cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = txtPass.Text.ToString();

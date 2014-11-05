@@ -323,10 +323,12 @@ namespace ForEx
             try
             {
 
-                const string sql = "   SELECT *  FROM [ForExDB].[dbo].[tbl_rate] INNER JOIN ( select max([date_updated]) " +
-                           " as MaxDate from [ForExDB].[dbo].[tbl_rate]) tm on " +
-                            "[ForExDB].[dbo].[tbl_rate].[date_updated] = tm.MaxDate " +
-                           "WHERE CONVERT(VARCHAR(10),[date_updated],10)=CONVERT(VARCHAR(10),@DateCreated,10)";
+                const string sql = "SELECT *  FROM tbl_currency LEFT JOIN [ForExDB].[dbo].[tbl_rate] " +
+                                   "INNER JOIN ( select max([date_updated])  " +
+                                   "as MaxDate from [ForExDB].[dbo].[tbl_rate]) tm" +
+                                   " on [ForExDB].[dbo].[tbl_rate].[date_updated] = tm.MaxDate ON " +
+                                   "CurrencyId =  tbl_currency.currency_id WHERE " +
+                                   "CONVERT(VARCHAR(10),[date_updated],10)=CONVERT(VARCHAR(10),@DateCreated,10)";
 
                 conn.Open();
                 var cmd = new SqlCommand(sql, conn);
@@ -336,20 +338,102 @@ namespace ForEx
                 {
                     while (dr.Read())
                     {
-                            var CurrencyId = Convert.ToInt32(dr["CurrencyId"]);
-                            var Symbol = Convert.ToString(dr["Symbol"]);
-                            var PurchaseMin = Convert.ToDecimal(dr["PurchaseMin"]);
-                            var PurchaseMax = Convert.ToDecimal(dr["PurchaseMax"]);
-                            var PurchaseRate = Convert.ToDecimal(dr["PurchaseRate"]);
-                            var PurchaseMidrate = Convert.ToDecimal(dr["PurchaseMidrate"]);
-                            var SaleMin = Convert.ToDecimal(dr["SaleMin"]);
-                            var SaleMax = Convert.ToDecimal(dr["SaleMax"]);
-                            var SaleRate = Convert.ToDecimal(dr["SaleRate"]);
-                            var SaleMidrate = Convert.ToDecimal(dr["SaleMidrate"]);
-                            var BankPurchase = Convert.ToDecimal(dr["BankPurchase"]);
-                            var BankSale = Convert.ToDecimal(dr["BankSale"]);
-                        
+                        var CurrencyId = Convert.ToInt32(dr["CurrencyId"]);
+                        var Symbol = Convert.ToString(dr["Symbol"]);
+                        var PurchaseMin = Convert.ToDecimal(dr["PurchaseMin"]);
+                        var PurchaseMax = Convert.ToDecimal(dr["PurchaseMax"]);
+                        var PurchaseRate = Convert.ToDecimal(dr["PurchaseRate"]);
+                        var PurchaseMidrate = Convert.ToDecimal(dr["PurchaseMidrate"]);
+                        var SaleMin = Convert.ToDecimal(dr["SaleMin"]);
+                        var SaleMax = Convert.ToDecimal(dr["SaleMax"]);
+                        var SaleRate = Convert.ToDecimal(dr["SaleRate"]);
+                        var SaleMidrate = Convert.ToDecimal(dr["SaleMidrate"]);
+                        var BankPurchase = Convert.ToDecimal(dr["BankPurchase"]);
+                        var BankSale = Convert.ToDecimal(dr["BankSale"]);
+
                         rateList.Add(new Rate(CurrencyId, Symbol, PurchaseMin, PurchaseMax,
+                        PurchaseRate, PurchaseMidrate, SaleMin,
+                        SaleMax, SaleRate, SaleMidrate, BankPurchase, BankSale));
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print(ex.Message);
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                    conn.Close();
+            }
+            return rateList;
+        }
+
+        public static List<Rate> getDashBoardRates()
+        {
+            string connection = Common.GetConnectionString();
+
+            List<Rate> rateList = new List<Rate>();
+
+            SqlConnection conn = new SqlConnection(connection);
+
+            try
+            {
+
+
+
+                conn.Open();
+                var cmd = new SqlCommand("GetDashboardRate", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    
+                    while (dr.Read())
+                    {
+                        decimal PurchaseRate;
+                        if (string.IsNullOrEmpty(dr["PurchaseRate"].ToString()))
+                        {
+                            PurchaseRate = 0;
+                        }
+                        else
+                        {
+                            PurchaseRate = Convert.ToDecimal(dr["PurchaseRate"]);
+                        }
+
+                        decimal SaleRate;
+                        if (string.IsNullOrEmpty(dr["SaleRate"].ToString()))
+                        {
+                            SaleRate = 0;
+                        }
+                        else
+                        {
+                            SaleRate = Convert.ToDecimal(dr["SaleRate"]);
+                        }
+
+                        decimal Stock;
+                        if (string.IsNullOrEmpty(dr["balance"].ToString()))
+                        {
+                            Stock = 0;
+                        }
+                        else
+                        {
+                            Stock = Convert.ToDecimal(dr["balance"]);
+                        }
+
+                        var CurrencyId = Convert.ToInt32(dr["currencyid"]);
+                        var Symbol = Convert.ToString(dr["symbol"]);
+                        var PurchaseMin = 0;
+                        var PurchaseMax = 0;
+                        var PurchaseMidrate = 0;
+                        var SaleMin = 0;
+                        var SaleMax = 0;
+                        var SaleMidrate = 0;
+                        var BankPurchase = 0;
+                        var BankSale = 0;
+
+                        rateList.Add(new Rate(Stock,CurrencyId, Symbol, PurchaseMin, PurchaseMax,
                         PurchaseRate, PurchaseMidrate, SaleMin,
                         SaleMax, SaleRate, SaleMidrate, BankPurchase, BankSale));
                     }

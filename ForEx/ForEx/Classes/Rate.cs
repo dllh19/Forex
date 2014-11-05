@@ -31,10 +31,30 @@ namespace ForEx.Classes
         public decimal BankPurchase { get; set; }
 
         public decimal BankSale { get; set; }
+        public decimal Stock { get; set; }
 
-        public Rate(int CurrencyId, string Symbol,decimal PurchaseMin,decimal PurchaseMax,decimal PurchaseRate,decimal PurchaseMidrate,decimal SaleMin,decimal SaleMax,decimal SaleRate,decimal SaleMidrate,decimal BankPurchase,decimal BankSale)
+        public Rate(int CurrencyId, string Symbol, decimal PurchaseMin, decimal PurchaseMax, decimal PurchaseRate, decimal PurchaseMidrate, decimal SaleMin, decimal SaleMax, decimal SaleRate, decimal SaleMidrate, decimal BankPurchase, decimal BankSale)
         {
             this.CurrencyId = CurrencyId;
+            this.Symbol = Symbol;
+            this.PurchaseMin = PurchaseMin;
+            this.PurchaseMax = PurchaseMax;
+            this.PurchaseRate = PurchaseRate;
+            this.PurchaseMidrate = PurchaseMidrate;
+            this.SaleMin = SaleMin;
+            this.SaleMax = SaleMax;
+            this.SaleRate = SaleRate;
+            this.SaleMidrate = SaleMidrate;
+            this.BankPurchase = BankPurchase;
+            this.BankSale = BankSale;
+
+        }
+
+
+        public Rate(decimal Stock,int CurrencyId, string Symbol, decimal PurchaseMin, decimal PurchaseMax, decimal PurchaseRate, decimal PurchaseMidrate, decimal SaleMin, decimal SaleMax, decimal SaleRate, decimal SaleMidrate, decimal BankPurchase, decimal BankSale)
+        {
+            this.CurrencyId = CurrencyId;
+            this.Stock = Stock;
             this.Symbol = Symbol;
             this.PurchaseMin = PurchaseMin;
             this.PurchaseMax = PurchaseMax;

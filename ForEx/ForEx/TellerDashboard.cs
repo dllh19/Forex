@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using ForEx.Classes;
 
@@ -21,12 +22,33 @@ namespace ForEx
 
         private void TellerDashboard_Load(object sender, EventArgs e)
         {
+            var myTimer = new System.Timers.Timer();
+            // Tell the timer what top do when it elapses
+            myTimer.Elapsed += new ElapsedEventHandler(myEvent);
+            // Set it to go off every five seconds
+            myTimer.Interval = 10000;
+            // And start it        
+            myTimer.Enabled = true;
+
             BindGridRate();
         }
 
+        private void myEvent(object source, ElapsedEventArgs e)
+        {
+            this.Invoke((Action)(() =>
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
+                dataGridView1.Refresh();
+                BindGridRate();
+               
+            }));
+        }
+
+
         private void BindGridRate()
         {
-            var rates = Common.getRateforToday();
+            var rates = Common.getDashBoardRates();
 
             BindingSource bs = new BindingSource();
             bs.DataSource = typeof(Rate);

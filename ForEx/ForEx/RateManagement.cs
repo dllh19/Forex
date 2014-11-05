@@ -67,16 +67,12 @@ namespace ForEx
             }
             else
             {
-                
-                bs.Add(new Rate(1, "MUR", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-                bs.Add(new Rate(2, "AED", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-                bs.Add(new Rate(3, "AUD", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-                bs.Add(new Rate(4, "CAD", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-                bs.Add(new Rate(5, "CHF", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-                bs.Add(new Rate(6, "EUR", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-                bs.Add(new Rate(7, "GBP", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-                bs.Add(new Rate(8, "HKD", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-                bs.Add(new Rate(9, "USD", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+                var currencies = Common.getAllCurrency();
+                foreach (var currency in currencies)
+                {
+                    bs.Add(new Rate(currency.id, currency.symbol, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+                }
+
             }
             con.Close();
             

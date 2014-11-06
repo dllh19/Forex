@@ -83,6 +83,23 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="WACC" msprop:Generator_TableClassName="WACCDataTable" msprop:Generator_TableVarName="tableWACC" msprop:Generator_RowChangedName="WACCRowChanged" msprop:Generator_TablePropName="WACC" msprop:Generator_RowDeletingName="WACCRowDeleting" msprop:Generator_RowChangingName="WACCRowChanging" msprop:Generator_RowEvHandlerName="WACCRowChangeEventHandler" msprop:Generator_RowDeletedName="WACCRowDeleted" msprop:Generator_RowClassName="WACCRow" msprop:Generator_UserTableName="WACC" msprop:Generator_RowEvArgName="WACCRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Voucher" msprop:Generator_ColumnVarNameInTable="columnVoucher" msprop:Generator_ColumnPropNameInRow="Voucher" msprop:Generator_ColumnPropNameInTable="VoucherColumn" msprop:Generator_UserColumnName="Voucher" type="xs:string" minOccurs="0" />
+              <xs:element name="DateCreated" msprop:Generator_ColumnVarNameInTable="columnDateCreated" msprop:Generator_ColumnPropNameInRow="DateCreated" msprop:Generator_ColumnPropNameInTable="DateCreatedColumn" msprop:Generator_UserColumnName="DateCreated" type="xs:string" minOccurs="0" />
+              <xs:element name="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_UserColumnName="Type" type="xs:string" minOccurs="0" />
+              <xs:element name="Symbol" msprop:Generator_ColumnVarNameInTable="columnSymbol" msprop:Generator_ColumnPropNameInRow="Symbol" msprop:Generator_ColumnPropNameInTable="SymbolColumn" msprop:Generator_UserColumnName="Symbol" type="xs:string" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:string" minOccurs="0" />
+              <xs:element name="Rate" msprop:Generator_ColumnVarNameInTable="columnRate" msprop:Generator_ColumnPropNameInRow="Rate" msprop:Generator_ColumnPropNameInTable="RateColumn" msprop:Generator_UserColumnName="Rate" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:string" minOccurs="0" />
+              <xs:element name="Balance" msprop:Generator_ColumnVarNameInTable="columnBalance" msprop:Generator_ColumnPropNameInRow="Balance" msprop:Generator_ColumnPropNameInTable="BalanceColumn" msprop:Generator_UserColumnName="Balance" type="xs:string" minOccurs="0" />
+              <xs:element name="WaccRate" msprop:Generator_ColumnVarNameInTable="columnWaccRate" msprop:Generator_ColumnPropNameInRow="WaccRate" msprop:Generator_ColumnPropNameInTable="WaccRateColumn" msprop:Generator_UserColumnName="WaccRate" type="xs:string" minOccurs="0" />
+              <xs:element name="WACCXBalance" msprop:Generator_ColumnVarNameInTable="columnWACCXBalance" msprop:Generator_ColumnPropNameInRow="WACCXBalance" msprop:Generator_ColumnPropNameInTable="WACCXBalanceColumn" msprop:Generator_UserColumnName="WACCXBalance" type="xs:string" minOccurs="0" />
+              <xs:element name="DateRange" msprop:Generator_ColumnVarNameInTable="columnDateRange" msprop:Generator_ColumnPropNameInRow="DateRange" msprop:Generator_ColumnPropNameInTable="DateRangeColumn" msprop:Generator_UserColumnName="DateRange" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

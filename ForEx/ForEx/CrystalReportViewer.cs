@@ -69,6 +69,16 @@ namespace ForEx
                     break;
                 case (Common.ReportType.SaleReportPeriod):
                     break;
+                case (Common.ReportType.WaccDaily):
+                    Reports.WacReport wd = new Reports.WacReport();
+                    crystalReportViewer1.ReportSource = wd;
+                    wd.SetDataSource(GetWaccDaily(start, query));
+                    break;
+                case (Common.ReportType.WaccPeiod):
+                    Reports.WacReport wp = new Reports.WacReport();
+                    crystalReportViewer1.ReportSource = wp;
+                    wp.SetDataSource(GetWaccPeriod(start,end, query));
+                    break;
                 case (Common.ReportType.TransactionReportDaily):
                     Reports.TransactionReport tr1 = new Reports.TransactionReport();
                     crystalReportViewer1.ReportSource = tr1;
@@ -606,7 +616,7 @@ namespace ForEx
                             ReceiptId = receipt_id,
                             ClientName = ClientName,
                             ClientType = ClientType,
-                            DateRange = daily.ToString("ddd, MMM d, yyyy") ,
+                            DateRange = daily.ToString("ddd, MMM d, yyyy"),
                             TransactionType = type
 
                         };
@@ -626,6 +636,313 @@ namespace ForEx
             }
 
             return ListTransac;
+        }
+
+        private List<WACC> GetWaccDaily(DateTime daily, string symbol)
+        {
+
+            con.Open();
+            List<WACC> ListWACC = new List<WACC>();
+
+
+            cmd = new SqlCommand("GetWACCDaily", con);
+
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@CurrenDate", SqlDbType.DateTime).Value = daily;
+            cmd.Parameters.Add("@Symbol", SqlDbType.VarChar).Value = symbol;
+
+            var reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    DataTable myTable = new DataTable();
+                    myTable.Load(reader);
+                    decimal balanceRemains = 0;
+                    decimal WaccRate = 0;
+                    decimal WaccTimesBalace = 0;
+
+                    bool isFirstLoop = true;
+                    foreach (DataRow row in myTable.Rows)
+                    {
+                        if (isFirstLoop)
+                        {
+                            decimal balance;
+                            if (!string.IsNullOrEmpty(row["balance"].ToString()))
+                                balance = Convert.ToDecimal((row["balance"].ToString()));
+                            else
+                                balance = 0;
+
+                            balanceRemains = balance;
+
+                            isFirstLoop = false;
+
+                            decimal PurchaseMidrate;
+                            if (!string.IsNullOrEmpty(row["PurchaseMidrate"].ToString()))
+                                PurchaseMidrate = Convert.ToDecimal((row["PurchaseMidrate"].ToString()));
+                            else
+                                PurchaseMidrate = 0;
+
+                            decimal SaleMidrate;
+                            if (!string.IsNullOrEmpty(row["SaleMidrate"].ToString()))
+                                SaleMidrate = Convert.ToDecimal((row["SaleMidrate"].ToString()));
+                            else
+                                SaleMidrate = 0;
+
+                            WaccRate = (PurchaseMidrate + SaleMidrate) / 2;
+
+                            WaccTimesBalace = WaccRate * balanceRemains;
+                        }
+
+                        string type;
+                        if (!string.IsNullOrEmpty(row["type"].ToString()))
+                            type = (row["type"].ToString());
+                        else
+                            type = string.Empty;
+
+                        string rates;
+                        if (!string.IsNullOrEmpty(row["rates"].ToString()))
+                            rates = (row["rates"].ToString());
+                        else
+                            rates = string.Empty;
+
+                        decimal amount;
+                        if (!string.IsNullOrEmpty(row["amount"].ToString()))
+                            amount = Convert.ToDecimal((row["amount"].ToString()));
+                        else
+                            amount = 0;
+
+                        if (type == "Buy")
+                        {
+                            balanceRemains = balanceRemains + amount;
+                        }
+                        else
+                        {
+                            balanceRemains = balanceRemains - amount;
+                        }
+
+                        decimal total;
+                        if (!string.IsNullOrEmpty(row["total"].ToString()))
+                            total = Convert.ToDecimal((row["total"].ToString()));
+                        else
+                            total = 0;
+
+                        string transacid;
+                        if (!string.IsNullOrEmpty(row["transaction_id"].ToString()))
+                            transacid = ((row["transaction_id"].ToString()));
+                        else
+                            transacid = "null";
+
+                        if (type == "Buy")
+                        {
+                            WaccTimesBalace = WaccTimesBalace + total;
+                        }
+                        else
+                        {
+                            WaccTimesBalace = WaccTimesBalace - total;
+                        }
+
+                        var curWacc = WaccTimesBalace / balanceRemains;
+
+                        string currency;
+                        if (!string.IsNullOrEmpty(row["currency"].ToString()))
+                            currency = (row["currency"].ToString());
+                        else
+                            currency = "0.00";
+
+
+                        string date_created;
+                        if (!string.IsNullOrEmpty(row["date_created"].ToString()))
+                            date_created = (row["date_created"].ToString());
+                        else
+                            date_created = "null";
+
+                        WACC wacc = new WACC
+                        {
+                            Voucher = transacid,
+                            DateCreated = date_created,
+                            Type = type,
+                            Symbol = symbol,
+                            Amount = amount.ToString(),
+                            Rate = rates,
+                            Total = total.ToString(),
+                            Balance = balanceRemains.ToString(),
+                            WaccRate = curWacc.ToString(),
+                            DateRange = daily.ToString("ddd, MMM d, yyyy"),
+                            WACCXBalance = WaccTimesBalace.ToString()
+
+                        };
+
+                        ListWACC.Add(wacc);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while generating the report: " + ex.InnerException);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return ListWACC;
+        }
+
+        private List<WACC> GetWaccPeriod(DateTime start,DateTime end, string symbol)
+        {
+
+            con.Open();
+            List<WACC> ListWACC = new List<WACC>();
+
+
+            cmd = new SqlCommand("GetWACCPeriod", con);
+
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@StartDate", SqlDbType.DateTime).Value = start;
+            cmd.Parameters.Add("@EndDate", SqlDbType.DateTime).Value = end;
+            cmd.Parameters.Add("@Symbol", SqlDbType.VarChar).Value = symbol;
+
+            var reader = cmd.ExecuteReader();
+            try
+            {
+                if (reader.HasRows)
+                {
+                    DataTable myTable = new DataTable();
+                    myTable.Load(reader);
+                    decimal balanceRemains = 0;
+                    decimal WaccRate = 0;
+                    decimal WaccTimesBalace = 0;
+
+                    bool isFirstLoop = true;
+                    foreach (DataRow row in myTable.Rows)
+                    {
+                        if (isFirstLoop)
+                        {
+                            decimal balance;
+                            if (!string.IsNullOrEmpty(row["balance"].ToString()))
+                                balance = Convert.ToDecimal((row["balance"].ToString()));
+                            else
+                                balance = 0;
+
+                            balanceRemains = balance;
+
+                            isFirstLoop = false;
+
+                            decimal PurchaseMidrate;
+                            if (!string.IsNullOrEmpty(row["PurchaseMidrate"].ToString()))
+                                PurchaseMidrate = Convert.ToDecimal((row["PurchaseMidrate"].ToString()));
+                            else
+                                PurchaseMidrate = 0;
+
+                            decimal SaleMidrate;
+                            if (!string.IsNullOrEmpty(row["SaleMidrate"].ToString()))
+                                SaleMidrate = Convert.ToDecimal((row["SaleMidrate"].ToString()));
+                            else
+                                SaleMidrate = 0;
+
+                            WaccRate = (PurchaseMidrate + SaleMidrate) / 2;
+
+                            WaccTimesBalace = WaccRate * balanceRemains;
+                        }
+
+                        string type;
+                        if (!string.IsNullOrEmpty(row["type"].ToString()))
+                            type = (row["type"].ToString());
+                        else
+                            type = string.Empty;
+
+                        string rates;
+                        if (!string.IsNullOrEmpty(row["rates"].ToString()))
+                            rates = (row["rates"].ToString());
+                        else
+                            rates = string.Empty;
+
+                        decimal amount;
+                        if (!string.IsNullOrEmpty(row["amount"].ToString()))
+                            amount = Convert.ToDecimal((row["amount"].ToString()));
+                        else
+                            amount = 0;
+
+                        if (type == "Buy")
+                        {
+                            balanceRemains = balanceRemains + amount;
+                        }
+                        else
+                        {
+                            balanceRemains = balanceRemains - amount;
+                        }
+
+                        decimal total;
+                        if (!string.IsNullOrEmpty(row["total"].ToString()))
+                            total = Convert.ToDecimal((row["total"].ToString()));
+                        else
+                            total = 0;
+
+                        string transacid;
+                        if (!string.IsNullOrEmpty(row["transaction_id"].ToString()))
+                            transacid = ((row["transaction_id"].ToString()));
+                        else
+                            transacid = "null";
+
+                        if (type == "Buy")
+                        {
+                            WaccTimesBalace = WaccTimesBalace + total;
+                        }
+                        else
+                        {
+                            WaccTimesBalace = WaccTimesBalace - total;
+                        }
+
+                        var curWacc = WaccTimesBalace / balanceRemains;
+
+                        string currency;
+                        if (!string.IsNullOrEmpty(row["currency"].ToString()))
+                            currency = (row["currency"].ToString());
+                        else
+                            currency = "0.00";
+
+
+                        string date_created;
+                        if (!string.IsNullOrEmpty(row["date_created"].ToString()))
+                            date_created = (row["date_created"].ToString());
+                        else
+                            date_created = "null";
+
+                        WACC wacc = new WACC
+                        {
+                            Voucher = transacid,
+                            DateCreated = date_created,
+                            Type = type,
+                            Symbol = symbol,
+                            Amount = amount.ToString(),
+                            Rate = rates,
+                            Total = total.ToString(),
+                            Balance = balanceRemains.ToString(),
+                            WaccRate = curWacc.ToString(),
+                            DateRange = start.ToString("ddd, MMM d, yyyy") + " - " + end.ToString("ddd, MMM d, yyyy"),
+                            WACCXBalance = WaccTimesBalace.ToString()
+
+                        };
+
+                        ListWACC.Add(wacc);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while generating the report: " + ex.InnerException);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return ListWACC;
         }
 
 
@@ -810,6 +1127,11 @@ namespace ForEx
             }
 
             return ListAnnexOne;
+        }
+
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

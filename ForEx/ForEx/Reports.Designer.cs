@@ -84,6 +84,22 @@
             this.btnSellTransacDaily = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.dtpSellTransacDaily = new System.Windows.Forms.DateTimePicker();
+            this.Wacc = new System.Windows.Forms.GroupBox();
+            this.tabControl5 = new System.Windows.Forms.TabControl();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.cmbCurrency1 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnWaccPeriod = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dtpWaccEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpWaccStart = new System.Windows.Forms.DateTimePicker();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.cmbCurrency2 = new System.Windows.Forms.ComboBox();
+            this.Currency = new System.Windows.Forms.Label();
+            this.btnWaccDaily = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.dtpWaccDaily = new System.Windows.Forms.DateTimePicker();
             this.grpBlackList.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -101,6 +117,10 @@
             this.tabControl4.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
+            this.Wacc.SuspendLayout();
+            this.tabControl5.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            this.tabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpBlackList
@@ -649,11 +669,169 @@
             this.dtpSellTransacDaily.Size = new System.Drawing.Size(200, 20);
             this.dtpSellTransacDaily.TabIndex = 4;
             // 
+            // Wacc
+            // 
+            this.Wacc.Controls.Add(this.tabControl5);
+            this.Wacc.Location = new System.Drawing.Point(190, 401);
+            this.Wacc.Name = "Wacc";
+            this.Wacc.Size = new System.Drawing.Size(371, 203);
+            this.Wacc.TabIndex = 3;
+            this.Wacc.TabStop = false;
+            this.Wacc.Text = "WACC";
+            // 
+            // tabControl5
+            // 
+            this.tabControl5.Controls.Add(this.tabPage9);
+            this.tabControl5.Controls.Add(this.tabPage10);
+            this.tabControl5.Location = new System.Drawing.Point(6, 19);
+            this.tabControl5.Name = "tabControl5";
+            this.tabControl5.SelectedIndex = 0;
+            this.tabControl5.Size = new System.Drawing.Size(359, 164);
+            this.tabControl5.TabIndex = 0;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.cmbCurrency1);
+            this.tabPage9.Controls.Add(this.label15);
+            this.tabPage9.Controls.Add(this.btnWaccPeriod);
+            this.tabPage9.Controls.Add(this.label16);
+            this.tabPage9.Controls.Add(this.label17);
+            this.tabPage9.Controls.Add(this.dtpWaccEnd);
+            this.tabPage9.Controls.Add(this.dtpWaccStart);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(351, 138);
+            this.tabPage9.TabIndex = 0;
+            this.tabPage9.Text = "Period";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // cmbCurrency1
+            // 
+            this.cmbCurrency1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCurrency1.FormattingEnabled = true;
+            this.cmbCurrency1.Location = new System.Drawing.Point(136, 80);
+            this.cmbCurrency1.Name = "cmbCurrency1";
+            this.cmbCurrency1.Size = new System.Drawing.Size(200, 21);
+            this.cmbCurrency1.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(26, 80);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Currency";
+            // 
+            // btnWaccPeriod
+            // 
+            this.btnWaccPeriod.Location = new System.Drawing.Point(94, 104);
+            this.btnWaccPeriod.Name = "btnWaccPeriod";
+            this.btnWaccPeriod.Size = new System.Drawing.Size(160, 28);
+            this.btnWaccPeriod.TabIndex = 3;
+            this.btnWaccPeriod.Text = "Show Report";
+            this.btnWaccPeriod.UseVisualStyleBackColor = true;
+            this.btnWaccPeriod.Click += new System.EventHandler(this.btnWaccPeriod_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(26, 45);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(52, 13);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "End Date";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(26, 13);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(55, 13);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Start Date";
+            // 
+            // dtpWaccEnd
+            // 
+            this.dtpWaccEnd.Location = new System.Drawing.Point(136, 45);
+            this.dtpWaccEnd.Name = "dtpWaccEnd";
+            this.dtpWaccEnd.Size = new System.Drawing.Size(200, 20);
+            this.dtpWaccEnd.TabIndex = 1;
+            // 
+            // dtpWaccStart
+            // 
+            this.dtpWaccStart.Location = new System.Drawing.Point(136, 13);
+            this.dtpWaccStart.Name = "dtpWaccStart";
+            this.dtpWaccStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpWaccStart.TabIndex = 0;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.cmbCurrency2);
+            this.tabPage10.Controls.Add(this.Currency);
+            this.tabPage10.Controls.Add(this.btnWaccDaily);
+            this.tabPage10.Controls.Add(this.label19);
+            this.tabPage10.Controls.Add(this.dtpWaccDaily);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(351, 138);
+            this.tabPage10.TabIndex = 1;
+            this.tabPage10.Text = "Daily";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // cmbCurrency2
+            // 
+            this.cmbCurrency2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCurrency2.FormattingEnabled = true;
+            this.cmbCurrency2.Location = new System.Drawing.Point(130, 59);
+            this.cmbCurrency2.Name = "cmbCurrency2";
+            this.cmbCurrency2.Size = new System.Drawing.Size(200, 21);
+            this.cmbCurrency2.TabIndex = 8;
+            // 
+            // Currency
+            // 
+            this.Currency.AutoSize = true;
+            this.Currency.Location = new System.Drawing.Point(20, 59);
+            this.Currency.Name = "Currency";
+            this.Currency.Size = new System.Drawing.Size(49, 13);
+            this.Currency.TabIndex = 7;
+            this.Currency.Text = "Currency";
+            // 
+            // btnWaccDaily
+            // 
+            this.btnWaccDaily.Location = new System.Drawing.Point(94, 104);
+            this.btnWaccDaily.Name = "btnWaccDaily";
+            this.btnWaccDaily.Size = new System.Drawing.Size(160, 28);
+            this.btnWaccDaily.TabIndex = 6;
+            this.btnWaccDaily.Text = "Show Report";
+            this.btnWaccDaily.UseVisualStyleBackColor = true;
+            this.btnWaccDaily.Click += new System.EventHandler(this.btnWaccDaily_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(20, 25);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(30, 13);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Date";
+            // 
+            // dtpWaccDaily
+            // 
+            this.dtpWaccDaily.Location = new System.Drawing.Point(130, 25);
+            this.dtpWaccDaily.Name = "dtpWaccDaily";
+            this.dtpWaccDaily.Size = new System.Drawing.Size(200, 20);
+            this.dtpWaccDaily.TabIndex = 4;
+            // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 443);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1088, 494);
+            this.Controls.Add(this.Wacc);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -687,6 +865,12 @@
             this.tabPage7.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            this.Wacc.ResumeLayout(false);
+            this.tabControl5.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -749,5 +933,21 @@
         private System.Windows.Forms.Button btnSellTransacDaily;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker dtpSellTransacDaily;
+        private System.Windows.Forms.GroupBox Wacc;
+        private System.Windows.Forms.TabControl tabControl5;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.ComboBox cmbCurrency1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnWaccPeriod;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DateTimePicker dtpWaccEnd;
+        private System.Windows.Forms.DateTimePicker dtpWaccStart;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.ComboBox cmbCurrency2;
+        private System.Windows.Forms.Label Currency;
+        private System.Windows.Forms.Button btnWaccDaily;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DateTimePicker dtpWaccDaily;
     }
 }

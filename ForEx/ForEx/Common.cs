@@ -48,7 +48,9 @@ namespace ForEx
             AuditDaily,
             AuditRange,
             AnnexOneRange,
-            AnnexOneDaily
+            AnnexOneDaily,
+            WaccDaily,
+            WaccPeiod
         }
 
         public static string OperationToList(Operation report)

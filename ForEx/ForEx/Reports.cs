@@ -62,6 +62,15 @@ namespace ForEx
 
         private void frmReports_Load(object sender, EventArgs e)
         {
+            var currencies = Common.getAllCurrency();
+            cmbCurrency1.DataSource = currencies;
+            cmbCurrency1.DisplayMember = "symbol";
+            cmbCurrency1.ValueMember = "symbol";
+
+            cmbCurrency2.DataSource = currencies;
+            cmbCurrency2.DisplayMember = "symbol";
+            cmbCurrency2.ValueMember = "symbol";
+            
             var listAudit = Enum.GetValues(typeof(Common.Operation)).Cast<Common.Operation>();
 
             foreach (var value in listAudit)
@@ -130,6 +139,27 @@ namespace ForEx
             DateTime start = dtpSellTransacDaily.Value;
 
             CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.TransactionReportDaily, "Sell", start);
+            crv.Show();
+        }
+
+        private void btnWaccPeriod_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpWaccStart.Value;
+            DateTime end = dtpWaccEnd.Value;
+
+            var op = (cmbCurrency1.SelectedItem as Currency).symbol;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.WaccPeiod, op.ToString() , start, end);
+            crv.Show();
+        }
+
+        private void btnWaccDaily_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpWaccDaily.Value;
+
+            var op = (cmbCurrency1.SelectedItem as Currency).symbol;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.WaccDaily, op.ToString() , start);
             crv.Show();
         }
 

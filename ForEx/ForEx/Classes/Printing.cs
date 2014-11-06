@@ -46,9 +46,9 @@ namespace ForEx.Classes
             pd.Document = pdoc;
             pd.Document.DefaultPageSettings.PaperSize = psize;
             //pdoc.DefaultPageSettings.PaperSize.Height =320;
-            pdoc.DefaultPageSettings.PaperSize.Height = 820;
+            pdoc.DefaultPageSettings.PaperSize.Height = 410;
 
-            pdoc.DefaultPageSettings.PaperSize.Width = 520;
+            pdoc.DefaultPageSettings.PaperSize.Width = 260;
 
             pdoc.PrintPage += new PrintPageEventHandler(pdoc_PrintPage);
 

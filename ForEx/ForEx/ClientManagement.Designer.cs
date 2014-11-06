@@ -83,23 +83,22 @@
             this.textOccupation = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panelUpload = new System.Windows.Forms.Panel();
-            this.textupload = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tabSearch = new System.Windows.Forms.TabPage();
-            this.gridSearchClient = new System.Windows.Forms.DataGridView();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelSearchName = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearchName = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtSearchSurname = new System.Windows.Forms.TextBox();
             this.panelSearchpassport = new System.Windows.Forms.FlowLayoutPanel();
             this.label19 = new System.Windows.Forms.Label();
             this.txtSearchPassport = new System.Windows.Forms.TextBox();
             this.panelSearchType = new System.Windows.Forms.FlowLayoutPanel();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbSearchType = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelSearchName = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearchName = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtSearchSurname = new System.Windows.Forms.TextBox();
+            this.gridSearchClient = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -108,7 +107,14 @@
             this.btnEditSearch = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtFile1 = new System.Windows.Forms.TextBox();
+            this.txtfile2 = new System.Windows.Forms.TextBox();
+            this.txtfile3 = new System.Windows.Forms.TextBox();
+            this.txtfile4 = new System.Windows.Forms.TextBox();
+            this.txtfile5 = new System.Windows.Forms.TextBox();
+            this.btnClearfiles = new System.Windows.Forms.Button();
+            this.btnViewAttachment = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabAddClient.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -131,14 +137,14 @@
             this.panelOccupation.SuspendLayout();
             this.panelUpload.SuspendLayout();
             this.tabSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.panelSearchName.SuspendLayout();
             this.panelSearchpassport.SuspendLayout();
             this.panelSearchType.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.panelSearchName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).BeginInit();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -163,6 +169,7 @@
             this.tabAddClient.Size = new System.Drawing.Size(888, 640);
             this.tabAddClient.TabIndex = 0;
             this.tabAddClient.Text = "Add Client";
+            this.tabAddClient.Click += new System.EventHandler(this.tabAddClient_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -660,30 +667,18 @@
             // 
             // panelUpload
             // 
-            this.panelUpload.Controls.Add(this.textupload);
-            this.panelUpload.Controls.Add(this.label27);
+            this.panelUpload.Controls.Add(this.btnClearfiles);
+            this.panelUpload.Controls.Add(this.txtfile5);
+            this.panelUpload.Controls.Add(this.txtfile4);
+            this.panelUpload.Controls.Add(this.txtfile3);
+            this.panelUpload.Controls.Add(this.txtfile2);
+            this.panelUpload.Controls.Add(this.txtFile1);
+            this.panelUpload.Controls.Add(this.button1);
             this.panelUpload.Location = new System.Drawing.Point(387, 223);
             this.panelUpload.Name = "panelUpload";
-            this.panelUpload.Size = new System.Drawing.Size(378, 38);
+            this.panelUpload.Size = new System.Drawing.Size(378, 150);
             this.panelUpload.TabIndex = 11;
             this.panelUpload.Visible = false;
-            // 
-            // textupload
-            // 
-            this.textupload.Location = new System.Drawing.Point(131, 10);
-            this.textupload.Name = "textupload";
-            this.textupload.Size = new System.Drawing.Size(200, 20);
-            this.textupload.TabIndex = 71;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(11, 10);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(89, 20);
-            this.label27.TabIndex = 70;
-            this.label27.Text = "Upload File";
             // 
             // btnAdd
             // 
@@ -710,18 +705,72 @@
             this.tabSearch.Text = "Search Client";
             this.tabSearch.UseVisualStyleBackColor = true;
             // 
-            // gridSearchClient
+            // flowLayoutPanel2
             // 
-            this.gridSearchClient.AllowUserToAddRows = false;
-            this.gridSearchClient.AllowUserToDeleteRows = false;
-            this.gridSearchClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSearchClient.Location = new System.Drawing.Point(3, 72);
-            this.gridSearchClient.Name = "gridSearchClient";
-            this.gridSearchClient.ReadOnly = true;
-            this.gridSearchClient.Size = new System.Drawing.Size(869, 376);
-            this.gridSearchClient.TabIndex = 4;
-            this.gridSearchClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSearchClient_CellClick);
-            this.gridSearchClient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel3);
+            this.flowLayoutPanel2.Controls.Add(this.gridSearchClient);
+            this.flowLayoutPanel2.Controls.Add(this.btnViewAttachment);
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(10, 41);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(882, 603);
+            this.flowLayoutPanel2.TabIndex = 7;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.panelSearchName);
+            this.flowLayoutPanel3.Controls.Add(this.panelSearchpassport);
+            this.flowLayoutPanel3.Controls.Add(this.panelSearchType);
+            this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(827, 63);
+            this.flowLayoutPanel3.TabIndex = 7;
+            // 
+            // panelSearchName
+            // 
+            this.panelSearchName.Controls.Add(this.label1);
+            this.panelSearchName.Controls.Add(this.txtSearchName);
+            this.panelSearchName.Controls.Add(this.label18);
+            this.panelSearchName.Controls.Add(this.txtSearchSurname);
+            this.panelSearchName.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchName.Name = "panelSearchName";
+            this.panelSearchName.Size = new System.Drawing.Size(658, 36);
+            this.panelSearchName.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name:";
+            // 
+            // txtSearchName
+            // 
+            this.txtSearchName.Location = new System.Drawing.Point(75, 3);
+            this.txtSearchName.Name = "txtSearchName";
+            this.txtSearchName.Size = new System.Drawing.Size(200, 20);
+            this.txtSearchName.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(281, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(92, 24);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Surname:";
+            // 
+            // txtSearchSurname
+            // 
+            this.txtSearchSurname.Location = new System.Drawing.Point(379, 3);
+            this.txtSearchSurname.Name = "txtSearchSurname";
+            this.txtSearchSurname.Size = new System.Drawing.Size(200, 20);
+            this.txtSearchSurname.TabIndex = 3;
             // 
             // panelSearchpassport
             // 
@@ -781,60 +830,18 @@
             this.cmbSearchType.Size = new System.Drawing.Size(242, 21);
             this.cmbSearchType.TabIndex = 5;
             // 
-            // flowLayoutPanel2
+            // gridSearchClient
             // 
-            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel3);
-            this.flowLayoutPanel2.Controls.Add(this.gridSearchClient);
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(10, 41);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(882, 603);
-            this.flowLayoutPanel2.TabIndex = 7;
-            // 
-            // panelSearchName
-            // 
-            this.panelSearchName.Controls.Add(this.label1);
-            this.panelSearchName.Controls.Add(this.txtSearchName);
-            this.panelSearchName.Controls.Add(this.label18);
-            this.panelSearchName.Controls.Add(this.txtSearchSurname);
-            this.panelSearchName.Location = new System.Drawing.Point(3, 3);
-            this.panelSearchName.Name = "panelSearchName";
-            this.panelSearchName.Size = new System.Drawing.Size(658, 36);
-            this.panelSearchName.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name:";
-            // 
-            // txtSearchName
-            // 
-            this.txtSearchName.Location = new System.Drawing.Point(75, 3);
-            this.txtSearchName.Name = "txtSearchName";
-            this.txtSearchName.Size = new System.Drawing.Size(200, 20);
-            this.txtSearchName.TabIndex = 1;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(281, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(92, 24);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "Surname:";
-            // 
-            // txtSearchSurname
-            // 
-            this.txtSearchSurname.Location = new System.Drawing.Point(379, 3);
-            this.txtSearchSurname.Name = "txtSearchSurname";
-            this.txtSearchSurname.Size = new System.Drawing.Size(200, 20);
-            this.txtSearchSurname.TabIndex = 3;
+            this.gridSearchClient.AllowUserToAddRows = false;
+            this.gridSearchClient.AllowUserToDeleteRows = false;
+            this.gridSearchClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSearchClient.Location = new System.Drawing.Point(3, 72);
+            this.gridSearchClient.Name = "gridSearchClient";
+            this.gridSearchClient.ReadOnly = true;
+            this.gridSearchClient.Size = new System.Drawing.Size(869, 376);
+            this.gridSearchClient.TabIndex = 4;
+            this.gridSearchClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSearchClient_CellClick);
+            this.gridSearchClient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnSearch
             // 
@@ -917,16 +924,76 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Enter Client Name";
             // 
-            // flowLayoutPanel3
+            // button1
             // 
-            this.flowLayoutPanel3.Controls.Add(this.panelSearchName);
-            this.flowLayoutPanel3.Controls.Add(this.panelSearchpassport);
-            this.flowLayoutPanel3.Controls.Add(this.panelSearchType);
-            this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(827, 63);
-            this.flowLayoutPanel3.TabIndex = 7;
+            this.button1.Location = new System.Drawing.Point(15, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 72;
+            this.button1.Text = "Select A File";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtFile1
+            // 
+            this.txtFile1.Location = new System.Drawing.Point(131, 12);
+            this.txtFile1.Name = "txtFile1";
+            this.txtFile1.ReadOnly = true;
+            this.txtFile1.Size = new System.Drawing.Size(200, 20);
+            this.txtFile1.TabIndex = 72;
+            // 
+            // txtfile2
+            // 
+            this.txtfile2.Location = new System.Drawing.Point(131, 38);
+            this.txtfile2.Name = "txtfile2";
+            this.txtfile2.ReadOnly = true;
+            this.txtfile2.Size = new System.Drawing.Size(200, 20);
+            this.txtfile2.TabIndex = 73;
+            // 
+            // txtfile3
+            // 
+            this.txtfile3.Location = new System.Drawing.Point(131, 64);
+            this.txtfile3.Name = "txtfile3";
+            this.txtfile3.ReadOnly = true;
+            this.txtfile3.Size = new System.Drawing.Size(200, 20);
+            this.txtfile3.TabIndex = 74;
+            // 
+            // txtfile4
+            // 
+            this.txtfile4.Location = new System.Drawing.Point(131, 90);
+            this.txtfile4.Name = "txtfile4";
+            this.txtfile4.ReadOnly = true;
+            this.txtfile4.Size = new System.Drawing.Size(200, 20);
+            this.txtfile4.TabIndex = 75;
+            // 
+            // txtfile5
+            // 
+            this.txtfile5.Location = new System.Drawing.Point(131, 116);
+            this.txtfile5.Name = "txtfile5";
+            this.txtfile5.ReadOnly = true;
+            this.txtfile5.Size = new System.Drawing.Size(200, 20);
+            this.txtfile5.TabIndex = 76;
+            // 
+            // btnClearfiles
+            // 
+            this.btnClearfiles.Location = new System.Drawing.Point(15, 35);
+            this.btnClearfiles.Name = "btnClearfiles";
+            this.btnClearfiles.Size = new System.Drawing.Size(75, 23);
+            this.btnClearfiles.TabIndex = 77;
+            this.btnClearfiles.Text = "ClearFiles";
+            this.btnClearfiles.UseVisualStyleBackColor = true;
+            this.btnClearfiles.Click += new System.EventHandler(this.btnClearfiles_Click);
+            // 
+            // btnViewAttachment
+            // 
+            this.btnViewAttachment.Enabled = false;
+            this.btnViewAttachment.Location = new System.Drawing.Point(3, 454);
+            this.btnViewAttachment.Name = "btnViewAttachment";
+            this.btnViewAttachment.Size = new System.Drawing.Size(141, 35);
+            this.btnViewAttachment.TabIndex = 8;
+            this.btnViewAttachment.Text = "View Attachment";
+            this.btnViewAttachment.UseVisualStyleBackColor = true;
+            this.btnViewAttachment.Click += new System.EventHandler(this.btnViewAttachment_Click);
             // 
             // frmClientManagement
             // 
@@ -978,18 +1045,18 @@
             this.panelUpload.PerformLayout();
             this.tabSearch.ResumeLayout(false);
             this.tabSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.panelSearchName.ResumeLayout(false);
+            this.panelSearchName.PerformLayout();
             this.panelSearchpassport.ResumeLayout(false);
             this.panelSearchpassport.PerformLayout();
             this.panelSearchType.ResumeLayout(false);
             this.panelSearchType.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.panelSearchName.ResumeLayout(false);
-            this.panelSearchName.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSearchClient)).EndInit();
             this.tabEdit.ResumeLayout(false);
             this.tabEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1063,8 +1130,6 @@
         private System.Windows.Forms.TextBox textVAT;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Panel panelUpload;
-        private System.Windows.Forms.TextBox textupload;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ComboBox comboIDType;
         private System.Windows.Forms.FlowLayoutPanel panelSearchName;
         private System.Windows.Forms.Label label18;
@@ -1077,5 +1142,13 @@
         private System.Windows.Forms.ComboBox cmbSearchType;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Button btnClearfiles;
+        private System.Windows.Forms.TextBox txtfile5;
+        private System.Windows.Forms.TextBox txtfile4;
+        private System.Windows.Forms.TextBox txtfile3;
+        private System.Windows.Forms.TextBox txtfile2;
+        private System.Windows.Forms.TextBox txtFile1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnViewAttachment;
     }
 }

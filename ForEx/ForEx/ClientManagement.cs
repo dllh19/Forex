@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ForEx.Classes;
@@ -19,7 +20,9 @@ namespace ForEx
         private SqlConnection con = new SqlConnection(Common.GetConnectionString());
         private SqlDataAdapter da = new SqlDataAdapter();
         private SqlCommand cmd = new SqlCommand();
-        
+
+        private int RowClickUserId = 0;
+
         public frmClientManagement()
         {
             InitializeComponent();
@@ -99,6 +102,7 @@ namespace ForEx
                 panelDOB2.Visible = true;
                 panelBRN.Visible = true;
                 panelVAT.Visible = true;
+                panelUpload.Visible = true;
                 commonVisibleFields();
 
             }
@@ -111,6 +115,8 @@ namespace ForEx
                 panelIDType.Visible = true;
                 panelPassport.Visible = true;
                 panelOccupation.Visible = true;
+                panelUpload.Visible = true;
+
                 commonVisibleFields();
             }
         }
@@ -146,6 +152,7 @@ namespace ForEx
             panelAddress.Visible = true;
             panelPhone.Visible = true;
             panelEmail.Visible = true;
+            panelUpload.Visible = true;
 
             btnAdd.Visible = true;
         }
@@ -317,6 +324,15 @@ namespace ForEx
                     int clientId = Convert.ToInt32(idReturned);
                     if (clientId > 0)
                     {
+                        var filelist = GetFilesToUpload();
+
+                        if (filelist.Any())
+                        {
+                            foreach (var file in filelist)
+                            {
+                                UploadFile(file, clientId);
+                            }
+                        }
                         MessageBox.Show("Client has been added successfully");
                     }
                 }
@@ -370,6 +386,15 @@ namespace ForEx
 
                 if (clientId > 0)
                 {
+                    var filelist = GetFilesToUpload();
+
+                    if (filelist.Any())
+                    {
+                        foreach (var file in filelist)
+                        {
+                            UploadFile(file, clientId);
+                        }
+                    }
                     MessageBox.Show("Bank/Corporate has been added successfully");
                 }
             }
@@ -420,6 +445,7 @@ namespace ForEx
                 MessageBox.Show("Please select a filter first");
                 return;
             }
+
             con.Open();
 
             cmd = new SqlCommand(query, con);
@@ -519,6 +545,8 @@ namespace ForEx
             if (gridrow == null)
             {
                 gridrow = tempRow;
+                RowClickUserId =  ((Clients)gridrow.DataBoundItem).Code;
+                btnViewAttachment.Enabled = true;
             }
             else
             {
@@ -579,5 +607,226 @@ namespace ForEx
                 Directory.CreateDirectory(@"C:\\" + foldername);
         }
 
+        private void tabAddClient_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public long UploadFile(string FileName, int userid)
+        {
+            if (!File.Exists(FileName))
+            {
+                return -1;
+            }
+
+            FileStream fs = null;
+            try
+            {
+                #region Reading file
+
+                fs = new FileStream(FileName, FileMode.Open);
+
+                //
+                // Finding out the size of the file to be uploaded
+                //
+                FileInfo fi = new FileInfo(FileName);
+                long temp = fi.Length;
+                int lung = Convert.ToInt32(temp);
+                // ------------------------------------------
+
+                //
+                // Reading the content of the file into an array of bytes.
+                //
+                byte[] picture = new byte[lung];
+                fs.Read(picture, 0, lung);
+                fs.Close();
+                // ------------------------------------------
+                #endregion
+                long result = uploadFileToDatabase(picture, fi.Name,userid);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message + " - " + e.StackTrace);
+                return -1;
+            }
+        }
+
+        private long uploadFileToDatabase(byte[] picture, string fileName, int userid)
+        {
+            //
+            // Defining the variables required for accesing the database server.
+            //
+
+            SqlParameter kFileName = null;
+            SqlParameter FileName = null;
+            SqlParameter UserId = null;
+            SqlParameter Dateuploaded = null;
+            SqlParameter pic = null;
+            // By default, we assume we have an error. If we succed in uploading
+            // the file, we'll change this 
+            // to the unique id of the file
+            long result = -1;
+
+            try
+            {
+                //
+                // Connecting to database.
+                //
+  
+                cmd = new SqlCommand("UploadFile", con);
+                // We assume there is a stored procedure called UploadFile
+
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                // ----------------------------------------------
+
+                //
+                // Initializing parameters and assigning
+                // the values to be sent to the server
+                //
+                kFileName = new SqlParameter("@kFileName",
+                                System.Data.SqlDbType.BigInt, 8);
+                kFileName.Direction = ParameterDirection.Output;
+                // This parameter does not have a size because
+                // we do not know what the size is going to be.
+                pic = new SqlParameter("Picture", SqlDbType.Image);
+                pic.Value = picture;
+
+                FileName = new SqlParameter("FileName", SqlDbType.VarChar, 50);
+                FileName.Value = fileName;
+
+                UserId = new SqlParameter("@Userid", SqlDbType.Int);
+                UserId.Value = userid;
+
+                Dateuploaded = new SqlParameter("@CurrentDate", SqlDbType.DateTime);
+                Dateuploaded.Value = DateTime.Now;
+                // ----------------------------------------------
+
+                //
+                // Adding the parameters to the database.
+                // Remember that the order in which the parameters 
+                //  are added is VERY important!
+                //
+                cmd.Parameters.Add(pic);
+                cmd.Parameters.Add(FileName);
+                cmd.Parameters.Add(kFileName);
+                cmd.Parameters.Add(UserId);
+                cmd.Parameters.Add(Dateuploaded);
+                // ----------------------------------------------
+
+                //
+                // Opening the connection and executing the command.
+                //
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+                // ----------------------------------------------
+
+                //
+                // The result is the unique identifier created on the database.
+                //
+                result = (long)kFileName.Value;
+                // ----------------------------------------------
+
+            }
+            catch (Exception e)
+            {
+                //
+                // If an error occurs, we report it to the user,
+                // with StackTrace for debugging purposes
+                //
+                MessageBox.Show(e.Message + " - " + e.StackTrace);
+                result = -1;
+                // ----------------------------------------------
+            }
+
+            return result;
+        }
+
+        private void btnClearfiles_Click(object sender, EventArgs e)
+        {
+            ClearFile();
+        }
+
+        private List<string> GetFilesToUpload() 
+        {
+            List<string> paths = new List<string>();
+
+            if (txtFile1.Text != "")
+            paths.Add(txtFile1.Text);
+
+            if (txtfile2.Text != "")
+            paths.Add(txtfile2.Text);
+
+            if (txtfile3.Text != "")
+            paths.Add(txtfile3.Text);
+
+            if (txtfile4.Text != "")
+            paths.Add(txtfile4.Text);
+
+            if (txtfile5.Text != "")
+            paths.Add(txtfile5.Text);
+
+            return paths;
+        }
+
+        private void ClearFile()
+        {
+            txtFile1.Text = string.Empty;
+            txtfile2.Text = string.Empty;
+            txtfile3.Text = string.Empty;
+            txtfile4.Text = string.Empty;
+            txtfile5.Text = string.Empty;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            ofd.ShowDialog();
+            if (ofd.FileName == "" || !File.Exists(ofd.FileName))
+            {
+                //
+                // If the requested file is not ok...
+                //
+                return;
+            }
+
+            if (txtFile1.Text == "")
+            {
+                txtFile1.Text = ofd.FileName;
+            }
+            else if (txtfile2.Text == "")
+            {
+                txtfile2.Text = ofd.FileName;
+
+            }
+            else if (txtfile3.Text == "")
+            {
+                txtfile3.Text = ofd.FileName;
+
+            }
+            else if (txtfile4.Text == "")
+            {
+                txtfile4.Text = ofd.FileName;
+
+            }
+            else if (txtfile5.Text == "")
+            {
+                txtfile5.Text = ofd.FileName;
+
+            }
+            else
+            {
+                MessageBox.Show("Maximum number of uploads is five");
+            }
+        }
+
+        private void btnViewAttachment_Click(object sender, EventArgs e)
+        {
+            frmAttachments form = new frmAttachments(RowClickUserId);
+            form.Show();
+        }
     }
 }

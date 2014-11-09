@@ -80,3 +80,4 @@ C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.exe
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.pdb
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.csprojResolveAssemblyReference.cache
 C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.frmAttachments.resources
+C:\Users\Kai\Documents\GitHub\Forex\ForEx\ForEx\obj\Debug\ForEx.frmSearchTransaction.resources

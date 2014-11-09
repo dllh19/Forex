@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radTransacID = new System.Windows.Forms.RadioButton();
             this.radReceiptID = new System.Windows.Forms.RadioButton();
+            this.radTransacID = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTransactionID = new System.Windows.Forms.TextBox();
@@ -58,17 +58,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search By";
             // 
-            // radTransacID
-            // 
-            this.radTransacID.AutoSize = true;
-            this.radTransacID.Location = new System.Drawing.Point(17, 20);
-            this.radTransacID.Name = "radTransacID";
-            this.radTransacID.Size = new System.Drawing.Size(95, 17);
-            this.radTransacID.TabIndex = 0;
-            this.radTransacID.TabStop = true;
-            this.radTransacID.Text = "Transaction ID";
-            this.radTransacID.UseVisualStyleBackColor = true;
-            // 
             // radReceiptID
             // 
             this.radReceiptID.AutoSize = true;
@@ -79,6 +68,19 @@
             this.radReceiptID.TabStop = true;
             this.radReceiptID.Text = "Receipt ID";
             this.radReceiptID.UseVisualStyleBackColor = true;
+            this.radReceiptID.CheckedChanged += new System.EventHandler(this.radReceiptID_CheckedChanged);
+            // 
+            // radTransacID
+            // 
+            this.radTransacID.AutoSize = true;
+            this.radTransacID.Location = new System.Drawing.Point(17, 20);
+            this.radTransacID.Name = "radTransacID";
+            this.radTransacID.Size = new System.Drawing.Size(95, 17);
+            this.radTransacID.TabIndex = 0;
+            this.radTransacID.TabStop = true;
+            this.radTransacID.Text = "Transaction ID";
+            this.radTransacID.UseVisualStyleBackColor = true;
+            this.radTransacID.CheckedChanged += new System.EventHandler(this.radTransacID_CheckedChanged);
             // 
             // label1
             // 
@@ -100,7 +102,6 @@
             // 
             // txtTransactionID
             // 
-            this.txtTransactionID.Enabled = false;
             this.txtTransactionID.Location = new System.Drawing.Point(131, 69);
             this.txtTransactionID.Name = "txtTransactionID";
             this.txtTransactionID.ReadOnly = true;
@@ -109,9 +110,9 @@
             // 
             // txtReceiptID
             // 
-            this.txtReceiptID.Enabled = false;
             this.txtReceiptID.Location = new System.Drawing.Point(131, 96);
             this.txtReceiptID.Name = "txtReceiptID";
+            this.txtReceiptID.ReadOnly = true;
             this.txtReceiptID.Size = new System.Drawing.Size(100, 20);
             this.txtReceiptID.TabIndex = 4;
             // 
@@ -131,6 +132,7 @@
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgvTrnsaction
             // 
@@ -171,6 +173,7 @@
             this.btnShowReceipt.TabIndex = 10;
             this.btnShowReceipt.Text = "Show Receipt";
             this.btnShowReceipt.UseVisualStyleBackColor = true;
+            this.btnShowReceipt.Click += new System.EventHandler(this.btnShowReceipt_Click);
             // 
             // label4
             // 
@@ -200,6 +203,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmSearchTransaction";
             this.Text = "frmSearchTransaction";
+            this.Load += new System.EventHandler(this.frmSearchTransaction_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrnsaction)).EndInit();

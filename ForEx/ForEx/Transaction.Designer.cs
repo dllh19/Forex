@@ -30,9 +30,9 @@
         {
             this.btnDiscard = new System.Windows.Forms.Button();
             this.dgvTransaction = new System.Windows.Forms.DataGridView();
-            this.TextBox6 = new System.Windows.Forms.TextBox();
+            this.TextSellGrandTotal = new System.Windows.Forms.TextBox();
             this.lblAmount2 = new System.Windows.Forms.Label();
-            this.TextBox5 = new System.Windows.Forms.TextBox();
+            this.TextBuyGrandTotal = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
@@ -79,13 +79,13 @@
             this.dgvTransaction.Size = new System.Drawing.Size(543, 184);
             this.dgvTransaction.TabIndex = 27;
             // 
-            // TextBox6
+            // TextSellGrandTotal
             // 
-            this.TextBox6.Location = new System.Drawing.Point(702, 23);
-            this.TextBox6.Name = "TextBox6";
-            this.TextBox6.ReadOnly = true;
-            this.TextBox6.Size = new System.Drawing.Size(122, 20);
-            this.TextBox6.TabIndex = 23;
+            this.TextSellGrandTotal.Location = new System.Drawing.Point(702, 23);
+            this.TextSellGrandTotal.Name = "TextSellGrandTotal";
+            this.TextSellGrandTotal.ReadOnly = true;
+            this.TextSellGrandTotal.Size = new System.Drawing.Size(122, 20);
+            this.TextSellGrandTotal.TabIndex = 23;
             // 
             // lblAmount2
             // 
@@ -97,13 +97,13 @@
             this.lblAmount2.TabIndex = 22;
             this.lblAmount2.Text = "Total Sell";
             // 
-            // TextBox5
+            // TextBuyGrandTotal
             // 
-            this.TextBox5.Location = new System.Drawing.Point(85, 23);
-            this.TextBox5.Name = "TextBox5";
-            this.TextBox5.ReadOnly = true;
-            this.TextBox5.Size = new System.Drawing.Size(122, 20);
-            this.TextBox5.TabIndex = 21;
+            this.TextBuyGrandTotal.Location = new System.Drawing.Point(85, 23);
+            this.TextBuyGrandTotal.Name = "TextBuyGrandTotal";
+            this.TextBuyGrandTotal.ReadOnly = true;
+            this.TextBuyGrandTotal.Size = new System.Drawing.Size(122, 20);
+            this.TextBuyGrandTotal.TabIndex = 21;
             // 
             // lblTotal
             // 
@@ -127,9 +127,9 @@
             // 
             // GroupBox5
             // 
-            this.GroupBox5.Controls.Add(this.TextBox6);
+            this.GroupBox5.Controls.Add(this.TextSellGrandTotal);
             this.GroupBox5.Controls.Add(this.lblAmount2);
-            this.GroupBox5.Controls.Add(this.TextBox5);
+            this.GroupBox5.Controls.Add(this.TextBuyGrandTotal);
             this.GroupBox5.Controls.Add(this.lblTotal);
             this.GroupBox5.Location = new System.Drawing.Point(49, 473);
             this.GroupBox5.Name = "GroupBox5";
@@ -351,9 +351,9 @@
 
         internal System.Windows.Forms.Button btnDiscard;
         internal System.Windows.Forms.DataGridView dgvTransaction;
-        internal System.Windows.Forms.TextBox TextBox6;
+        internal System.Windows.Forms.TextBox TextSellGrandTotal;
         internal System.Windows.Forms.Label lblAmount2;
-        internal System.Windows.Forms.TextBox TextBox5;
+        internal System.Windows.Forms.TextBox TextBuyGrandTotal;
         internal System.Windows.Forms.Label lblTotal;
         internal System.Windows.Forms.Button btnPrint;
         internal System.Windows.Forms.GroupBox GroupBox5;

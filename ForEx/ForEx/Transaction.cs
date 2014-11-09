@@ -233,6 +233,8 @@ namespace ForEx
 
                 dgvTransaction.Rows.Add(row1);
             }
+
+            CalculateGrandTotal();
         }
 
         private void InitializeDataGridView()
@@ -599,6 +601,35 @@ namespace ForEx
         private void btnDiscard_Click(object sender, EventArgs e)
         {
             this.Close(); 
+        }
+
+        private void CalculateGrandTotal()
+        {
+            decimal RsBuytotal = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Buy")
+                    .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
+
+            if (RsBuytotal == null)
+            {
+                TextBuyGrandTotal.Text = "0";
+            }
+            else
+            {
+                TextBuyGrandTotal.Text = RsBuytotal.ToString();
+            }
+
+            decimal RsSelltotal = dgvTransaction.Rows.Cast<DataGridViewRow>()
+                    .Where(r => Convert.ToString(r.Cells[0].Value.ToString()) == "Sell")
+                    .Sum(t => Convert.ToDecimal(t.Cells[4].Value));
+
+            if (RsSelltotal == null)
+            {
+                TextSellGrandTotal.Text = "0";
+            }
+            else
+            {
+                TextSellGrandTotal.Text = RsSelltotal.ToString();
+            }
         }
     }
 }

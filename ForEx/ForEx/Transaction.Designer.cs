@@ -55,6 +55,7 @@
             this.grpMovement = new System.Windows.Forms.GroupBox();
             this.btnCalAdd = new System.Windows.Forms.Button();
             this.textRateReadOnly = new System.Windows.Forms.TextBox();
+            this.btn_AddClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransaction)).BeginInit();
             this.GroupBox5.SuspendLayout();
             this.Panel2.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             // btnDiscard
             // 
-            this.btnDiscard.Location = new System.Drawing.Point(465, 552);
+            this.btnDiscard.Location = new System.Drawing.Point(465, 565);
             this.btnDiscard.Name = "btnDiscard";
             this.btnDiscard.Size = new System.Drawing.Size(89, 48);
             this.btnDiscard.TabIndex = 29;
@@ -74,7 +75,7 @@
             // dgvTransaction
             // 
             this.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTransaction.Location = new System.Drawing.Point(202, 273);
+            this.dgvTransaction.Location = new System.Drawing.Point(202, 292);
             this.dgvTransaction.Name = "dgvTransaction";
             this.dgvTransaction.Size = new System.Drawing.Size(543, 184);
             this.dgvTransaction.TabIndex = 27;
@@ -117,7 +118,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(350, 552);
+            this.btnPrint.Location = new System.Drawing.Point(350, 565);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(89, 48);
             this.btnPrint.TabIndex = 28;
@@ -131,7 +132,7 @@
             this.GroupBox5.Controls.Add(this.lblAmount2);
             this.GroupBox5.Controls.Add(this.TextBuyGrandTotal);
             this.GroupBox5.Controls.Add(this.lblTotal);
-            this.GroupBox5.Location = new System.Drawing.Point(49, 473);
+            this.GroupBox5.Location = new System.Drawing.Point(49, 492);
             this.GroupBox5.Name = "GroupBox5";
             this.GroupBox5.Size = new System.Drawing.Size(863, 53);
             this.GroupBox5.TabIndex = 26;
@@ -297,7 +298,7 @@
             this.grpMovement.Controls.Add(this.lblCurrency);
             this.grpMovement.Controls.Add(this.comboType);
             this.grpMovement.Controls.Add(this.lblType);
-            this.grpMovement.Location = new System.Drawing.Point(31, 75);
+            this.grpMovement.Location = new System.Drawing.Point(31, 94);
             this.grpMovement.Name = "grpMovement";
             this.grpMovement.Size = new System.Drawing.Size(898, 173);
             this.grpMovement.TabIndex = 25;
@@ -321,11 +322,22 @@
             this.textRateReadOnly.Size = new System.Drawing.Size(122, 20);
             this.textRateReadOnly.TabIndex = 20;
             // 
+            // btn_AddClient
+            // 
+            this.btn_AddClient.Location = new System.Drawing.Point(779, 73);
+            this.btn_AddClient.Name = "btn_AddClient";
+            this.btn_AddClient.Size = new System.Drawing.Size(115, 23);
+            this.btn_AddClient.TabIndex = 30;
+            this.btn_AddClient.Text = "Client Management";
+            this.btn_AddClient.UseVisualStyleBackColor = true;
+            this.btn_AddClient.Click += new System.EventHandler(this.btn_AddClient_Click);
+            // 
             // Transaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 633);
+            this.Controls.Add(this.btn_AddClient);
             this.Controls.Add(this.btnDiscard);
             this.Controls.Add(this.dgvTransaction);
             this.Controls.Add(this.btnPrint);
@@ -376,5 +388,6 @@
         private System.Windows.Forms.ComboBox comboClient;
         private System.Windows.Forms.TextBox textRateReadOnly;
         internal System.Windows.Forms.Button btnCalAdd;
+        private System.Windows.Forms.Button btn_AddClient;
     }
 }

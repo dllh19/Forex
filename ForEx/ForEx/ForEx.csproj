@@ -167,6 +167,12 @@
     <Compile Include="Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ActualTransaction.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ActualTransaction.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\Annex2.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,10 +275,10 @@
       <DependentUpon>TransacCheklist.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\TransactionReport.cs">
+    <Compile Include="Reports\TransactionBuySellReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TransactionReport.rpt</DependentUpon>
+      <DependentUpon>TransactionBuySellReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\voucher.cs">
@@ -391,6 +397,10 @@
     <EmbeddedResource Include="Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ActualTransaction.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ActualTransaction.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Annex2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Annex2.cs</LastGenOutput>
@@ -459,9 +469,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>TransacCheklist.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\TransactionReport.rpt">
+    <EmbeddedResource Include="Reports\TransactionBuySellReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>TransactionReport.cs</LastGenOutput>
+      <LastGenOutput>TransactionBuySellReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\voucher.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -168,6 +168,23 @@ namespace ForEx
 
         }
 
+        private void btnActualTransacDaily_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpActualTransacDaily.Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.ActualTransactionDaily, "Actual", start);
+            crv.Show();
+        }
+
+        private void btnActualTransacPeriod_Click(object sender, EventArgs e)
+        {
+            DateTime start = dtpActualTransactionStart.Value;
+            DateTime end = dtpActualTransactionEnd.Value;
+
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.ActualTransactionPeriod, "Actual", start, end);
+            crv.Show();
+        }
+
            
 
          

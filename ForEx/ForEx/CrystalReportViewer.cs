@@ -100,15 +100,27 @@ namespace ForEx
                     wp.SetDataSource(GetWaccPeriod(start,end, query));
                     break;
                 case (Common.ReportType.TransactionReportDaily):
-                    Reports.TransactionReport tr1 = new Reports.TransactionReport();
+                    Reports.TransactionBuySellReport tr1 = new Reports.TransactionBuySellReport();
                     crystalReportViewer1.ReportSource = tr1;
-                    tr1.SetDataSource(GetTransactionDaily(start,query));
+                    tr1.SetDataSource(GetTransactionDaily(start, query));
                     break;
 
                 case (Common.ReportType.TransactionReportPeriod):
-                    Reports.TransactionReport tr = new Reports.TransactionReport();
+                    Reports.TransactionBuySellReport tr = new Reports.TransactionBuySellReport();
                     crystalReportViewer1.ReportSource = tr;
-                    tr.SetDataSource(GetTransactionRange(start, end,query));
+                    tr.SetDataSource(GetTransactionRange(start, end, query));
+                    break;
+
+                case (Common.ReportType.ActualTransactionDaily):
+                    Reports.ActualTransaction at1 = new Reports.ActualTransaction();
+                    crystalReportViewer1.ReportSource = at1;
+                    at1.SetDataSource(GetTransactionDaily(start, query));
+                    break;
+
+                case (Common.ReportType.ActualTransactionPeriod):
+                    Reports.ActualTransaction at2 = new Reports.ActualTransaction();
+                    crystalReportViewer1.ReportSource = at2;
+                    at2.SetDataSource(GetTransactionRange(start, end, query));
                     break;
 
                 case (Common.ReportType.AuditDaily):
@@ -439,9 +451,14 @@ namespace ForEx
             {
                 cmd = new SqlCommand("GetTransactionBuyRange", con);
             }
-            else
+            else if (type.Equals("Sell"))
             {
                 cmd = new SqlCommand("GetTransactionSellRange", con);
+            }
+            else
+            {
+                cmd = new SqlCommand("GetActualTransactionRange", con);
+                
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
@@ -511,6 +528,11 @@ namespace ForEx
                         else
                             ClientType = " - ";
 
+                        string TransactionType;
+                        if (!string.IsNullOrEmpty(row["TransactionType"].ToString()))
+                            TransactionType = (row["TransactionType"].ToString());
+                        else
+                            TransactionType = " - ";
                         TransactionData data = new TransactionData
                         {
                             Currency = currency,
@@ -523,7 +545,7 @@ namespace ForEx
                             ClientName = ClientName,
                             ClientType = ClientType,
                             DateRange = start.ToString("ddd, MMM d, yyyy") + " - " + end.ToString("ddd, MMM d, yyyy"),
-                            TransactionType = type
+                            TransactionType = TransactionType
                         };
 
                         ListTransac.Add(data);
@@ -554,9 +576,14 @@ namespace ForEx
             {
                 cmd = new SqlCommand("GetTransactionBuyDaily", con);
             }
-            else
+            else if (type.Equals("Sell"))
             {
                 cmd = new SqlCommand("GetTransactionSellDaily", con);
+            }
+            else
+            {
+                cmd = new SqlCommand("GetActualTransactionDaily", con);
+                
             }
 
             cmd.CommandType = CommandType.StoredProcedure;
@@ -625,6 +652,12 @@ namespace ForEx
                         else
                             ClientType = " - ";
 
+                        string TransactionType;
+                        if (!string.IsNullOrEmpty(row["TransactionType"].ToString()))
+                            TransactionType = (row["TransactionType"].ToString());
+                        else
+                            TransactionType = " - ";
+
                         TransactionData data = new TransactionData
                         {
                             Currency = currency,
@@ -637,7 +670,7 @@ namespace ForEx
                             ClientName = ClientName,
                             ClientType = ClientType,
                             DateRange = daily.ToString("ddd, MMM d, yyyy"),
-                            TransactionType = type
+                            TransactionType = TransactionType
 
                         };
 

@@ -104,6 +104,18 @@
             this.btnClientCorporate = new System.Windows.Forms.Button();
             this.btnClientBank = new System.Windows.Forms.Button();
             this.btnClientIndividuals = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tabControl6 = new System.Windows.Forms.TabControl();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.btnActualTransacPeriod = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.dtpActualTransactionEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpActualTransactionStart = new System.Windows.Forms.DateTimePicker();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.btnActualTransacDaily = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dtpActualTransacDaily = new System.Windows.Forms.DateTimePicker();
             this.grpBlackList.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -126,6 +138,10 @@
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.tabControl6.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpBlackList
@@ -870,12 +886,129 @@
             this.btnClientIndividuals.Text = "Individuals";
             this.btnClientIndividuals.UseVisualStyleBackColor = true;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.tabControl6);
+            this.groupBox6.Location = new System.Drawing.Point(590, 401);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(371, 164);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Transaction";
+            // 
+            // tabControl6
+            // 
+            this.tabControl6.Controls.Add(this.tabPage11);
+            this.tabControl6.Controls.Add(this.tabPage12);
+            this.tabControl6.Location = new System.Drawing.Point(6, 19);
+            this.tabControl6.Name = "tabControl6";
+            this.tabControl6.SelectedIndex = 0;
+            this.tabControl6.Size = new System.Drawing.Size(359, 139);
+            this.tabControl6.TabIndex = 0;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.btnActualTransacPeriod);
+            this.tabPage11.Controls.Add(this.label18);
+            this.tabPage11.Controls.Add(this.label20);
+            this.tabPage11.Controls.Add(this.dtpActualTransactionEnd);
+            this.tabPage11.Controls.Add(this.dtpActualTransactionStart);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(351, 113);
+            this.tabPage11.TabIndex = 0;
+            this.tabPage11.Text = "Period";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // btnActualTransacPeriod
+            // 
+            this.btnActualTransacPeriod.Location = new System.Drawing.Point(94, 79);
+            this.btnActualTransacPeriod.Name = "btnActualTransacPeriod";
+            this.btnActualTransacPeriod.Size = new System.Drawing.Size(160, 28);
+            this.btnActualTransacPeriod.TabIndex = 3;
+            this.btnActualTransacPeriod.Text = "Show Report";
+            this.btnActualTransacPeriod.UseVisualStyleBackColor = true;
+            this.btnActualTransacPeriod.Click += new System.EventHandler(this.btnActualTransacPeriod_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(26, 45);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(52, 13);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "End Date";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(26, 13);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(55, 13);
+            this.label20.TabIndex = 2;
+            this.label20.Text = "Start Date";
+            // 
+            // dtpActualTransactionEnd
+            // 
+            this.dtpActualTransactionEnd.Location = new System.Drawing.Point(136, 45);
+            this.dtpActualTransactionEnd.Name = "dtpActualTransactionEnd";
+            this.dtpActualTransactionEnd.Size = new System.Drawing.Size(200, 20);
+            this.dtpActualTransactionEnd.TabIndex = 1;
+            // 
+            // dtpActualTransactionStart
+            // 
+            this.dtpActualTransactionStart.Location = new System.Drawing.Point(136, 13);
+            this.dtpActualTransactionStart.Name = "dtpActualTransactionStart";
+            this.dtpActualTransactionStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpActualTransactionStart.TabIndex = 0;
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.btnActualTransacDaily);
+            this.tabPage12.Controls.Add(this.label21);
+            this.tabPage12.Controls.Add(this.dtpActualTransacDaily);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(351, 113);
+            this.tabPage12.TabIndex = 1;
+            this.tabPage12.Text = "Daily";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // btnActualTransacDaily
+            // 
+            this.btnActualTransacDaily.Location = new System.Drawing.Point(88, 59);
+            this.btnActualTransacDaily.Name = "btnActualTransacDaily";
+            this.btnActualTransacDaily.Size = new System.Drawing.Size(160, 28);
+            this.btnActualTransacDaily.TabIndex = 6;
+            this.btnActualTransacDaily.Text = "Show Report";
+            this.btnActualTransacDaily.UseVisualStyleBackColor = true;
+            this.btnActualTransacDaily.Click += new System.EventHandler(this.btnActualTransacDaily_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(20, 25);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(30, 13);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "Date";
+            // 
+            // dtpActualTransacDaily
+            // 
+            this.dtpActualTransacDaily.Location = new System.Drawing.Point(130, 25);
+            this.dtpActualTransacDaily.Name = "dtpActualTransacDaily";
+            this.dtpActualTransacDaily.Size = new System.Drawing.Size(200, 20);
+            this.dtpActualTransacDaily.TabIndex = 4;
+            // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1088, 494);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.Wacc);
             this.Controls.Add(this.groupBox4);
@@ -918,6 +1051,12 @@
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.tabControl6.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage11.PerformLayout();
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage12.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1000,5 +1139,17 @@
         private System.Windows.Forms.Button btnClientCorporate;
         private System.Windows.Forms.Button btnClientBank;
         private System.Windows.Forms.Button btnClientIndividuals;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TabControl tabControl6;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.Button btnActualTransacPeriod;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DateTimePicker dtpActualTransactionEnd;
+        private System.Windows.Forms.DateTimePicker dtpActualTransactionStart;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.Button btnActualTransacDaily;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DateTimePicker dtpActualTransacDaily;
     }
 }

@@ -42,6 +42,8 @@ namespace ForEx
             PurchaseReportPeriod,
             SaleReportDaily,
             SaleReportPeriod,
+            ActualTransactionDaily,
+            ActualTransactionPeriod,
             TransactionReportDaily,
             TransactionReportPeriod,
             AuditDaily,

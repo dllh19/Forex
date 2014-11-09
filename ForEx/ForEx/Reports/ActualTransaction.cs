@@ -16,14 +16,14 @@ namespace ForEx.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class TransactionReport : ReportClass {
+    public class ActualTransaction : ReportClass {
         
-        public TransactionReport() {
+        public ActualTransaction() {
         }
         
         public override string ResourceName {
             get {
-                return "TransactionReport.rpt";
+                return "ActualTransaction.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ForEx.Reports {
         
         public override string FullResourceName {
             get {
-                return "ForEx.Reports.TransactionReport.rpt";
+                return "ForEx.Reports.ActualTransaction.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace ForEx.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedTransactionReport : Component, ICachedReport {
+    public class CachedActualTransaction : Component, ICachedReport {
         
-        public CachedTransactionReport() {
+        public CachedActualTransaction() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace ForEx.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            TransactionReport rpt = new TransactionReport();
+            ActualTransaction rpt = new ActualTransaction();
             rpt.Site = this.Site;
             return rpt;
         }

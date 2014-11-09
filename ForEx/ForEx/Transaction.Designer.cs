@@ -30,9 +30,7 @@
         {
             this.btnDiscard = new System.Windows.Forms.Button();
             this.dgvTransaction = new System.Windows.Forms.DataGridView();
-            this.ComboBox5 = new System.Windows.Forms.ComboBox();
             this.TextBox6 = new System.Windows.Forms.TextBox();
-            this.lblCashCheque = new System.Windows.Forms.Label();
             this.lblAmount2 = new System.Windows.Forms.Label();
             this.TextBox5 = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -76,50 +74,34 @@
             // dgvTransaction
             // 
             this.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTransaction.Location = new System.Drawing.Point(184, 338);
+            this.dgvTransaction.Location = new System.Drawing.Point(202, 273);
             this.dgvTransaction.Name = "dgvTransaction";
             this.dgvTransaction.Size = new System.Drawing.Size(543, 184);
             this.dgvTransaction.TabIndex = 27;
             // 
-            // ComboBox5
-            // 
-            this.ComboBox5.FormattingEnabled = true;
-            this.ComboBox5.Location = new System.Drawing.Point(414, 25);
-            this.ComboBox5.Name = "ComboBox5";
-            this.ComboBox5.Size = new System.Drawing.Size(122, 21);
-            this.ComboBox5.TabIndex = 20;
-            // 
             // TextBox6
             // 
-            this.TextBox6.Location = new System.Drawing.Point(716, 26);
+            this.TextBox6.Location = new System.Drawing.Point(702, 23);
             this.TextBox6.Name = "TextBox6";
+            this.TextBox6.ReadOnly = true;
             this.TextBox6.Size = new System.Drawing.Size(122, 20);
             this.TextBox6.TabIndex = 23;
-            // 
-            // lblCashCheque
-            // 
-            this.lblCashCheque.AutoSize = true;
-            this.lblCashCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCashCheque.Location = new System.Drawing.Point(316, 26);
-            this.lblCashCheque.Name = "lblCashCheque";
-            this.lblCashCheque.Size = new System.Drawing.Size(92, 13);
-            this.lblCashCheque.TabIndex = 21;
-            this.lblCashCheque.Text = "Cash / Cheque";
             // 
             // lblAmount2
             // 
             this.lblAmount2.AutoSize = true;
             this.lblAmount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount2.Location = new System.Drawing.Point(661, 26);
+            this.lblAmount2.Location = new System.Drawing.Point(635, 26);
             this.lblAmount2.Name = "lblAmount2";
-            this.lblAmount2.Size = new System.Drawing.Size(49, 13);
+            this.lblAmount2.Size = new System.Drawing.Size(61, 13);
             this.lblAmount2.TabIndex = 22;
-            this.lblAmount2.Text = "Amount";
+            this.lblAmount2.Text = "Total Sell";
             // 
             // TextBox5
             // 
-            this.TextBox5.Location = new System.Drawing.Point(73, 26);
+            this.TextBox5.Location = new System.Drawing.Point(85, 23);
             this.TextBox5.Name = "TextBox5";
+            this.TextBox5.ReadOnly = true;
             this.TextBox5.Size = new System.Drawing.Size(122, 20);
             this.TextBox5.TabIndex = 21;
             // 
@@ -129,9 +111,9 @@
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(18, 26);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(36, 13);
+            this.lblTotal.Size = new System.Drawing.Size(61, 13);
             this.lblTotal.TabIndex = 20;
-            this.lblTotal.Text = "Total";
+            this.lblTotal.Text = "Total Buy";
             // 
             // btnPrint
             // 
@@ -145,18 +127,15 @@
             // 
             // GroupBox5
             // 
-            this.GroupBox5.Controls.Add(this.ComboBox5);
             this.GroupBox5.Controls.Add(this.TextBox6);
-            this.GroupBox5.Controls.Add(this.lblCashCheque);
             this.GroupBox5.Controls.Add(this.lblAmount2);
             this.GroupBox5.Controls.Add(this.TextBox5);
             this.GroupBox5.Controls.Add(this.lblTotal);
-            this.GroupBox5.Location = new System.Drawing.Point(31, 255);
+            this.GroupBox5.Location = new System.Drawing.Point(49, 473);
             this.GroupBox5.Name = "GroupBox5";
             this.GroupBox5.Size = new System.Drawing.Size(863, 53);
             this.GroupBox5.TabIndex = 26;
             this.GroupBox5.TabStop = false;
-            this.GroupBox5.Visible = false;
             // 
             // btnCalculate
             // 
@@ -372,9 +351,7 @@
 
         internal System.Windows.Forms.Button btnDiscard;
         internal System.Windows.Forms.DataGridView dgvTransaction;
-        internal System.Windows.Forms.ComboBox ComboBox5;
         internal System.Windows.Forms.TextBox TextBox6;
-        internal System.Windows.Forms.Label lblCashCheque;
         internal System.Windows.Forms.Label lblAmount2;
         internal System.Windows.Forms.TextBox TextBox5;
         internal System.Windows.Forms.Label lblTotal;

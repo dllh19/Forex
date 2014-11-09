@@ -85,6 +85,7 @@ namespace ForEx
         {
             comboType.Items.Add("Sell");
             comboType.Items.Add("Buy");
+            comboType.SelectedItem = "Buy";
 
             comboType.SelectedIndexChanged += new System.EventHandler(Combotype_SelectedIndexChanged);
         }
@@ -184,6 +185,8 @@ namespace ForEx
 
             this.textRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+
+            this.dgvTransaction.RowsRemoved += new DataGridViewRowsRemovedEventHandler(DataGridView1_UserDeletingRow);
 
             InitializeDataGridView();
         }
@@ -630,6 +633,11 @@ namespace ForEx
             {
                 TextSellGrandTotal.Text = RsSelltotal.ToString();
             }
+        }
+
+        private void DataGridView1_UserDeletingRow(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            CalculateGrandTotal();
         }
     }
 }

@@ -100,6 +100,10 @@
             this.btnWaccDaily = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.dtpWaccDaily = new System.Windows.Forms.DateTimePicker();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnClientCorporate = new System.Windows.Forms.Button();
+            this.btnClientBank = new System.Windows.Forms.Button();
+            this.btnClientIndividuals = new System.Windows.Forms.Button();
             this.grpBlackList.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -121,6 +125,7 @@
             this.tabControl5.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpBlackList
@@ -134,6 +139,7 @@
             this.grpBlackList.TabIndex = 0;
             this.grpBlackList.TabStop = false;
             this.grpBlackList.Text = "Black List Reports";
+            this.grpBlackList.Enter += new System.EventHandler(this.grpBlackList_Enter);
             // 
             // btnCorporate
             // 
@@ -825,12 +831,52 @@
             this.dtpWaccDaily.Size = new System.Drawing.Size(200, 20);
             this.dtpWaccDaily.TabIndex = 4;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnClientCorporate);
+            this.groupBox5.Controls.Add(this.btnClientBank);
+            this.groupBox5.Controls.Add(this.btnClientIndividuals);
+            this.groupBox5.Location = new System.Drawing.Point(12, 155);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(172, 133);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Client List";
+            // 
+            // btnClientCorporate
+            // 
+            this.btnClientCorporate.Location = new System.Drawing.Point(6, 86);
+            this.btnClientCorporate.Name = "btnClientCorporate";
+            this.btnClientCorporate.Size = new System.Drawing.Size(160, 28);
+            this.btnClientCorporate.TabIndex = 2;
+            this.btnClientCorporate.Text = "Corporate";
+            this.btnClientCorporate.UseVisualStyleBackColor = true;
+            // 
+            // btnClientBank
+            // 
+            this.btnClientBank.Location = new System.Drawing.Point(6, 52);
+            this.btnClientBank.Name = "btnClientBank";
+            this.btnClientBank.Size = new System.Drawing.Size(160, 28);
+            this.btnClientBank.TabIndex = 1;
+            this.btnClientBank.Text = "Bank";
+            this.btnClientBank.UseVisualStyleBackColor = true;
+            // 
+            // btnClientIndividuals
+            // 
+            this.btnClientIndividuals.Location = new System.Drawing.Point(6, 19);
+            this.btnClientIndividuals.Name = "btnClientIndividuals";
+            this.btnClientIndividuals.Size = new System.Drawing.Size(160, 28);
+            this.btnClientIndividuals.TabIndex = 0;
+            this.btnClientIndividuals.Text = "Individuals";
+            this.btnClientIndividuals.UseVisualStyleBackColor = true;
+            // 
             // frmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1088, 494);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.Wacc);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -871,6 +917,7 @@
             this.tabPage9.PerformLayout();
             this.tabPage10.ResumeLayout(false);
             this.tabPage10.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -949,5 +996,9 @@
         private System.Windows.Forms.Button btnWaccDaily;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dtpWaccDaily;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnClientCorporate;
+        private System.Windows.Forms.Button btnClientBank;
+        private System.Windows.Forms.Button btnClientIndividuals;
     }
 }

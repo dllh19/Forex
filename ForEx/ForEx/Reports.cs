@@ -24,21 +24,21 @@ namespace ForEx
 
         private void btnIndividuals_Click(object sender, EventArgs e)
         {
-            var query = "SELECT * FROM tbl_client WHERE type = 'Individual'";
+            var query = "SELECT * FROM tbl_client WHERE type = 'Individual' isblacklisted = '1' ";
             CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.BlacklistedIndividuals,query);
             crv.Show();
         }
 
         private void btnBank_Click(object sender, EventArgs e)
         {
-         var query = "SELECT * FROM tbl_client WHERE type = 'Bank'";
+            var query = "SELECT * FROM tbl_client WHERE type = 'Bank' AND isblacklisted = '1' ";
             CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.BlacklistedBank,query);
             crv.Show();
         }
 
         private void btnCorporate_Click(object sender, EventArgs e)
         {
-         var query = "SELECT * FROM tbl_client WHERE type = 'Corporate'";
+            var query = "SELECT * FROM tbl_client WHERE type = 'Corporate' AND isblacklisted = '1' ";
             CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.BlacklistedCorporate,query);
             crv.Show();
         }
@@ -161,6 +161,11 @@ namespace ForEx
 
             CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.WaccDaily, op.ToString() , start);
             crv.Show();
+        }
+
+        private void grpBlackList_Enter(object sender, EventArgs e)
+        {
+
         }
 
            

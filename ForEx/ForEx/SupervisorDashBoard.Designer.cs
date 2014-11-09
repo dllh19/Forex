@@ -34,6 +34,7 @@
             this.btnClientManagement = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSignout = new System.Windows.Forms.Button();
+            this.btnPOS = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,11 +99,22 @@
             this.btnSignout.UseVisualStyleBackColor = true;
             this.btnSignout.Click += new System.EventHandler(this.btnSignout_Click);
             // 
+            // btnPOS
+            // 
+            this.btnPOS.Location = new System.Drawing.Point(35, 251);
+            this.btnPOS.Name = "btnPOS";
+            this.btnPOS.Size = new System.Drawing.Size(119, 60);
+            this.btnPOS.TabIndex = 28;
+            this.btnPOS.Text = "POS";
+            this.btnPOS.UseVisualStyleBackColor = true;
+            this.btnPOS.Click += new System.EventHandler(this.btnPOS_Click);
+            // 
             // frmSupervisorDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 498);
+            this.Controls.Add(this.btnPOS);
             this.Controls.Add(this.btnSignout);
             this.Controls.Add(this.btnTransaction);
             this.Controls.Add(this.btnReports);
@@ -125,5 +137,6 @@
         private System.Windows.Forms.Button btnClientManagement;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnSignout;
+        private System.Windows.Forms.Button btnPOS;
     }
 }

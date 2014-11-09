@@ -93,6 +93,8 @@ namespace ForEx
             this.dataGridView1.Columns["SaleMax"].Visible = false;
             this.dataGridView1.Columns["SaleMidrate"].Visible = false;
             this.dataGridView1.Columns["PurchaseMidrate"].Visible = false;
+            this.dataGridView1.Columns["BankPurchase"].Visible = false;
+            this.dataGridView1.Columns["BankSale"].Visible = false;
 
             this.dataGridView1.AllowUserToResizeRows = false;
         }
@@ -109,6 +111,12 @@ namespace ForEx
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            var transaction = new Transaction();
+            transaction.Show();
         }
     }
 }

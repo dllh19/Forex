@@ -104,5 +104,11 @@ namespace ForEx
             login.Closed += (s, args) => this.Close();
             login.Show();
         }
+
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            var transaction = new Transaction();
+            transaction.Show();
+        }
     }
 }

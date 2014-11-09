@@ -16,14 +16,14 @@ namespace ForEx.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class BlackListedClients : ReportClass {
+    public class BlackListedIndividuals : ReportClass {
         
-        public BlackListedClients() {
+        public BlackListedIndividuals() {
         }
         
         public override string ResourceName {
             get {
-                return "BlackListedClients.rpt";
+                return "BlackListedIndividuals.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ForEx.Reports {
         
         public override string FullResourceName {
             get {
-                return "ForEx.Reports.BlackListedClients.rpt";
+                return "ForEx.Reports.BlackListedIndividuals.rpt";
             }
             set {
                 // Do nothing
@@ -98,9 +98,9 @@ namespace ForEx.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedBlackListedClients : Component, ICachedReport {
+    public class CachedBlackListedIndividuals : Component, ICachedReport {
         
-        public CachedBlackListedClients() {
+        public CachedBlackListedIndividuals() {
         }
         
         [Browsable(false)]
@@ -137,7 +137,7 @@ namespace ForEx.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            BlackListedClients rpt = new BlackListedClients();
+            BlackListedIndividuals rpt = new BlackListedIndividuals();
             rpt.Site = this.Site;
             return rpt;
         }

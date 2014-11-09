@@ -48,17 +48,37 @@ namespace ForEx
             switch (reportype)
             {
                 case (Common.ReportType.BlacklistedIndividuals):
-                    Reports.BlackListedClients cr = new Reports.BlackListedClients();
+                    Reports.BlackListedIndividuals cr = new Reports.BlackListedIndividuals();
                     crystalReportViewer1.ReportSource = cr;
 
                     cr.SetDataSource(BlackListedClient(query));
                     break;
+
                 case (Common.ReportType.BlacklistedBank):
+                    Reports.BlackListedBankCorporate cr2 = new Reports.BlackListedBankCorporate();
+                    crystalReportViewer1.ReportSource = cr2;
+
+                    cr2.SetDataSource(BlackListedClient(query));
                     break;
+
                 case (Common.ReportType.BlacklistedCorporate):
+                    Reports.BlackListedBankCorporate cr3 = new Reports.BlackListedBankCorporate();
+                    crystalReportViewer1.ReportSource = cr3;
+
+                    cr3.SetDataSource(BlackListedClient(query));
                     break;
-                case (Common.ReportType.ListCorporateClients):
+
+                case (Common.ReportType.ClientIndividuals):
+
                     break;
+                case (Common.ReportType.ClientBank):
+
+                    break;
+
+                case (Common.ReportType.ClientCorporate):
+
+                    break;
+
                 case (Common.ReportType.TransactionPerClient):
                     break;
                 case (Common.ReportType.PurchaseReportDaily):
@@ -103,13 +123,13 @@ namespace ForEx
                     break;
 
                 case (Common.ReportType.AnnexOneDaily):
-                    Reports.Annex1 an = new Reports.Annex1();
+                    Reports.newAnnexOne an = new Reports.newAnnexOne();
                     crystalReportViewer1.ReportSource = an;
                     an.SetDataSource(GetAnnexOneDaily(start));
 
                     break;
                 case (Common.ReportType.AnnexOneRange):
-                    Reports.Annex1 an2 = new Reports.Annex1();
+                    Reports.newAnnexOne an2 = new Reports.newAnnexOne();
                     crystalReportViewer1.ReportSource = an2;
                     an2.SetDataSource(GetAnnexOneRange(start, end));
 

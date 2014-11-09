@@ -37,7 +37,6 @@ namespace ForEx
             BlacklistedIndividuals,
             BlacklistedBank,
             BlacklistedCorporate,
-            ListCorporateClients,
             TransactionPerClient,
             PurchaseReportDaily,
             PurchaseReportPeriod,
@@ -50,7 +49,10 @@ namespace ForEx
             AnnexOneRange,
             AnnexOneDaily,
             WaccDaily,
-            WaccPeiod
+            WaccPeiod,
+            ClientIndividuals,
+            ClientBank,
+            ClientCorporate
         }
 
         public static string OperationToList(Operation report)
@@ -394,50 +396,59 @@ namespace ForEx
                     
                     while (dr.Read())
                     {
-                        decimal PurchaseRate;
-                        if (string.IsNullOrEmpty(dr["PurchaseRate"].ToString()))
-                        {
-                            PurchaseRate = 0;
-                        }
-                        else
-                        {
-                            PurchaseRate = Convert.ToDecimal(dr["PurchaseRate"]);
-                        }
+                        string symbol = Convert.ToString(dr["symbol"]);
 
-                        decimal SaleRate;
-                        if (string.IsNullOrEmpty(dr["SaleRate"].ToString()))
+                        if (!symbol.Contains("MUR"))
                         {
-                            SaleRate = 0;
-                        }
-                        else
-                        {
-                            SaleRate = Convert.ToDecimal(dr["SaleRate"]);
-                        }
+                            decimal PurchaseRate;
+                            if (string.IsNullOrEmpty(dr["PurchaseRate"].ToString()))
+                            {
+                                PurchaseRate = 0;
+                            }
+                            else
+                            {
+                                PurchaseRate = Convert.ToDecimal(dr["PurchaseRate"]);
+                            }
 
-                        decimal Stock;
-                        if (string.IsNullOrEmpty(dr["balance"].ToString()))
-                        {
-                            Stock = 0;
-                        }
-                        else
-                        {
-                            Stock = Convert.ToDecimal(dr["balance"]);
-                        }
+                            decimal SaleRate;
+                            if (string.IsNullOrEmpty(dr["SaleRate"].ToString()))
+                            {
+                                SaleRate = 0;
+                            }
+                            else
+                            {
+                                SaleRate = Convert.ToDecimal(dr["SaleRate"]);
+                            }
 
-                        var CurrencyId = Convert.ToInt32(dr["currencyid"]);
-                        var Symbol = Convert.ToString(dr["symbol"]);
-                        var PurchaseMin = 0;
-                        var PurchaseMax = 0;
-                        var PurchaseMidrate = 0;
-                        var SaleMin = 0;
-                        var SaleMax = 0;
-                        var SaleMidrate = 0;
-                        var BankPurchase = 0;
-                        var BankSale = 0;
+                            decimal Stock;
+                            if (string.IsNullOrEmpty(dr["balance"].ToString()))
+                            {
+                                Stock = 0;
+                            }
+                            else
+                            {
+                                Stock = Convert.ToDecimal(dr["balance"]);
+                            }
 
-                        rateList.Add(new Rate(Stock,CurrencyId, Symbol, PurchaseMin, PurchaseMax,
-                        PurchaseRate, PurchaseMidrate, SaleMin,
-                        SaleMax, SaleRate, SaleMidrate, BankPurchase, BankSale));
+                            DateTime RateDate = Convert.ToDateTime(dr["RateDate"]);
+                            
+
+
+                            var CurrencyId = Convert.ToInt32(dr["currencyid"]);
+                            var Symbol = symbol;
+                            var PurchaseMin = 0;
+                            var PurchaseMax = 0;
+                            var PurchaseMidrate = 0;
+                            var SaleMin = 0;
+                            var SaleMax = 0;
+                            var SaleMidrate = 0;
+                            var BankPurchase = 0;
+                            var BankSale = 0;
+
+                            rateList.Add(new Rate(RateDate,Stock, CurrencyId, Symbol, PurchaseMin, PurchaseMax,
+                                PurchaseRate, PurchaseMidrate, SaleMin,
+                                SaleMax, SaleRate, SaleMidrate, BankPurchase, BankSale));
+                        }
                     }
 
                 }

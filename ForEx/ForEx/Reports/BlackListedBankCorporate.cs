@@ -16,14 +16,14 @@ namespace ForEx.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Annex1 : ReportClass {
+    public class BlackListedBankCorporate : ReportClass {
         
-        public Annex1() {
+        public BlackListedBankCorporate() {
         }
         
         public override string ResourceName {
             get {
-                return "Annex1.rpt";
+                return "BlackListedBankCorporate.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ForEx.Reports {
         
         public override string FullResourceName {
             get {
-                return "ForEx.Reports.Annex1.rpt";
+                return "ForEx.Reports.BlackListedBankCorporate.rpt";
             }
             set {
                 // Do nothing
@@ -50,7 +50,7 @@ namespace ForEx.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section1 {
             get {
                 return this.ReportDefinition.Sections[0];
             }
@@ -58,7 +58,7 @@ namespace ForEx.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section2 {
             get {
                 return this.ReportDefinition.Sections[1];
             }
@@ -66,7 +66,7 @@ namespace ForEx.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace ForEx.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section ReportFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,25 +82,17 @@ namespace ForEx.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
                 return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_EndDate {
-            get {
-                return this.DataDefinition.ParameterFields[0];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedAnnex1 : Component, ICachedReport {
+    public class CachedBlackListedBankCorporate : Component, ICachedReport {
         
-        public CachedAnnex1() {
+        public CachedBlackListedBankCorporate() {
         }
         
         [Browsable(false)]
@@ -137,7 +129,7 @@ namespace ForEx.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Annex1 rpt = new Annex1();
+            BlackListedBankCorporate rpt = new BlackListedBankCorporate();
             rpt.Site = this.Site;
             return rpt;
         }

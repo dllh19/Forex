@@ -65,6 +65,8 @@ namespace ForEx
             this.dataGridView1.Columns["SaleMax"].Visible = false;
             this.dataGridView1.Columns["SaleMidrate"].Visible = false;
             this.dataGridView1.Columns["PurchaseMidrate"].Visible = false;
+            this.dataGridView1.Columns["BankPurchase"].Visible = false;
+            this.dataGridView1.Columns["BankSale"].Visible = false;
 
             this.dataGridView1.AllowUserToResizeRows = false;
         }
@@ -106,6 +108,12 @@ namespace ForEx
         {
             var rate = new RateManagement();
             rate.Show();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            var form = new frmReports();
+            form.Show();
         }
     }
 }

@@ -867,6 +867,7 @@
             this.btnClientCorporate.TabIndex = 2;
             this.btnClientCorporate.Text = "Corporate";
             this.btnClientCorporate.UseVisualStyleBackColor = true;
+            this.btnClientCorporate.Click += new System.EventHandler(this.btnClientCorporate_Click);
             // 
             // btnClientBank
             // 
@@ -876,6 +877,7 @@
             this.btnClientBank.TabIndex = 1;
             this.btnClientBank.Text = "Bank";
             this.btnClientBank.UseVisualStyleBackColor = true;
+            this.btnClientBank.Click += new System.EventHandler(this.btnClientBank_Click);
             // 
             // btnClientIndividuals
             // 
@@ -885,6 +887,7 @@
             this.btnClientIndividuals.TabIndex = 0;
             this.btnClientIndividuals.Text = "Individuals";
             this.btnClientIndividuals.UseVisualStyleBackColor = true;
+            this.btnClientIndividuals.Click += new System.EventHandler(this.btnClientIndividuals_Click);
             // 
             // groupBox6
             // 

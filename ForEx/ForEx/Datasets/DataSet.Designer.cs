@@ -461,6 +461,8 @@ namespace ForEx.Datasets {
             
             private global::System.Data.DataColumn columnDateCreated;
             
+            private global::System.Data.DataColumn columnNoOfTransaction;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientsDataTable() {
@@ -664,6 +666,14 @@ namespace ForEx.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NoOfTransactionColumn {
+                get {
+                    return this.columnNoOfTransaction;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -720,7 +730,8 @@ namespace ForEx.Datasets {
                         string Username, 
                         string IsBlackListed, 
                         string Type, 
-                        string DateCreated) {
+                        string DateCreated, 
+                        string NoOfTransaction) {
                 ClientsRow rowClientsRow = ((ClientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Code,
@@ -743,7 +754,8 @@ namespace ForEx.Datasets {
                         Username,
                         IsBlackListed,
                         Type,
-                        DateCreated};
+                        DateCreated,
+                        NoOfTransaction};
                 rowClientsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClientsRow);
                 return rowClientsRow;
@@ -787,6 +799,7 @@ namespace ForEx.Datasets {
                 this.columnIsBlackListed = base.Columns["IsBlackListed"];
                 this.columnType = base.Columns["Type"];
                 this.columnDateCreated = base.Columns["DateCreated"];
+                this.columnNoOfTransaction = base.Columns["NoOfTransaction"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -834,6 +847,8 @@ namespace ForEx.Datasets {
                 base.Columns.Add(this.columnType);
                 this.columnDateCreated = new global::System.Data.DataColumn("DateCreated", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateCreated);
+                this.columnNoOfTransaction = new global::System.Data.DataColumn("NoOfTransaction", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNoOfTransaction);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2762,6 +2777,22 @@ namespace ForEx.Datasets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NoOfTransaction {
+                get {
+                    try {
+                        return ((string)(this[this.tableClients.NoOfTransactionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NoOfTransaction\' in table \'Clients\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClients.NoOfTransactionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCodeNull() {
                 return this.IsNull(this.tableClients.CodeColumn);
             }
@@ -3010,6 +3041,18 @@ namespace ForEx.Datasets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDateCreatedNull() {
                 this[this.tableClients.DateCreatedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNoOfTransactionNull() {
+                return this.IsNull(this.tableClients.NoOfTransactionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNoOfTransactionNull() {
+                this[this.tableClients.NoOfTransactionColumn] = global::System.Convert.DBNull;
             }
         }
         

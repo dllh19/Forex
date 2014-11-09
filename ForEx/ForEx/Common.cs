@@ -333,13 +333,11 @@ namespace ForEx
                                    "INNER JOIN ( select max([date_updated])  " +
                                    "as MaxDate from [ForExDB].[dbo].[tbl_rate]) tm" +
                                    " on [ForExDB].[dbo].[tbl_rate].[date_updated] = tm.MaxDate ON " +
-                                   "CurrencyId =  tbl_currency.currency_id WHERE " +
-                                   "CONVERT(VARCHAR(10),[date_updated],10)=CONVERT(VARCHAR(10),@DateCreated,10)";
+                                   "CurrencyId =  tbl_currency.currency_id ";
 
                 conn.Open();
                 var cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.Add("@DateCreated", SqlDbType.DateTime).Value = DateTime.Now;
-
+    
                 using (var dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())

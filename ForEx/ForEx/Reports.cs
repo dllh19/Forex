@@ -24,7 +24,7 @@ namespace ForEx
 
         private void btnIndividuals_Click(object sender, EventArgs e)
         {
-            var query = "SELECT * FROM tbl_client WHERE type = 'Individual' isblacklisted = '1' ";
+            var query = "SELECT * FROM tbl_client WHERE type = 'Individual' and isblacklisted = '1' ";
             CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.BlacklistedIndividuals,query);
             crv.Show();
         }
@@ -182,6 +182,28 @@ namespace ForEx
             DateTime end = dtpActualTransactionEnd.Value;
 
             CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.ActualTransactionPeriod, "Actual", start, end);
+            crv.Show();
+        }
+
+        private void btnClientIndividuals_Click(object sender, EventArgs e)
+        {
+            //SELECT * FROM [ForExDB].[dbo].[tbl_client] LEFT JOIN (SELECT client_code,SUM(tbl_receipt.num_transaction) as TotalTransaction FROM tbl_receipt GROUP BY client_code) as receipt ON receipt.client_code = [code]
+            var query = "SELECT * FROM tbl_client LEFT JOIN (SELECT client_code,SUM(tbl_receipt.num_transaction) as TotalTransaction FROM tbl_receipt GROUP BY client_code) as receipt ON receipt.client_code = [code] WHERE type = 'Individual' ";
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.ClientIndividuals, query);
+            crv.Show();
+        }
+
+        private void btnClientBank_Click(object sender, EventArgs e)
+        {
+            var query = "SELECT * FROM tbl_client LEFT JOIN (SELECT client_code,SUM(tbl_receipt.num_transaction) as TotalTransaction FROM tbl_receipt GROUP BY client_code) as receipt ON receipt.client_code = [code] WHERE type = 'Bank' ";
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.ClientBank, query);
+            crv.Show();
+        }
+
+        private void btnClientCorporate_Click(object sender, EventArgs e)
+        {
+            var query = "SELECT * FROM tbl_client LEFT JOIN (SELECT client_code,SUM(tbl_receipt.num_transaction) as TotalTransaction FROM tbl_receipt GROUP BY client_code) as receipt ON receipt.client_code = [code] WHERE type = 'Corporate' ";
+            CrystalReportViewer crv = new CrystalReportViewer(Common.ReportType.ClientCorporate, query);
             crv.Show();
         }
 

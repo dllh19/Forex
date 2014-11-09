@@ -50,6 +50,7 @@ namespace ForEx.Classes
         public string Type { get; set; }
 
         public DateTime DateCreated { get; set; }
+        public string NoOfTransaction { get; set; }
 
         public Clients()
         {

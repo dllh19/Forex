@@ -32,11 +32,9 @@ namespace ForEx
             con.Open();
             string query = "   SELECT *  FROM [ForExDB].[dbo].[tbl_rate] INNER JOIN ( select max([date_updated]) " +
                            " as MaxDate from [ForExDB].[dbo].[tbl_rate]) tm on " +
-                            "[ForExDB].[dbo].[tbl_rate].[date_updated] = tm.MaxDate " +
-                           "WHERE CONVERT(VARCHAR(10),[date_updated],10)=CONVERT(VARCHAR(10),@DateCreated,10)";
+                           "[ForExDB].[dbo].[tbl_rate].[date_updated] = tm.MaxDate ";
 
                 cmd = new SqlCommand(query, con);
-                cmd.Parameters.Add("@DateCreated", SqlDbType.DateTime).Value = DateTime.Now;
                 var reader = cmd.ExecuteReader();
 
             bs.DataSource = typeof(Rate);
@@ -243,6 +241,8 @@ namespace ForEx
             this.gridUpdateRate.Columns["SaleMax"].Visible = false;
             this.gridUpdateRate.Columns["SaleMidrate"].Visible = false;
             this.gridUpdateRate.Columns["PurchaseMidrate"].Visible = false;
+            this.gridUpdateRate.Columns["RateDate"].Visible = false;
+            this.gridUpdateRate.Columns["Stock"].Visible = false;
 
             this.gridUpdateRate.AllowUserToResizeRows = false;
 

@@ -37,6 +37,7 @@
             this.btnAuditTrail = new System.Windows.Forms.Button();
             this.btnSignout = new System.Windows.Forms.Button();
             this.btnPOS = new System.Windows.Forms.Button();
+            this.btnTrnsactionSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,11 +131,22 @@
             this.btnPOS.UseVisualStyleBackColor = true;
             this.btnPOS.Click += new System.EventHandler(this.btnPOS_Click);
             // 
+            // btnTrnsactionSearch
+            // 
+            this.btnTrnsactionSearch.Location = new System.Drawing.Point(233, 376);
+            this.btnTrnsactionSearch.Name = "btnTrnsactionSearch";
+            this.btnTrnsactionSearch.Size = new System.Drawing.Size(119, 60);
+            this.btnTrnsactionSearch.TabIndex = 29;
+            this.btnTrnsactionSearch.Text = "Transaction Search";
+            this.btnTrnsactionSearch.UseVisualStyleBackColor = true;
+            this.btnTrnsactionSearch.Click += new System.EventHandler(this.btnTrnsactionSearch_Click);
+            // 
             // ManagerDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 522);
+            this.Controls.Add(this.btnTrnsactionSearch);
             this.Controls.Add(this.btnPOS);
             this.Controls.Add(this.btnSignout);
             this.Controls.Add(this.btnAuditTrail);
@@ -163,5 +175,6 @@
         private System.Windows.Forms.Button btnAuditTrail;
         private System.Windows.Forms.Button btnSignout;
         private System.Windows.Forms.Button btnPOS;
+        private System.Windows.Forms.Button btnTrnsactionSearch;
     }
 }

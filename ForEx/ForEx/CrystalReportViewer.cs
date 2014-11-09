@@ -76,11 +76,17 @@ namespace ForEx
                     break;
 
                 case (Common.ReportType.ClientBank):
+                    Reports.ListClientReport lcr2 = new Reports.ListClientReport();
+                    crystalReportViewer1.ReportSource = lcr2;
 
+                    lcr2.SetDataSource(ListClient(query));
                     break;
 
                 case (Common.ReportType.ClientCorporate):
+                    Reports.ListClientReport lcr3 = new Reports.ListClientReport();
+                    crystalReportViewer1.ReportSource = lcr3;
 
+                    lcr3.SetDataSource(ListClient(query));
                     break;
 
                 case (Common.ReportType.TransactionPerClient):

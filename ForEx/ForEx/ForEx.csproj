@@ -135,6 +135,12 @@
     <Compile Include="frmAttachments.Designer.cs">
       <DependentUpon>frmAttachments.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSearchTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchTransaction.Designer.cs">
+      <DependentUpon>frmSearchTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,12 @@
       <DependentUpon>FinalDailySummary.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\ListClientBankCorporate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListClientBankCorporate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\ListClientReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -379,6 +391,9 @@
     <EmbeddedResource Include="frmAttachments.resx">
       <DependentUpon>frmAttachments.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchTransaction.resx">
+      <DependentUpon>frmSearchTransaction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HomeScreen.resx">
       <DependentUpon>HomeScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -466,6 +481,10 @@
     <EmbeddedResource Include="Reports\FinalDailySummary.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>FinalDailySummary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ListClientBankCorporate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ListClientBankCorporate.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ListClientReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -110,5 +110,11 @@ namespace ForEx
             var transaction = new Transaction();
             transaction.Show();
         }
+
+        private void btnTrnsactionSearch_Click(object sender, EventArgs e)
+        {
+            var searchtransac = new frmSearchTransaction();
+            searchtransac.Show();
+        }
     }
 }

@@ -83,6 +83,13 @@
             this.textOccupation = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panelUpload = new System.Windows.Forms.Panel();
+            this.btnClearfiles = new System.Windows.Forms.Button();
+            this.txtfile5 = new System.Windows.Forms.TextBox();
+            this.txtfile4 = new System.Windows.Forms.TextBox();
+            this.txtfile3 = new System.Windows.Forms.TextBox();
+            this.txtfile2 = new System.Windows.Forms.TextBox();
+            this.txtFile1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tabSearch = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -99,6 +106,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.cmbSearchType = new System.Windows.Forms.ComboBox();
             this.gridSearchClient = new System.Windows.Forms.DataGridView();
+            this.btnViewAttachment = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -107,14 +115,6 @@
             this.btnEditSearch = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtFile1 = new System.Windows.Forms.TextBox();
-            this.txtfile2 = new System.Windows.Forms.TextBox();
-            this.txtfile3 = new System.Windows.Forms.TextBox();
-            this.txtfile4 = new System.Windows.Forms.TextBox();
-            this.txtfile5 = new System.Windows.Forms.TextBox();
-            this.btnClearfiles = new System.Windows.Forms.Button();
-            this.btnViewAttachment = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabAddClient.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -176,8 +176,11 @@
             this.flowLayoutPanel1.Controls.Add(this.panelType);
             this.flowLayoutPanel1.Controls.Add(this.panelName);
             this.flowLayoutPanel1.Controls.Add(this.panelSurname);
+            this.flowLayoutPanel1.Controls.Add(this.panelIDType);
+            this.flowLayoutPanel1.Controls.Add(this.panelPassport);
             this.flowLayoutPanel1.Controls.Add(this.panelCompanyName);
             this.flowLayoutPanel1.Controls.Add(this.panelContact);
+            this.flowLayoutPanel1.Controls.Add(this.panelUpload);
             this.flowLayoutPanel1.Controls.Add(this.panelDOB);
             this.flowLayoutPanel1.Controls.Add(this.panelDOB2);
             this.flowLayoutPanel1.Controls.Add(this.panelAddress);
@@ -187,10 +190,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panelPhone);
             this.flowLayoutPanel1.Controls.Add(this.panelVAT);
             this.flowLayoutPanel1.Controls.Add(this.panelBRN);
-            this.flowLayoutPanel1.Controls.Add(this.panelIDType);
-            this.flowLayoutPanel1.Controls.Add(this.panelPassport);
             this.flowLayoutPanel1.Controls.Add(this.panelOccupation);
-            this.flowLayoutPanel1.Controls.Add(this.panelUpload);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -284,7 +284,7 @@
             // 
             this.panelCompanyName.Controls.Add(this.textCompanyName);
             this.panelCompanyName.Controls.Add(this.label16);
-            this.panelCompanyName.Location = new System.Drawing.Point(3, 135);
+            this.panelCompanyName.Location = new System.Drawing.Point(3, 223);
             this.panelCompanyName.Name = "panelCompanyName";
             this.panelCompanyName.Size = new System.Drawing.Size(378, 38);
             this.panelCompanyName.TabIndex = 0;
@@ -311,7 +311,7 @@
             // 
             this.panelContact.Controls.Add(this.textContact);
             this.panelContact.Controls.Add(this.label17);
-            this.panelContact.Location = new System.Drawing.Point(3, 179);
+            this.panelContact.Location = new System.Drawing.Point(3, 267);
             this.panelContact.Name = "panelContact";
             this.panelContact.Size = new System.Drawing.Size(378, 38);
             this.panelContact.TabIndex = 1;
@@ -338,7 +338,7 @@
             // 
             this.panelDOB.Controls.Add(this.dateTimeDOB);
             this.panelDOB.Controls.Add(this.label8);
-            this.panelDOB.Location = new System.Drawing.Point(3, 223);
+            this.panelDOB.Location = new System.Drawing.Point(3, 467);
             this.panelDOB.Name = "panelDOB";
             this.panelDOB.Size = new System.Drawing.Size(378, 38);
             this.panelDOB.TabIndex = 4;
@@ -365,7 +365,7 @@
             // 
             this.panelDOB2.Controls.Add(this.dateTimeDOB2);
             this.panelDOB2.Controls.Add(this.label20);
-            this.panelDOB2.Location = new System.Drawing.Point(3, 267);
+            this.panelDOB2.Location = new System.Drawing.Point(3, 511);
             this.panelDOB2.Name = "panelDOB2";
             this.panelDOB2.Size = new System.Drawing.Size(378, 38);
             this.panelDOB2.TabIndex = 4;
@@ -392,7 +392,7 @@
             // 
             this.panelAddress.Controls.Add(this.textAddress);
             this.panelAddress.Controls.Add(this.label9);
-            this.panelAddress.Location = new System.Drawing.Point(3, 311);
+            this.panelAddress.Location = new System.Drawing.Point(387, 3);
             this.panelAddress.Name = "panelAddress";
             this.panelAddress.Size = new System.Drawing.Size(378, 62);
             this.panelAddress.TabIndex = 5;
@@ -420,7 +420,7 @@
             // 
             this.panelNationality.Controls.Add(this.comboNationality);
             this.panelNationality.Controls.Add(this.label7);
-            this.panelNationality.Location = new System.Drawing.Point(3, 379);
+            this.panelNationality.Location = new System.Drawing.Point(387, 71);
             this.panelNationality.Name = "panelNationality";
             this.panelNationality.Size = new System.Drawing.Size(378, 38);
             this.panelNationality.TabIndex = 3;
@@ -449,7 +449,7 @@
             // 
             this.panelCountry.Controls.Add(this.comboCountry);
             this.panelCountry.Controls.Add(this.label10);
-            this.panelCountry.Location = new System.Drawing.Point(3, 423);
+            this.panelCountry.Location = new System.Drawing.Point(387, 115);
             this.panelCountry.Name = "panelCountry";
             this.panelCountry.Size = new System.Drawing.Size(378, 38);
             this.panelCountry.TabIndex = 6;
@@ -478,7 +478,7 @@
             // 
             this.panelEmail.Controls.Add(this.textEmail);
             this.panelEmail.Controls.Add(this.label12);
-            this.panelEmail.Location = new System.Drawing.Point(3, 467);
+            this.panelEmail.Location = new System.Drawing.Point(387, 159);
             this.panelEmail.Name = "panelEmail";
             this.panelEmail.Size = new System.Drawing.Size(378, 38);
             this.panelEmail.TabIndex = 8;
@@ -505,7 +505,7 @@
             // 
             this.panelPhone.Controls.Add(this.textPhone);
             this.panelPhone.Controls.Add(this.label11);
-            this.panelPhone.Location = new System.Drawing.Point(3, 511);
+            this.panelPhone.Location = new System.Drawing.Point(387, 203);
             this.panelPhone.Name = "panelPhone";
             this.panelPhone.Size = new System.Drawing.Size(378, 38);
             this.panelPhone.TabIndex = 7;
@@ -532,7 +532,7 @@
             // 
             this.panelVAT.Controls.Add(this.textVAT);
             this.panelVAT.Controls.Add(this.label26);
-            this.panelVAT.Location = new System.Drawing.Point(387, 3);
+            this.panelVAT.Location = new System.Drawing.Point(387, 247);
             this.panelVAT.Name = "panelVAT";
             this.panelVAT.Size = new System.Drawing.Size(378, 38);
             this.panelVAT.TabIndex = 10;
@@ -559,7 +559,7 @@
             // 
             this.panelBRN.Controls.Add(this.textBRN);
             this.panelBRN.Controls.Add(this.label25);
-            this.panelBRN.Location = new System.Drawing.Point(387, 47);
+            this.panelBRN.Location = new System.Drawing.Point(387, 291);
             this.panelBRN.Name = "panelBRN";
             this.panelBRN.Size = new System.Drawing.Size(378, 38);
             this.panelBRN.TabIndex = 9;
@@ -586,7 +586,7 @@
             // 
             this.panelIDType.Controls.Add(this.comboIDType);
             this.panelIDType.Controls.Add(this.label13);
-            this.panelIDType.Location = new System.Drawing.Point(387, 91);
+            this.panelIDType.Location = new System.Drawing.Point(3, 135);
             this.panelIDType.Name = "panelIDType";
             this.panelIDType.Size = new System.Drawing.Size(378, 38);
             this.panelIDType.TabIndex = 9;
@@ -615,7 +615,7 @@
             // 
             this.panelPassport.Controls.Add(this.textPassport);
             this.panelPassport.Controls.Add(this.label14);
-            this.panelPassport.Location = new System.Drawing.Point(387, 135);
+            this.panelPassport.Location = new System.Drawing.Point(3, 179);
             this.panelPassport.Name = "panelPassport";
             this.panelPassport.Size = new System.Drawing.Size(378, 38);
             this.panelPassport.TabIndex = 10;
@@ -642,7 +642,7 @@
             // 
             this.panelOccupation.Controls.Add(this.textOccupation);
             this.panelOccupation.Controls.Add(this.label15);
-            this.panelOccupation.Location = new System.Drawing.Point(387, 179);
+            this.panelOccupation.Location = new System.Drawing.Point(387, 335);
             this.panelOccupation.Name = "panelOccupation";
             this.panelOccupation.Size = new System.Drawing.Size(378, 38);
             this.panelOccupation.TabIndex = 11;
@@ -674,11 +674,71 @@
             this.panelUpload.Controls.Add(this.txtfile2);
             this.panelUpload.Controls.Add(this.txtFile1);
             this.panelUpload.Controls.Add(this.button1);
-            this.panelUpload.Location = new System.Drawing.Point(387, 223);
+            this.panelUpload.Location = new System.Drawing.Point(3, 311);
             this.panelUpload.Name = "panelUpload";
             this.panelUpload.Size = new System.Drawing.Size(378, 150);
             this.panelUpload.TabIndex = 11;
             this.panelUpload.Visible = false;
+            // 
+            // btnClearfiles
+            // 
+            this.btnClearfiles.Location = new System.Drawing.Point(15, 35);
+            this.btnClearfiles.Name = "btnClearfiles";
+            this.btnClearfiles.Size = new System.Drawing.Size(75, 23);
+            this.btnClearfiles.TabIndex = 77;
+            this.btnClearfiles.Text = "ClearFiles";
+            this.btnClearfiles.UseVisualStyleBackColor = true;
+            this.btnClearfiles.Click += new System.EventHandler(this.btnClearfiles_Click);
+            // 
+            // txtfile5
+            // 
+            this.txtfile5.Location = new System.Drawing.Point(131, 116);
+            this.txtfile5.Name = "txtfile5";
+            this.txtfile5.ReadOnly = true;
+            this.txtfile5.Size = new System.Drawing.Size(200, 20);
+            this.txtfile5.TabIndex = 76;
+            // 
+            // txtfile4
+            // 
+            this.txtfile4.Location = new System.Drawing.Point(131, 90);
+            this.txtfile4.Name = "txtfile4";
+            this.txtfile4.ReadOnly = true;
+            this.txtfile4.Size = new System.Drawing.Size(200, 20);
+            this.txtfile4.TabIndex = 75;
+            // 
+            // txtfile3
+            // 
+            this.txtfile3.Location = new System.Drawing.Point(131, 64);
+            this.txtfile3.Name = "txtfile3";
+            this.txtfile3.ReadOnly = true;
+            this.txtfile3.Size = new System.Drawing.Size(200, 20);
+            this.txtfile3.TabIndex = 74;
+            // 
+            // txtfile2
+            // 
+            this.txtfile2.Location = new System.Drawing.Point(131, 38);
+            this.txtfile2.Name = "txtfile2";
+            this.txtfile2.ReadOnly = true;
+            this.txtfile2.Size = new System.Drawing.Size(200, 20);
+            this.txtfile2.TabIndex = 73;
+            // 
+            // txtFile1
+            // 
+            this.txtFile1.Location = new System.Drawing.Point(131, 12);
+            this.txtFile1.Name = "txtFile1";
+            this.txtFile1.ReadOnly = true;
+            this.txtFile1.Size = new System.Drawing.Size(200, 20);
+            this.txtFile1.TabIndex = 72;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 72;
+            this.button1.Text = "Select A File";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnAdd
             // 
@@ -843,6 +903,17 @@
             this.gridSearchClient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSearchClient_CellClick);
             this.gridSearchClient.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // btnViewAttachment
+            // 
+            this.btnViewAttachment.Enabled = false;
+            this.btnViewAttachment.Location = new System.Drawing.Point(3, 454);
+            this.btnViewAttachment.Name = "btnViewAttachment";
+            this.btnViewAttachment.Size = new System.Drawing.Size(141, 35);
+            this.btnViewAttachment.TabIndex = 8;
+            this.btnViewAttachment.Text = "View Attachment";
+            this.btnViewAttachment.UseVisualStyleBackColor = true;
+            this.btnViewAttachment.Click += new System.EventHandler(this.btnViewAttachment_Click);
+            // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(210, 12);
@@ -923,77 +994,6 @@
             this.label3.Size = new System.Drawing.Size(163, 24);
             this.label3.TabIndex = 1;
             this.label3.Text = "Enter Client Name";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 72;
-            this.button1.Text = "Select A File";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtFile1
-            // 
-            this.txtFile1.Location = new System.Drawing.Point(131, 12);
-            this.txtFile1.Name = "txtFile1";
-            this.txtFile1.ReadOnly = true;
-            this.txtFile1.Size = new System.Drawing.Size(200, 20);
-            this.txtFile1.TabIndex = 72;
-            // 
-            // txtfile2
-            // 
-            this.txtfile2.Location = new System.Drawing.Point(131, 38);
-            this.txtfile2.Name = "txtfile2";
-            this.txtfile2.ReadOnly = true;
-            this.txtfile2.Size = new System.Drawing.Size(200, 20);
-            this.txtfile2.TabIndex = 73;
-            // 
-            // txtfile3
-            // 
-            this.txtfile3.Location = new System.Drawing.Point(131, 64);
-            this.txtfile3.Name = "txtfile3";
-            this.txtfile3.ReadOnly = true;
-            this.txtfile3.Size = new System.Drawing.Size(200, 20);
-            this.txtfile3.TabIndex = 74;
-            // 
-            // txtfile4
-            // 
-            this.txtfile4.Location = new System.Drawing.Point(131, 90);
-            this.txtfile4.Name = "txtfile4";
-            this.txtfile4.ReadOnly = true;
-            this.txtfile4.Size = new System.Drawing.Size(200, 20);
-            this.txtfile4.TabIndex = 75;
-            // 
-            // txtfile5
-            // 
-            this.txtfile5.Location = new System.Drawing.Point(131, 116);
-            this.txtfile5.Name = "txtfile5";
-            this.txtfile5.ReadOnly = true;
-            this.txtfile5.Size = new System.Drawing.Size(200, 20);
-            this.txtfile5.TabIndex = 76;
-            // 
-            // btnClearfiles
-            // 
-            this.btnClearfiles.Location = new System.Drawing.Point(15, 35);
-            this.btnClearfiles.Name = "btnClearfiles";
-            this.btnClearfiles.Size = new System.Drawing.Size(75, 23);
-            this.btnClearfiles.TabIndex = 77;
-            this.btnClearfiles.Text = "ClearFiles";
-            this.btnClearfiles.UseVisualStyleBackColor = true;
-            this.btnClearfiles.Click += new System.EventHandler(this.btnClearfiles_Click);
-            // 
-            // btnViewAttachment
-            // 
-            this.btnViewAttachment.Enabled = false;
-            this.btnViewAttachment.Location = new System.Drawing.Point(3, 454);
-            this.btnViewAttachment.Name = "btnViewAttachment";
-            this.btnViewAttachment.Size = new System.Drawing.Size(141, 35);
-            this.btnViewAttachment.TabIndex = 8;
-            this.btnViewAttachment.Text = "View Attachment";
-            this.btnViewAttachment.UseVisualStyleBackColor = true;
-            this.btnViewAttachment.Click += new System.EventHandler(this.btnViewAttachment_Click);
             // 
             // frmClientManagement
             // 

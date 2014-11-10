@@ -20,6 +20,7 @@ namespace ForEx
         private SqlConnection con = new SqlConnection(Common.GetConnectionString());
         private SqlDataAdapter da = new SqlDataAdapter();
         private SqlCommand cmd = new SqlCommand();
+        private bool isFromPos = false;
 
         private int RowClickUserId = 0;
 
@@ -32,6 +33,17 @@ namespace ForEx
             populate_IDType();
         }
 
+        public frmClientManagement(bool isFromPos)
+        {
+            InitializeComponent();
+            populate_Type();
+            populate_Nationality();
+            populate_Country();
+            populate_IDType();
+            this.isFromPos = isFromPos;
+        }
+
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //test
@@ -41,12 +53,12 @@ namespace ForEx
         {
             string typeValue = comboType.SelectedItem.ToString();
 
-            if (typeValue == "Individual" && validateIndividualField() && validateCommonFields())
+            if (typeValue == "Individual" && validateIndividualField())
             {                
                 insertIndividualClient();
             }
 
-            if (typeValue != "Individual" && validateOther() && validateCommonFields())
+            if (typeValue != "Individual" && validateOther() )
             {
                 insertOtherType();
             }         
@@ -334,6 +346,32 @@ namespace ForEx
                             }
                         }
                         MessageBox.Show("Client has been added successfully");
+                        //go to pos 
+                        if (isFromPos)
+                        {
+                            Clients clients = new Clients
+                            {
+                                Code = clientId,
+                                Name = txtName.Text,
+                                DateOfBirth = dateTimeDOB.Value,
+                                PassportNo = textPassport.Text,
+                                Address = textAddress.Text,
+                                Surname = txtSurname.Text,
+                                Phone = textPhone.Text,
+                                Country = comboCountry.SelectedValue.ToString(),
+                                Nationality = comboNationality.SelectedItem.ToString(),
+                                Email = textEmail.Text,
+                                IdType = comboIDType.SelectedItem.ToString(),
+                                Occupation = textOccupation.Text,
+                                Username = "Test",
+                                IsBlackListed = false,
+                                Type = comboType.SelectedItem.ToString(),
+                                DateCreated = DateTime.Now,
+                            };
+
+                            var transacForm = new Transaction(clients);
+                            transacForm.Show();
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -375,7 +413,7 @@ namespace ForEx
                 cmd.Parameters.AddWithValue("@email", textEmail.Text);
                 cmd.Parameters.AddWithValue("@brn", textBRN.Text);
                 //cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //To change when Login implemented
-                cmd.Parameters.AddWithValue("@username", "TEST"); //To delete when Login implemented
+                cmd.Parameters.AddWithValue("@username", Common.GetUser().Username); //To delete when Login implemented
                 cmd.Parameters.AddWithValue("@date_client_created", DateTime.Now);
 
                 con.Open();
@@ -396,6 +434,31 @@ namespace ForEx
                         }
                     }
                     MessageBox.Show("Bank/Corporate has been added successfully");
+                    //go to pos 
+                    if (isFromPos)
+                    {
+                        Clients clients = new Clients
+                        {
+                            Code = clientId,
+                            Name = Name,
+                            Address = textAddress.Text,
+                            Phone = textPhone.Text,
+                            ContactPerson = textContact.Text,
+                            CompanyName = textCompanyName.Text,
+                            DateIncorporated = dateTimeDOB2.Value,
+                            Country = comboCountry.SelectedValue.ToString(),
+                            Nationality = comboNationality.SelectedItem.ToString(),
+                            Email = textEmail.Text,
+                            VAT = textVAT.Text,
+                            BRN = textBRN.Text,
+                            IsBlackListed = false,
+                            Type = comboType.SelectedItem.ToString(),
+                            DateCreated = DateTime.Now,
+                        };
+
+                        var transacForm = new Transaction(clients);
+                        transacForm.Show();
+                    }
                 }
             }
             catch (Exception ex)

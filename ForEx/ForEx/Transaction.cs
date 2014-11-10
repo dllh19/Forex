@@ -643,7 +643,7 @@ namespace ForEx
         private void btn_AddClient_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var clientform = new frmClientManagement();
+            var clientform = new frmClientManagement(true);
             clientform.Closed += (s, args) => this.Close();
             clientform.Show();
         }
